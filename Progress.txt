@@ -1,5 +1,5 @@
-5%, Tampilan Awal
-Tampilan awal 
+10%, Tampilan Data tapi masih belum maksimal
+Tampilan Data 
 
 
 C:/xampp/htdocs/ibuhamil

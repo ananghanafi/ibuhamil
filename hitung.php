@@ -23,7 +23,7 @@ if(isset($_POST['contoh'])){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	   <link rel="stylesheet" type="text/css" href="css/custom.css">
+     <link rel="stylesheet" type="text/css" href="css/custom.css">
 
   </head>
   <body id="bodyhitung">
@@ -36,38 +36,88 @@ if(isset($_POST['contoh'])){
                 <li><a style="font-family: 'Montserrat';" href="index.php">Home</a></li>
                 <li><a style="font-family: 'Montserrat';" href="hitung.php">Hitung</a></li>
               </ul>
-              <h2>Algoritma K-Medoids</h2>
+
+<link href="multifreezer.css" rel="stylesheet">
+<!-- JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="multifreezer.js"></script>
+
+<!-- <table class="table horizontal-scrollbar table-condensed table-freeze-multi table-bordered table-striped table-hover table-responsive" data-scroll-height="500" >
+<?php
+// $file = 'DatasetIbuHamil.csv';
+// $target = fopen($file, 'r');
+// while($baris = fgetcsv($target, 10000, ',')){
+//     echo '<tr>';
+//     for($i=0,$kolom=count($baris); $i<$kolom; $i++){
+//         echo '<td>'.$baris[$i].'</td>';
+//     //  echo $baris[$i];
+//     }
+//     //echo $kolom;
+//     echo '</tr>';
+// }
+// fclose($target);
+
+?>
+</table> -->
+<table  class="table table-bordered table-condensed table-hover table-freeze-multi" data-scroll-height="500">
+<?php
+$row = 1;
+ini_set('auto_detect_line_endings',TRUE);
+if (($handle = fopen("DatasetIbuHamil.csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1050, ",")) !== FALSE) {
+
+        $num = count($data);
+
+        echo "<tr>";
+        for ($c=0; $c < $num; $c++) {
+
+            if ($row == 1) {
+                echo "<th>" . $data[$c] . "</th>\n";
+            } else {
+                echo "<td>" . $data[$c] . "</td>\n";
+            }
+        }
+
+        echo "</tr>\n";
+        $row++;
+    }
+    ini_set('auto_detect_line_endings',FALSE);
+    fclose($handle);
+}
+?>
+</table>
+
+              <!-- <h2>Algoritma K-Medoids</h2>
               <p style="font-size:12pt;">Untuk melakukan perhitungan dengan menggunakan algoritma k-medoids. Input beberapa data untuk digunakan dalam memperoleh hasil.
                 Jika ingin melihat contoh hasil silahkan pilih tombol contoh.
-                Jika ingin menginputkan data silahkan klik tomboh input data</p><br/><br/>
-                <div class="inti">
-                <div class="col-md-3"></div>
-                <div class="col-md-3">
+                Jika ingin menginputkan data silahkan klik tomboh input data</p><br/><br/> -->
+<!--                 <div class="inti"> -->
+<!--                 <div class="col-md-3">
                     <button style="font-family: 'Montserrat';" type="button" class="btn btn-success " data-toggle="modal" data-target="#myModal">Input Data</button>
-                    <div id="myModal" class="modal fade" role="dialog">
-                  <div class="modal-dialog">
+                    <div id="myModal" class="modal fade" role="dialog"> -->
+ <!--                  <div class="modal-dialog"> -->
 
                     <!-- Modal content-->
-                    <div class="modal-content">
-                      <div class="modal-header">
+<!--                     <div class="modal-content"> -->
+                      <!-- <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 clas3="modal-title">INPUT DATA</h3>
-                      </div>
-
-                      <div class="modal-body">
-                        <body>
+                      </div> -->
+<!-- 
+                      <div class="modal-body"> -->
+                       <!--  <body>
                        
                         <form action="" method="post" enctype="multipart/form-data" name="ContohUploadCSV" id="ContohUploadCSV">
                           <p>Pilih file csv
                             <input type="file" name="filecsv" id="filecsv" />
                         </p>
                           <p>
-                            <a href="example.php" class="btn btn-default" name="button" id="button">Kirim</a>
+                            <a href="example.php" class="btn btn-default" name="button" id="button">Kirim</a> -->
                             <!-- <input type="submit" name="button" id="button" value="Kirim" /> -->
-                        </p>
+<!--                         </p>
                         </form>
                         </body>
-
+ -->
 <!--                           <button style="margin-left:2%; font-family: 'Montserrat';" class="btn btn-success" type="button" onclick="tambahInput()">Tambah Input</button><br/><br/> -->
 <!--                           <form method="post" onsubmit="return validate()" action="session.php">
                             <input type="hidden" name="manual" value="1">
@@ -85,7 +135,7 @@ if(isset($_POST['contoh'])){
                             <br/><br/>
                             <button style="margin-left:2%; font-family: 'Montserrat';" class="btn btn-primary" type="submit">Hitung !</button>
                           </form>  -->
-                      </div>
+<!--                       </div>
 
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -93,15 +143,15 @@ if(isset($_POST['contoh'])){
 
                     </div>
 
-                  </div>
-                </div>
-                </div>
-                <div class="col-md-4">
+                  </div> -->
+<!--                 </div> -->
+<!--                 </div> -->
+<!--                 <div class="col-md-4">
                       <form method="post">
                         <button style="font-family: 'Montserrat';" class="btn btn-warning" type="submit" name="contoh">Contoh</button>
                       </form>
-                </div>
-              </div>
+                </div> -->
+            <!--   </div> -->
 
           </div>
 

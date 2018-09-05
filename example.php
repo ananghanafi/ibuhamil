@@ -16,15 +16,29 @@ while (($line = fgetcsv($file)) !== FALSE) {
 }
 fclose($file);*/
 
-$file = fopen("DatasetIbuHamil.csv","r");
+// $file = fopen("DatasetIbuHamil.csv","r");
 
-while(! feof($file))
-  {
- print_r(fgetcsv($file));
- // 	echo Array[9];
-  }
+// while(! feof($file))
+//   {
+//  print_r(fgetcsv($file));
+//   }
 
-fclose($file);
+// fclose($file);
+
+// $csv = array();
+// $nilaicsv = array();
+// $lines = file('DatasetIbuHamil.csv', FILE_IGNORE_NEW_LINES);
+
+// foreach ($lines as $key => $value)
+// {
+//     $csv[$key] = str_getcsv($value);
+//  //   $nilaicsv[$value];
+//  //   print_r($csv);
+// }
+
+// //echo '<pre>';
+// print_r($csv);
+// //echo '</pre>';
 
 // $csvFile ='DatasetIbuHamil.csv';
 // function readCSV($csvFile){
