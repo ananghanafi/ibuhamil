@@ -414,15 +414,15 @@ $nilai=array(
 ); 
 
 echo"<strong>nilai array ditampilkan secara manual: </strong><br>";
-for ($j=0; $j <3 ; $j++) { 
+for ($j=0; $j <401 ; $j++) { 
 	for ($i=0; $i < 117 ; $i++) { 
 	echo $nilai[$j] [$i].", ";
 	} 
-	echo "<br>";
+	echo "<br>"."Sebanyak $j"."<br>";
 }
 
-echo $nilai[0] [0]." ".$nilai[0] [1]." ".$nilai[0] [2]."<br>";
-echo $nilai[1] [0]." ".$nilai[1] [1]." ".$nilai[1] [2]."<br>";
-echo $nilai[2] [0]." ".$nilai[2] [1]." ".$nilai[2] [2]."<br>";
+// echo $nilai[0] [0]." ".$nilai[0] [1]." ".$nilai[0] [2]."<br>";
+// echo $nilai[1] [0]." ".$nilai[1] [1]." ".$nilai[1] [2]."<br>";
+// echo $nilai[2] [0]." ".$nilai[2] [1]." ".$nilai[2] [2]."<br>";
 
 ?>
