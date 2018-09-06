@@ -413,13 +413,70 @@ $nilai=array(
 
 ); 
 
-echo"<strong>nilai array ditampilkan secara manual: </strong><br>";
-for ($j=0; $j <401 ; $j++) { 
-	for ($i=0; $i < 117 ; $i++) { 
-	echo $nilai[$j] [$i].", ";
-	} 
-	echo "<br>"."Sebanyak $j"."<br>";
+echo"<strong>Nilai Centroid (Random) </strong><br>";
+// for ($j=0; $j <401 ; $j++) { 
+// 		for ($i=0; $i < 117 ; $i++) { 
+// //	echo $nilai[$j] [$i].", ";
+// 	} 
+// 	echo "<br>"."Sebanyak $j"."<br>";
+// }
+
+//Mau menampilkan nilai centroid Random
+
+
+$k=0;
+$cekCentroid1 = " ";
+$cekCentroid2 = " ";
+$cekCentroid3 = " ";
+while ( $k < 100 ) {
+	$acak = rand(0,401);
+	//echo "acak ".$acak;
+	if ($nilai[$acak][116]=="Kehamilan-Resiko-Rendah"){
+	//echo "Rendah";
+		for ($h=0; $h < 117 ; $h++) { 
+			$ambilCentroid [1][$h] = $nilai [$acak][$h];
+		}
+	 	$cekCentroid1 = "ada1";
+	}elseif ($nilai[$acak][116]=="Kehamilan-Resiko-Tinggi") {
+		//echo "Tinggi";
+		for ($h=0; $h < 117 ; $h++) { 
+			$ambilCentroid [2][$h] = $nilai [$acak][$h];
+		}
+		$cekCentroid2 = "ada2";
+	}elseif ($nilai[$acak][116]=="Kehamilan-Resiko-SangatTinggi") {
+		//echo "Sangat Tinggi";
+		for ($h=0; $h < 117 ; $h++) { 
+			$ambilCentroid [3][$h] = $nilai [$acak][$h];
+		}
+		$cekCentroid3 = "ada3";
+	}elseif ($cekCentroid1 == "ada1" & $cekCentroid2 == "ada2" & $cekCentroid3 == "ada3") {
+		break;
+	}
+	
+	$k++;
+
 }
+echo "ambilCentroid 1 "."<br>";
+for ($k=0; $k < 117  ; $k++) { 
+echo "".$ambilCentroid [1][$k].", " ;
+}
+echo"<hr>";
+echo "ambilCentroid 2 "."<br>";
+for ($k=0; $k < 117  ; $k++) { 
+echo "".$ambilCentroid [2][$k].", " ;
+	
+}
+echo"<hr>";
+echo "ambilCentroid 3 "."<br>";
+for ($k=0; $k < 117  ; $k++) { 
+echo "".$ambilCentroid [3][$k].", " ;
+	
+}
+
+echo"<strong>Nilai Simple Matching (Kategorik) </strong><br>";
+//Dilakukan dengan simple matching (nilai kategorik jika sama bernilai 0 dan 1 jika berbeda)
+
+
 
 // echo $nilai[0] [0]." ".$nilai[0] [1]." ".$nilai[0] [2]."<br>";
 // echo $nilai[1] [0]." ".$nilai[1] [1]." ".$nilai[1] [2]."<br>";
