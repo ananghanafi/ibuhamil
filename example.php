@@ -58,18 +58,18 @@ fclose($file);*/
 // print_r($csv);
 // echo '</pre>';
 
-// $namafile = $_FILES['filecsv']['tmp_name']
-// $row = 1;
-// if (($handle = fopen('DatasetIbuHamil.csv', "r")) !== FALSE) {
-//     while (($data = fgetcsv($handle, 10000, ",","'")) !== FALSE) {
-//         $num = count($data);
-//         echo "<p> $num data di baris $row: <br /></p>\n";
-//         $row++;
-//         for ($c=0; $c < $num; $c++) {
-//             echo $data[$c] ;
-//         }
-//     }
-//     fclose($handle);
-// }
+//$namafile = $_FILES['filecsv']['tmp_name']
+$row = 1;
+if (($handle = fopen('DatasetIbuHamil.csv', "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 10000, ";")) !== FALSE) {
+        $num = count($data);
+        echo "<p> $num data di baris $row: <br /></p>\n";
+        $row++;
+        for ($c=0; $c < $num; $c++) {
+            echo $data[$c] ;
+        }
+    }
+    fclose($handle);
+}
 
 ?>
