@@ -456,6 +456,7 @@ while ( $k < 100 ) {
 	$k++;
 
 }
+//Penampilan Centroid 1,2,3
 echo "ambilCentroid 1 "."<br>";
 for ($k=0; $k < 117  ; $k++) { 
 echo "".$ambilCentroid [1][$k].", " ;
@@ -472,7 +473,7 @@ for ($k=0; $k < 117  ; $k++) {
 echo "".$ambilCentroid [3][$k].", " ;
 	
 }
-
+echo "<br>";
 echo"<strong>Nilai Simple Matching (Kategorik) </strong><br>";
 //Dilakukan dengan simple matching (nilai kategorik jika sama bernilai 0 dan 1 jika berbeda)
 
