@@ -1,5 +1,4 @@
-10%, Tampilan Data tapi masih belum maksimal
-Tampilan Data 
+15%, Pembuatan centroid random
 
 
 C:/xampp/htdocs/ibuhamil

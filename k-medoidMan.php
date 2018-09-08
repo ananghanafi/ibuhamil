@@ -474,10 +474,156 @@ echo "".$ambilCentroid [3][$k].", " ;
 	
 }
 echo "<br>";
-echo"<strong>Nilai Simple Matching (Kategorik) </strong><br>";
-//Dilakukan dengan simple matching (nilai kategorik jika sama bernilai 0 dan 1 jika berbeda)
+echo "<hr>";
+//echo"<strong>Nilai Simple Matching (Kategorik) </strong><br>";
 
+//Menghitung clustering di kelas Kehamilan-Resiko-Rendah
+$nilaiCentroid1=0;
+$tempNum=0;
+//$nilaiTotalCentroid1= 0;
+for ($j=0; $j <401 ; $j++) { 
+	$nilaiHasilCentroid1 = 0;
+	for ($m=0; $m < 117; $m++) { 
+		//Kategorikal (Dengan Simple Mathching)
+		//Dilakukan dengan simple matching (nilai kategorik jika sama bernilai 0 dan 1 jika berbeda)
+		if(($m >= 2 && $m <= 21) || ($m >= 23 && $m <= 25) || ($m==27) || ($m >= 30 && $m <= 74) || ($m >= 77 && $m <= 78) || ($m >= 83 && $m <= 86) || ($m >= 92 && $m <= 103) || ($m >= 106 && $m <= 108) || ($m == 111) || ($m >= 115 && $m <= 116)){
+			if ($nilai[$j][$m] == $ambilCentroid [1][$m]) {
+				//echo "True ".$m;
+				$nilaiCentroid1 = 1;
+				//echo "Nilai centroid1 ".$nilaiCentroid1;
+			}else{
+				//echo "false ".$m;
+				$nilaiCentroid1 = 0;
+			}
+					
+			//echo "Kategorikal ".$m."<br>";
+		
+		}
+		//Numerik (Dengan Manhattan Distance)
+		//Menghitung jarak (absolute) 
+		else{
+			// echo "Numerik ".$m."<br>";
+			//echo "Numerik ".$m;
+			$tempNum = $ambilCentroid [1][$m] - $nilai[$j][$m];
+			//echo "Nilai Centroid Sebelum".$m." ".$tempNum;
+			$nilaiCentroid1 = abs($tempNum);
+			//echo "Nilai Centroid Sesudah Temp ".$nilaiCentroid1. "<br>";
+		}
+		$nilaiHasilCentroid1 += $nilaiCentroid1;
+		// if ($m==116) {
+		// //	echo "Nilai centroid1 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid1."<br>";
+		// 	$nilaiTotalCentroid1 = $nilaiHasilCentroid1;
+		// }
+	}
+	//echo "<br>";
+	//echo "Nilai centroid1 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid1."<br>";
+	$nilaiTotalCentroid1[$j]=$nilaiHasilCentroid1;
+	//echo "Nilai centroid1 "."Baris ke ".$j." hasil ".$nilaiTotalCentroid1[$j]."<br>";
+}
+//$nilaiKategorik1 += $nilaiKategorik1;
+// echo "string";
+for ($h=0; $h < 401; $h++) { 
+	echo "Nilai centroid1 "."Baris ke ".$j." hasil ".$nilaiTotalCentroid1[$h]."<br>";
+}
+//echo "COba ".$nilaiHasilCentroid1."<br>";
+echo "<hr>";
+//Menghitung clustering di kelas Kehamilan-Resiko-Tinggi
+$nilaiCentroid2=0;
+$tempNum2=0;
+for ($j=0; $j <401 ; $j++) { 
+	$nilaiHasilCentroid2 = 0;
+	for ($m=0; $m < 117; $m++) { 
+		//Kategorikal (Dengan Simple Mathching)
+		//Dilakukan dengan simple matching (nilai kategorik jika sama bernilai 0 dan 1 jika berbeda)
+		if(($m >= 2 && $m <= 21) || ($m >= 23 && $m <= 25) || ($m==27) || ($m >= 30 && $m <= 74) || ($m >= 77 && $m <= 78) || ($m >= 83 && $m <= 86) || ($m >= 92 && $m <= 103) || ($m >= 106 && $m <= 108) || ($m == 111) || ($m >= 115 && $m <= 116)){
+			if ($nilai[$j][$m] == $ambilCentroid [2][$m]) {
+				//echo "True ".$m;
+				$nilaiCentroid2 = 1;
+				//echo "Nilai centroid1 ".$nilaiCentroid1;
+			}else{
+				//echo "false ".$m;
+				$nilaiCentroid2 = 0;
+			}
+					
+			//echo "Kategorikal ".$m."<br>";
+		
+		}
+		//Numerik (Dengan Manhattan Distance)
+		//Menghitung jarak (absolute) 
+		else{
+			// echo "Numerik ".$m."<br>";
+			//echo "Numerik ".$m;
+			$tempNum2 = $ambilCentroid [2][$m] - $nilai[$j][$m];
+			//echo "Nilai Centroid Sebelum".$m." ".$tempNum;
+			$nilaiCentroid2 = abs($tempNum2);
+			//echo "Nilai Centroid Sesudah Temp ".$nilaiCentroid1. "<br>";
+		}
+		$nilaiHasilCentroid2 += $nilaiCentroid2;
+		// if ($m==116) {
+		// 	echo "Nilai centroid1 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid2."<br>";
+		// }
+	}
+	//echo "<br>";
+	//echo "Nilai centroid2 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid2."<br>";
+	$nilaiTotalCentroid2[$j]=$nilaiHasilCentroid2;
+}
+//echo "COba ".$nilaiHasilCentroid2."<br>";
+echo "<hr>";
+//Menghitung clustering di kelas Kehamilan-Resiko-Tinggi
+$nilaiCentroid3=0;
+$tempNum3=0;
+for ($j=0; $j <401 ; $j++) { 
+	$nilaiHasilCentroid3 = 0;
+	for ($m=0; $m < 117; $m++) {
+		//Kategorikal (Dengan Simple Mathching)
+		//Dilakukan dengan simple matching (nilai kategorik jika sama bernilai 0 dan 1 jika berbeda)
+		if(($m >= 2 && $m <= 21) || ($m >= 23 && $m <= 25) || ($m==27) || ($m >= 30 && $m <= 74) || ($m >= 77 && $m <= 78) || ($m >= 83 && $m <= 86) || ($m >= 92 && $m <= 103) || ($m >= 106 && $m <= 108) || ($m == 111) || ($m >= 115 && $m <= 116)){
+			if ($nilai[$j][$m] == $ambilCentroid [3][$m]) {
+				//echo "True ".$m;
+				$nilaiCentroid3 = 1;
+				//echo "Nilai centroid1 ".$nilaiCentroid1;
+			}else{
+				//echo "false ".$m;
+				$nilaiCentroid3 = 0;
+			}
+					
+			//echo "Kategorikal ".$m."<br>";
+		
+		}
+		//Numerik (Dengan Manhattan Distance)
+		//Menghitung jarak (absolute) 
+		else{
+			// echo "Numerik ".$m."<br>";
+			//echo "Numerik ".$m;
+			$tempNum3 = $ambilCentroid [3][$m] - $nilai[$j][$m];
+			//echo "Nilai Centroid Sebelum".$m." ".$tempNum;
+			$nilaiCentroid3 = abs($tempNum3);
+			//echo "Nilai Centroid Sesudah Temp ".$nilaiCentroid1. "<br>";
+		}
+		$nilaiHasilCentroid3 += $nilaiCentroid3;
+		// if ($m==116) {
+		// 	echo "Nilai centroid1 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid3."<br>";
+		// }
+	}
+	//echo "<br>";
+	//echo "Nilai centroid3 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid3."<br>";
+	$nilaiTotalCentroid3[$j]=$nilaiHasilCentroid3;
+}
+//echo "COba ".$nilaiHasilCentroid3."<br>";
 
+echo "<hr>";
+//Menentukan nilai terdekat yang di tentukan di kelas Centroid yang mana
+for ($l=0; $l < 401 ; $l++) { 
+	//echo "string". min(4,4,3);;
+	$CeknilaiTerkecil= array($nilaiHasilCentroid1[$l],$nilaiHasilCentroid2[$l],$nilaiHasilCentroid3[$l]);
+	$nilaiTerkecil[$l] = min($CeknilaiTerkecil);
+	//echo "".$nilaiTerkecil[$l]."Baris Ke ".$l."<br>";
+	echo "".$nilaiTerkecil[$l] ;
+}
+
+// for ($l=0; $l < 401 ; $l++) { 
+// 	echo "".$nilaiTerkecil[$l];
+// }
 
 // echo $nilai[0] [0]." ".$nilai[0] [1]." ".$nilai[0] [2]."<br>";
 // echo $nilai[1] [0]." ".$nilai[1] [1]." ".$nilai[1] [2]."<br>";
