@@ -480,7 +480,6 @@ echo "<hr>";
 //Menghitung clustering di kelas Kehamilan-Resiko-Rendah
 $nilaiCentroid1=0;
 $tempNum=0;
-//$nilaiTotalCentroid1= 0;
 for ($j=0; $j <401 ; $j++) { 
 	$nilaiHasilCentroid1 = 0;
 	for ($m=0; $m < 117; $m++) { 
@@ -494,38 +493,24 @@ for ($j=0; $j <401 ; $j++) {
 			}else{
 				//echo "false ".$m;
 				$nilaiCentroid1 = 0;
-			}
-					
-			//echo "Kategorikal ".$m."<br>";
-		
+			}				
+			//echo "Kategorikal ".$m."<br>";		
 		}
 		//Numerik (Dengan Manhattan Distance)
 		//Menghitung jarak (absolute) 
 		else{
-			// echo "Numerik ".$m."<br>";
-			//echo "Numerik ".$m;
 			$tempNum = $ambilCentroid [1][$m] - $nilai[$j][$m];
 			//echo "Nilai Centroid Sebelum".$m." ".$tempNum;
 			$nilaiCentroid1 = abs($tempNum);
 			//echo "Nilai Centroid Sesudah Temp ".$nilaiCentroid1. "<br>";
 		}
 		$nilaiHasilCentroid1 += $nilaiCentroid1;
-		// if ($m==116) {
-		// //	echo "Nilai centroid1 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid1."<br>";
-		// 	$nilaiTotalCentroid1 = $nilaiHasilCentroid1;
-		// }
 	}
 	//echo "<br>";
-	//echo "Nilai centroid1 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid1."<br>";
+	echo "Nilai centroid1 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid1."<br>";
 	$nilaiTotalCentroid1[$j]=$nilaiHasilCentroid1;
 	//echo "Nilai centroid1 "."Baris ke ".$j." hasil ".$nilaiTotalCentroid1[$j]."<br>";
 }
-//$nilaiKategorik1 += $nilaiKategorik1;
-// echo "string";
-for ($h=0; $h < 401; $h++) { 
-	echo "Nilai centroid1 "."Baris ke ".$j." hasil ".$nilaiTotalCentroid1[$h]."<br>";
-}
-//echo "COba ".$nilaiHasilCentroid1."<br>";
 echo "<hr>";
 //Menghitung clustering di kelas Kehamilan-Resiko-Tinggi
 $nilaiCentroid2=0;
@@ -543,31 +528,23 @@ for ($j=0; $j <401 ; $j++) {
 			}else{
 				//echo "false ".$m;
 				$nilaiCentroid2 = 0;
-			}
-					
-			//echo "Kategorikal ".$m."<br>";
-		
+			}					
+			//echo "Kategorikal ".$m."<br>";		
 		}
 		//Numerik (Dengan Manhattan Distance)
 		//Menghitung jarak (absolute) 
 		else{
-			// echo "Numerik ".$m."<br>";
-			//echo "Numerik ".$m;
 			$tempNum2 = $ambilCentroid [2][$m] - $nilai[$j][$m];
 			//echo "Nilai Centroid Sebelum".$m." ".$tempNum;
 			$nilaiCentroid2 = abs($tempNum2);
 			//echo "Nilai Centroid Sesudah Temp ".$nilaiCentroid1. "<br>";
 		}
 		$nilaiHasilCentroid2 += $nilaiCentroid2;
-		// if ($m==116) {
-		// 	echo "Nilai centroid1 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid2."<br>";
-		// }
 	}
 	//echo "<br>";
-	//echo "Nilai centroid2 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid2."<br>";
+	echo "Nilai centroid2 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid2."<br>";
 	$nilaiTotalCentroid2[$j]=$nilaiHasilCentroid2;
 }
-//echo "COba ".$nilaiHasilCentroid2."<br>";
 echo "<hr>";
 //Menghitung clustering di kelas Kehamilan-Resiko-Tinggi
 $nilaiCentroid3=0;
@@ -593,8 +570,6 @@ for ($j=0; $j <401 ; $j++) {
 		//Numerik (Dengan Manhattan Distance)
 		//Menghitung jarak (absolute) 
 		else{
-			// echo "Numerik ".$m."<br>";
-			//echo "Numerik ".$m;
 			$tempNum3 = $ambilCentroid [3][$m] - $nilai[$j][$m];
 			//echo "Nilai Centroid Sebelum".$m." ".$tempNum;
 			$nilaiCentroid3 = abs($tempNum3);
@@ -606,20 +581,116 @@ for ($j=0; $j <401 ; $j++) {
 		// }
 	}
 	//echo "<br>";
-	//echo "Nilai centroid3 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid3."<br>";
+	echo "Nilai centroid3 "."Baris ke ".$j." hasil ".$nilaiHasilCentroid3."<br>";
 	$nilaiTotalCentroid3[$j]=$nilaiHasilCentroid3;
 }
-//echo "COba ".$nilaiHasilCentroid3."<br>";
 
 echo "<hr>";
 //Menentukan nilai terdekat yang di tentukan di kelas Centroid yang mana
 for ($l=0; $l < 401 ; $l++) { 
 	//echo "string". min(4,4,3);;
-	$CeknilaiTerkecil= array($nilaiHasilCentroid1[$l],$nilaiHasilCentroid2[$l],$nilaiHasilCentroid3[$l]);
+	//$CeknilaiTerkecil= array($nilaiHasilCentroid1[$l],$nilaiHasilCentroid2[$l],$nilaiHasilCentroid3[$l]);
+	$CeknilaiTerkecil= array($nilaiTotalCentroid1[$l],$nilaiTotalCentroid2[$l],$nilaiTotalCentroid3[$l]);
 	$nilaiTerkecil[$l] = min($CeknilaiTerkecil);
-	//echo "".$nilaiTerkecil[$l]."Baris Ke ".$l."<br>";
-	echo "".$nilaiTerkecil[$l] ;
+	//echo "".$nilaiTerkecil[$l]." Baris Ke ".$l."<br>";
+	
+	if($nilaiTerkecil[$l]==$nilaiTotalCentroid1[$l]){
+	// $tambahYa = 0;
+	// $tambahTidak = 0;
+	// $tambahL = 0;
+	// $tambahP = 0;
+	// $tambahAda = 0;
+	// $tambahKadang = 0;
+	// $tambahTerus = 0;
+	// $tambahBaik = 0;
+	// $tambahMenurun = 0;
+
+	//	echo "Baris ke ".$l." Ikut Cluster 1 "."<br>";
+		$ikutCluster1[$l] = $nilaiTerkecil[$l]; 
+		echo "Cluster1 "."<br>";
+		//for ($i=0; $i < 117 ; $i++) { 
+		$i=0 
+		while ($i < 117 ) {			
+		echo $nilai[$l] [$i].", ";
+		// if ( $i == 2 && $i<=20) {
+		// 	if($nilai[$l] [$i]=="ya"){
+		// 			$tambahYa = 1;
+		// 			${"modusYa".$i} += $tambahYa;
+		// 		}elseif($nilai[$l] [$i]=="tidak"){
+		// 			$tambahTidak = 1;
+		// 			${"modusTidak".$i} += $tambahTidak;
+		// 		}
+				
+		// }
+		$i++;
+			// if($nilai[$l] [2]=="ya"){
+			// 	 $tambahYa = 1;
+			// 	 $modusYa += $tambahYa;
+			// }elseif($nilai[$l] [2]=="tidak"){
+			// 	$tambahTidak = 1;
+			// 	$modusTidak += $tambahTidak;
+			// }elseif($nilai[$l] [3]=="ya"){
+			// 	$tambahYa =0;
+			// 	 $tambahYa = 1;
+			// 	 $modusYa3 += $tambahYa;
+			// }elseif($nilai[$l] [3]=="tidak"){
+			// 	$tambahTidak =0;
+			// 	$tambahTidak = 1;
+			// 	$modusTidak3 += $tambahTidak;
+			// }elseif($nilai[$l] [4]=="ya"){
+			// 	$tambahYa =0;
+			// 	 $tambahYa = 1;
+			// 	 $modusYa4 += $tambahYa;
+			// }elseif($nilai[$l] [4]=="tidak"){
+			// 	$tambahTidak =0;
+			// 	$tambahTidak = 1;
+			// 	$modusTidak4 += $tambahTidak;
+			// }elseif($nilai[$l] [5]=="ya"){
+			// 	$tambahYa =0;
+			// 	 $tambahYa = 1;
+			// 	 $modusYa5 += $tambahYa;
+			// }elseif($nilai[$l] [5]=="tidak"){
+			// 	$tambahTidak =0;
+			// 	$tambahTidak = 1;
+			// 	$modusTidak5 += $tambahTidak;
+			// }
+			// elseif($nilai[$l] [$i]=="L"){
+			// 	// $tambahYa = 1;
+			// 	// $modusYa += $tambahYa;
+			// }elseif($nilai[$l] [$i]=="P"){
+			// 	// $tambahTidak = 1;
+			// 	// $modusTidak += $tambahTidak;
+			// }
+			// else{
+
+			// 	$v = array_count_values($array);
+   //              arsort($v);
+   //              foreach($v as $k => $v){$total = $k; break;
+			// }
+		} 
+
+	}elseif($nilaiTerkecil[$l]==$nilaiTotalCentroid2[$l]){
+		//echo "Baris ke ".$l." Ikut Cluster 2 "."<br>";
+		echo "Cluster2 "."<br>";
+		$ikutCluster2[$l] = $nilaiTerkecil[$l]; 
+		for ($i=0; $i < 117 ; $i++) { 
+		echo $nilai[$l] [$i].", ";
+		} 
+	}else{
+		//echo "Baris ke ".$l." Ikut Cluster 3 "."<br>";
+		echo "Cluster3 "."<br>";
+		$ikutCluster3[$l] = $nilaiTerkecil[$l]; 
+		for ($i=0; $i < 117 ; $i++) { 
+		echo $nilai[$l] [$i].", ";
+		} 
+	}
+
 }
+			for ($o=2; $o <=20 ; $o++) { 
+				echo "tambahYa ".${"modusYa".$o}." kolom ".$o."<br>";
+				echo "tambahTidak ".${"modusTidak".$o}." kolom ".$o."<br>";
+			}
+
 
 // for ($l=0; $l < 401 ; $l++) { 
 // 	echo "".$nilaiTerkecil[$l];

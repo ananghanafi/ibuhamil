@@ -1,4 +1,4 @@
-15%, Pembuatan centroid random
+18%, Menentukan nilai terdekat yang di tentukan di kelas Centroid yang mana
 
 
 C:/xampp/htdocs/ibuhamil
