@@ -1,4 +1,4 @@
-18%, Menentukan nilai terdekat yang di tentukan di kelas Centroid yang mana
+20%, Melanjutkan algoritma K-Medoid
 
 
 C:/xampp/htdocs/ibuhamil
