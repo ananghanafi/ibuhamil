@@ -586,18 +586,21 @@ for ($j=0; $j <401 ; $j++) {
 }
  
 echo "<hr>";
-//Menentukan nilai terdekat yang di tentukan di kelas Centroid yang mana
+
 for ($l=0; $l < 401 ; $l++) { 
-	//echo "string". min(4,4,3);;
+	//Menentukan nilai terdekat yang di tentukan di kelas Centroid yang mana
+
 	//$CeknilaiTerkecil= array($nilaiHasilCentroid1[$l],$nilaiHasilCentroid2[$l],$nilaiHasilCentroid3[$l]);
 	$CeknilaiTerkecil= array($nilaiTotalCentroid1[$l],$nilaiTotalCentroid2[$l],$nilaiTotalCentroid3[$l]);
 	$nilaiTerkecil[$l] = min($CeknilaiTerkecil);
 	//echo "".$nilaiTerkecil[$l]." Baris Ke ".$l."<br>";
 	
+	//Menentukan nilai kelas centroid baru
 	if($nilaiTerkecil[$l]==$nilaiTotalCentroid1[$l]){
 	//	echo "Baris ke ".$l." Ikut Cluster 1 "."<br>";
 		$ikutCluster1[$l] = $nilaiTerkecil[$l]; 
 		echo "Cluster1 "."<br>";
+		//Penentuan nilai modus setiap kolom di cluster rendah
 			for ($y=1; $y <= 6 ; $y++) { 
 				if ($nilai[$l] [0] == $y) {
 					${'tambah'.$y} = 1;
@@ -889,18 +892,12 @@ for ($l=0; $l < 401 ; $l++) {
 			}
 			for ($y=7; $y <= 15 ; $y++) { 
 				for ($z=0; $z <100 ; $z++) { 
-					$cekNilai = ${$y.".".$z};
-					$taruh = strval(12.32) ;
-					$floatval = floatval($cekNilai);
-var_dump(is_float($nilai[$l] [112] ));
-var_dump(is_float($floatval ));
-					// echo "cekNilai ".$cekNilai."<br>";
-					// $float_value_of_var = floatval($cekNilai);
-					// if ($nilai[$l] [112] == $float_value_of_var) {
-					if ($taruh == $cekNilai) {
-						echo "adadas";
-						// ${'tambahDI'.$y} = 1;
-						// ${'modusDI'.$y} += ${'tambahDI'.$y};
+					 $cekNilai = $y.".".$z;
+					 $floatval = floatval($cekNilai);
+					//echo "cekNilai ".$cekNilai."<br>";
+					if ($nilai[$l] [112] == $floatval) {
+						${'tambahDI'.$y} = 1;
+						${'modusDI'.$y} += ${'tambahDI'.$y};
 					}
 				}
 
@@ -948,16 +945,699 @@ var_dump(is_float($floatval ));
 	}elseif($nilaiTerkecil[$l]==$nilaiTotalCentroid2[$l]){
 		//echo "Baris ke ".$l." Ikut Cluster 2 "."<br>";
 		echo "Cluster2 "."<br>";
-		$ikutCluster2[$l] = $nilaiTerkecil[$l]; 
+		$ikutCluster2[$l] = $nilaiTerkecil[$l];
 		for ($i=0; $i < 117 ; $i++) { 
 		echo $nilai[$l] [$i].", ";
 		} 
+		echo "Cluster1 "."<br>";
+		//Penentuan nilai modus setiap kolom di cluster tinggi
+			for ($y=1; $y <= 6 ; $y++) { 
+				if ($nilai[$l] [0] == $y) {
+					${'tambahT'.$y} = 1;
+					${'modusHamilT'.$y} += ${'tambahT'.$y};
+				}
+			}
+			for ($y=15; $y <= 42 ; $y++) { 
+				if ($nilai[$l] [1] == $y) {
+					${'tambahbT'.$y} = 1;
+					${'modusUiT'.$y} += ${'tambahbT'.$y};
+				}
+			}
+			for ($x=2; $x <=20 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaT = 1;
+					${'modusYaT'.$x} += $tambahYaT;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakT = 1;
+					${'modusTidakT'.$x} += $tambahTidakT;
+				}
+			}
+			for ($x=21; $x <=21 ; $x++) { 
+				if($nilai[$l] [$x]=="L"){
+					$tambahLT = 1;
+					${'modusLT'.$x} += $tambahLT;
+				}elseif($nilai[$l] [$x]=="P"){
+					$tambahPT = 1;
+					${'modusPT'.$x} += $tambahPT;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakLPT = 1;
+					${'modusTidakLPT'.$x} += $tambahTidakLPT;
+				}
+			}
+			for ($y=0; $y <= 4300 ; $y++) { 
+				if ($nilai[$l] [22] == $y) {
+					${'tambahbT'.$y} = 1;
+					${'modusUiT'.$y} += ${'tambahbT'.$y};
+				}
+			}
+			for ($x=23; $x <=25 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaXT = 1;
+					${'modusYaXT'.$x} += $tambahYaXT;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakXT = 1;
+					${'modusTidakXT'.$x} += $tambahTidakXT;
+				}
+			}
+			for ($y=0; $y <= 13 ; $y++) { 
+				if ($nilai[$l] [26] == $y) {
+					${'tambahAAT'.$y} = 1;
+					${'modusHamilAAT'.$y} += ${'tambahAAT'.$y};
+				}
+			}
+			for ($x=27; $x <=27 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaABT = 1;
+					${'modusYaABT'.$x} += $tambahYaABT;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakABT = 1;
+					${'modusTidakABT'.$x} += $tambahTidakABT;
+				}
+			}
+			for ($y=15; $y <= 40 ; $y++) { 
+				if ($nilai[$l] [28] == $y) {
+					${'tambahACT'.$y} = 1;
+					${'modusHamilACT'.$y} += ${'tambahACT'.$y};
+				}
+			}
+			for ($y=3; $y <= 10 ; $y++) { 
+				if ($nilai[$l] [29] == $y) {
+					${'tambahADT'.$y} = 1;
+					${'modusHamilADT'.$y} += ${'tambahADT'.$y};
+				}
+			}			
+			for ($x=30; $x <=74 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaAET = 1;
+					${'modusYaAET'.$x} += $tambahYaAET;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakAET = 1;
+					${'modusTidakAET'.$x} += $tambahTidakAET;
+				}elseif($nilai[$l] [$x]=="kadang-kadang"){
+					$tambahKadangAET = 1;
+					${'modusKadangAET'.$x} += $tambahKadangAET;
+				}elseif($nilai[$l] [$x]=="ada"){
+					$tambahAdaAET = 1;
+					${'modusAdaAET'.$x} += $tambahAdaAET;
+				}elseif($nilai[$l] [$x]=="menurun"){
+					$tambahMenurunAET = 1;
+					${'modusMenurunAET'.$x} += $tambahMenurunAET;
+				}elseif($nilai[$l] [$x]=="baik"){
+					$tambahBaikAET = 1;
+					${'modusBaikAET'.$x} += $tambahBaikAET;
+				}elseif($nilai[$l] [$x]=="jarang"){
+					$tambahJarangAET = 1;
+					${'modusJarangAET'.$x} += $tambahJarangAET;
+				}elseif($nilai[$l] [$x]=="aktif"){
+					$tambahAktifAET = 1;
+					${'modusAktifAET'.$x} += $tambahAktifAET;
+				}elseif($nilai[$l] [$x]=="putih bening"){
+					$tambahPutihBfAET = 1;
+					${'modusPutihBAET'.$x} += $tambahPutihBAET;
+				}elseif($nilai[$l] [$x]=="putih susu"){
+					$tambahPutihSAET = 1;
+					${'modusPutihSAET'.$x} += $tambahPutihSAET;
+				}elseif($nilai[$l] [$x]=="putih"){
+					$tambahPutihAET = 1;
+					${'modusPutihAET'.$x} += $tambahPutihAET;
+				}elseif($nilai[$l] [$x]=="putih kental"){
+					$tambahPutihKAET = 1;
+					${'modusPutihKAET'.$x} += $tambahPutihKAET;
+				}
+			}
+			for ($y=1; $y <= 4 ; $y++) { 
+				if ($nilai[$l] [75] == $y) {
+					${'tambahBXT'.$y} = 1;
+					${'modusHamilBXT'.$y} += ${'tambahBXT'.$y};
+				}
+			}
+			for ($y=1; $y <= 1 ; $y++) { 
+				if ($nilai[$l] [76] == $y) {
+					${'tambahBYT'.$y} = 1;
+					${'modusHamilBYT'.$y} += ${'tambahBYT'.$y};
+				}
+			}
+			for ($x=77; $x <=78 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaBZT = 1;
+					${'modusYaBZT'.$x} += $tambahYaBZT;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakBZT = 1;
+					${'modusTidakBZT'.$x} += $tambahTidakBZT;
+				}
+			}
+
+			for ($y=34; $y <= 97 ; $y++) { 
+				if ($nilai[$l] [79] == $y) {
+					${'tambahCBT'.$y} = 1;
+					${'modusCBT'.$y} += ${'tambahCBT'.$y};
+				}
+			}
+			for ($y=24; $y <= 168 ; $y++) { 
+				if ($nilai[$l] [80] == $y) {
+					${'tambahCCT'.$y} = 1;
+					${'modusCCT'.$y} += ${'tambahCCT'.$y};
+				}
+			}
+			for ($y=34; $y <= 168 ; $y++) { 
+				if ($nilai[$l] [81] == $y) {
+					${'tambahCDT'.$y} = 1;
+					${'modusCDT'.$y} += ${'tambahCDT'.$y};
+				}
+			}
+			for ($y=12; $y <= 42 ; $y++) { 
+				if ($nilai[$l] [82] == $y) {
+					${'tambahCET'.$y} = 1;
+					${'modusCET'.$y} += ${'tambahCET'.$y};
+				}
+			}
+			for ($x=83; $x <=86 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaCFT = 1;
+					${'modusYaCFT'.$x} += $tambahYaCFT;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakCFT = 1;
+					${'modusTidakCFT'.$x} += $tambahTidakCFT;
+				}elseif($nilai[$l] [$x]=="normal"){
+					$tambahTidakCFT = 1;
+					${'modusTidakCFT'.$x} += $tambahTidakCFT;
+				}
+			}
+			for ($y=80; $y <= 180 ; $y++) { 
+				if ($nilai[$l] [87] == $y) {
+					${'tambahCJT'.$y} = 1;
+					${'modusCJT'.$y} += ${'tambahCJT'.$y};
+				}
+			}
+			for ($y=50; $y <= 90 ; $y++) { 
+				if ($nilai[$l] [88] == $y) {
+					${'tambahCKT'.$y} = 1;
+					${'modusCKT'.$y} += ${'tambahCKT'.$y};
+				}
+			}
+			for ($y=26; $y <= 37 ; $y++) { 
+				if ($nilai[$l] [89] == $y) {
+					${'tambahCLT'.$y} = 1;
+					${'modusCLT'.$y} += ${'tambahCLT'.$y};
+				}
+			}
+			for ($y=60; $y <= 88 ; $y++) { 
+				if ($nilai[$l] [90] == $y) {
+					${'tambahCMT'.$y} = 1;
+					${'modusCMT'.$y} += ${'tambahCMT'.$y};
+				}
+			}
+			for ($y=16; $y <= 25 ; $y++) { 
+				if ($nilai[$l] [91] == $y) {
+					${'tambahCNT'.$y} = 1;
+					${'modusCNT'.$y} += ${'tambahCNT'.$y};
+				}
+			}
+			for ($x=92; $x <=103 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaCOT = 1;
+					${'modusYaCOT'.$x} += $tambahYaCOT;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakCOT = 1;
+					${'modusTidakCOT'.$x} += $tambahTidakCOT;
+				}elseif($nilai[$l] [$x]=="normal"){
+					$tambahNormalCOT = 1;
+					${'modusNormalCOT'.$x} += $tambahNormalCOT;
+				}elseif($nilai[$l] [$x]=="karies"){
+					$tambahKariesCOT = 1;
+					${'modusKariesCOT'.$x} += $tambahKariesCOT;
+				}elseif($nilai[$l] [$x]=="cyanosis"){
+					$tambahCyanosisCOT = 1;
+					${'modusCyanosisCOT'.$x} += $tambahCyanosisCOT;
+				}elseif($nilai[$l] [$x]=="teraba"){
+					$tambahTerabaCOT = 1;
+					${'modusTerabaCOT'.$x} += $tambahTerabaCOT;
+				}elseif($nilai[$l] [$x]=="oederma"){
+					$tambahOedermaCOT = 1;
+					${'modusOedermaCOT'.$x} += $tambahOedermaCOT;
+				}elseif($nilai[$l] [$x]=="ada"){
+					$tambahAdaCOT = 1;
+					${'modusAdaCOT'.$x} += $tambahAdaCOT;
+				}
+			}
+			for ($y=0; $y <= 38 ; $y++) { 
+				if ($nilai[$l] [104] == $y) {
+					${'tambahDAT'.$y} = 1;
+					${'modusDAT'.$y} += ${'tambahDAT'.$y};
+				}
+			}
+			for ($y=2; $y <= 56 ; $y++) { 
+				if ($nilai[$l] [105] == $y) {
+					${'tambahDBT'.$y} = 1;
+					${'modusDBT'.$y} += ${'tambahDBT'.$y};
+				}
+			}
+			for ($x=106; $x <=108 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaDCT= 1;
+					${'modusYaDCT'.$x} += $tambahYaDCT;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakDCT = 1;
+					${'modusTidakDCT'.$x} += $tambahTidakDCT;
+				}elseif($nilai[$l] [$x]=="normal"){
+					$tambahNormalDCT = 1;
+					${'modusNormalDCT'.$x} += $tambahNormalDCT;
+				}elseif($nilai[$l] [$x]=="bujur"){
+					$tambahBujurDCT = 1;
+					${'modusBujurDCT'.$x} += $tambahBujurDCT;
+				}elseif($nilai[$l] [$x]=="kepala"){
+					$tambahKepalaDCT = 1;
+					${'modusKepalaDCT'.$x} += $tambahKepalaDCT;
+				}elseif($nilai[$l] [$x]=="lintang"){
+					$tambahLintangDCT = 1;
+					${'modusLintangT'.$x} += $tambahLintangDCT;
+				}elseif($nilai[$l] [$x]=="sungsang"){
+					$tambahSungsangDCT = 1;
+					${'modusSungsangDCT'.$x} += $tambahSungsangDCT;
+				}elseif($nilai[$l] [$x]=="kelainan"){
+					$tambahKelainanDCT = 1;
+					${'modusKelainanDCT'.$x} += $tambahKelainanDCT;
+				}
+			}
+			for ($y=0; $y <= 1 ; $y++) { 
+				if ($nilai[$l] [109] == $y) {
+					${'tambahDFT'.$y} = 1;
+					${'modusDFT'.$y} += ${'tambahDFT'.$y};
+				}
+			}
+			for ($y=126; $y <= 158 ; $y++) { 
+				if ($nilai[$l] [110] == $y) {
+					${'tambahDGT'.$y} = 1;
+					${'modusDGT'.$y} += ${'tambahDGT'.$y};
+				}
+			}
+			for ($x=111; $x <=111 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaDHT = 1;
+					${'modusYaDHT'.$x} += $tambahYaDHT;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakDHT = 1;
+					${'modusTidakDHT'.$x} += $tambahTidakDHT;
+				}
+			}
+			for ($y=7; $y <= 15 ; $y++) { 
+				for ($z=0; $z <100 ; $z++) { 
+					 $cekNilaiT = $y.".".$z;
+					 $floatvalT = floatval($cekNilaiT);
+					//echo "cekNilai ".$cekNilai."<br>";
+					if ($nilai[$l] [112] == $floatvalT) {
+						${'tambahDIT'.$y} = 1;
+						${'modusDIT'.$y} += ${'tambahDIT'.$y};
+					}
+				}
+
+			}
+			for ($y=0; $y <= 1 ; $y++) { 
+				if ($nilai[$l] [113] == $y) {
+					${'tambahDJT'.$y} = 1;
+					${'modusDJT'.$y} += ${'tambahDJT'.$y};
+				}
+			}
+			for ($y=0; $y <= 1 ; $y++) { 
+				if ($nilai[$l] [114] == $y) {
+					${'tambahDKT'.$y} = 1;
+					${'modusDKT'.$y} += ${'tambahDKT'.$y};
+				}
+			}
+			for ($x=115; $x <=115 ; $x++) { 
+				if($nilai[$l] [$x]=="A"){
+					$tambahADLT = 1;
+					${'modusADLT'.$x} += $tambahADLT;
+				}elseif($nilai[$l] [$x]=="B"){
+					$tambahBDLT = 1;
+					${'modusBDLT'.$x} += $tambahBDLT;
+				}elseif($nilai[$l] [$x]=="O"){
+					$tambahODLT = 1;
+					${'modusODLT'.$x} += $tambahODLT;
+				}elseif($nilai[$l] [$x]=="AB"){
+					$tambahABDLT = 1;
+					${'modusABDLT'.$x} += $tambahABDLT;
+				}
+			}
+			for ($x=116; $x <=116 ; $x++) { 
+				if($nilai[$l] [$x]=="Kehamilan-Resiko-SangatTinggi"){
+					$tambahResikoSTDMT = 1;
+					${'modusResikoSTDMT'.$x} += $tambahResikoSTDMT;
+				}elseif($nilai[$l] [$x]=="Kehamilan-Resiko-Tinggi"){
+					$tambahResikoTDMT = 1;
+					${'modusResikoTDMT'.$x} += $tambahResikoTDMT;
+				}elseif($nilai[$l] [$x]=="Kehamilan-Resiko-Rendah"){
+					$tambahResikoRDMT = 1;
+					${'modusResikoRDMT'.$x} += $tambahResikoRDMT;
+				}
+			}
 	}else{
 		//echo "Baris ke ".$l." Ikut Cluster 3 "."<br>";
 		echo "Cluster3 "."<br>";
 		$ikutCluster3[$l] = $nilaiTerkecil[$l]; 
 		for ($i=0; $i < 117 ; $i++) { 
 		echo $nilai[$l] [$i].", ";
+		//Penentuan nilai modus setiap kolom di cluster sangat tinggi
+			for ($y=1; $y <= 6 ; $y++) { 
+				if ($nilai[$l] [0] == $y) {
+					${'tambahST'.$y} = 1;
+					${'modusHamilST'.$y} += ${'tambahST'.$y};
+				}
+			}
+			for ($y=15; $y <= 42 ; $y++) { 
+				if ($nilai[$l] [1] == $y) {
+					${'tambahbST'.$y} = 1;
+					${'modusUiST'.$y} += ${'tambahbST'.$y};
+				}
+			}
+			for ($x=2; $x <=20 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaST = 1;
+					${'modusYaST'.$x} += $tambahYaST;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakST = 1;
+					${'modusTidakST'.$x} += $tambahTidakST;
+				}
+			}
+			for ($x=21; $x <=21 ; $x++) { 
+				if($nilai[$l] [$x]=="L"){
+					$tambahLST = 1;
+					${'modusLST'.$x} += $tambahLST;
+				}elseif($nilai[$l] [$x]=="P"){
+					$tambahPST = 1;
+					${'modusPST'.$x} += $tambahPST;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakLPST = 1;
+					${'modusTidakLPST'.$x} += $tambahTidakLPST;
+				}
+			}
+			for ($y=0; $y <= 4300 ; $y++) { 
+				if ($nilai[$l] [22] == $y) {
+					${'tambahbST'.$y} = 1;
+					${'modusUiST'.$y} += ${'tambahbST'.$y};
+				}
+			}
+			for ($x=23; $x <=25 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaXST = 1;
+					${'modusYaXST'.$x} += $tambahYaXST;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakXST = 1;
+					${'modusTidakXST'.$x} += $tambahTidakXST;
+				}
+			}
+			for ($y=0; $y <= 13 ; $y++) { 
+				if ($nilai[$l] [26] == $y) {
+					${'tambahAAST'.$y} = 1;
+					${'modusHamilAAST'.$y} += ${'tambahAAST'.$y};
+				}
+			}
+			for ($x=27; $x <=27 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaABST = 1;
+					${'modusYaABST'.$x} += $tambahYaABST;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakABST = 1;
+					${'modusTidakABST'.$x} += $tambahTidakABST;
+				}
+			}
+			for ($y=15; $y <= 40 ; $y++) { 
+				if ($nilai[$l] [28] == $y) {
+					${'tambahACST'.$y} = 1;
+					${'modusHamilACST'.$y} += ${'tambahACST'.$y};
+				}
+			}
+			for ($y=3; $y <= 10 ; $y++) { 
+				if ($nilai[$l] [29] == $y) {
+					${'tambahADST'.$y} = 1;
+					${'modusHamilADST'.$y} += ${'tambahADST'.$y};
+				}
+			}			
+			for ($x=30; $x <=74 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaAEST = 1;
+					${'modusYaAEST'.$x} += $tambahYaAEST;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakAEST = 1;
+					${'modusTidakAEST'.$x} += $tambahTidakAEST;
+				}elseif($nilai[$l] [$x]=="kadang-kadang"){
+					$tambahKadangAEST = 1;
+					${'modusKadangAEST'.$x} += $tambahKadangAEST;
+				}elseif($nilai[$l] [$x]=="ada"){
+					$tambahAdaAEST = 1;
+					${'modusAdaAEST'.$x} += $tambahAdaAEST;
+				}elseif($nilai[$l] [$x]=="menurun"){
+					$tambahMenurunAEST = 1;
+					${'modusMenurunAEST'.$x} += $tambahMenurunAEST;
+				}elseif($nilai[$l] [$x]=="baik"){
+					$tambahBaikAEST = 1;
+					${'modusBaikAEST'.$x} += $tambahBaikAEST;
+				}elseif($nilai[$l] [$x]=="jarang"){
+					$tambahJarangAEST = 1;
+					${'modusJarangAEST'.$x} += $tambahJarangAEST;
+				}elseif($nilai[$l] [$x]=="aktif"){
+					$tambahAktifAEST = 1;
+					${'modusAktifAEST'.$x} += $tambahAktifAEST;
+				}elseif($nilai[$l] [$x]=="putih bening"){
+					$tambahPutihBfAEST = 1;
+					${'modusPutihBAEST'.$x} += $tambahPutihBAEST;
+				}elseif($nilai[$l] [$x]=="putih susu"){
+					$tambahPutihSAEST = 1;
+					${'modusPutihSAEST'.$x} += $tambahPutihSAEST;
+				}elseif($nilai[$l] [$x]=="putih"){
+					$tambahPutihAEST = 1;
+					${'modusPutihAEST'.$x} += $tambahPutihAEST;
+				}elseif($nilai[$l] [$x]=="putih kental"){
+					$tambahPutihKAEST = 1;
+					${'modusPutihKAEST'.$x} += $tambahPutihKAEST;
+				}
+			}
+			for ($y=1; $y <= 4 ; $y++) { 
+				if ($nilai[$l] [75] == $y) {
+					${'tambahBXST'.$y} = 1;
+					${'modusHamilBXST'.$y} += ${'tambahBXST'.$y};
+				}
+			}
+			for ($y=1; $y <= 1 ; $y++) { 
+				if ($nilai[$l] [76] == $y) {
+					${'tambahBYST'.$y} = 1;
+					${'modusHamilBYST'.$y} += ${'tambahBYST'.$y};
+				}
+			}
+			for ($x=77; $x <=78 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaBZST = 1;
+					${'modusYaBZST'.$x} += $tambahYaBZT;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakBZST = 1;
+					${'modusTidakBZST'.$x} += $tambahTidakBZST;
+				}
+			}
+
+			for ($y=34; $y <= 97 ; $y++) { 
+				if ($nilai[$l] [79] == $y) {
+					${'tambahCBST'.$y} = 1;
+					${'modusCBST'.$y} += ${'tambahCBST'.$y};
+				}
+			}
+			for ($y=24; $y <= 168 ; $y++) { 
+				if ($nilai[$l] [80] == $y) {
+					${'tambahCCST'.$y} = 1;
+					${'modusCCST'.$y} += ${'tambahCCST'.$y};
+				}
+			}
+			for ($y=34; $y <= 168 ; $y++) { 
+				if ($nilai[$l] [81] == $y) {
+					${'tambahCDST'.$y} = 1;
+					${'modusCDST'.$y} += ${'tambahCDST'.$y};
+				}
+			}
+			for ($y=12; $y <= 42 ; $y++) { 
+				if ($nilai[$l] [82] == $y) {
+					${'tambahCEST'.$y} = 1;
+					${'modusCEST'.$y} += ${'tambahCEST'.$y};
+				}
+			}
+			for ($x=83; $x <=86 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaCFST = 1;
+					${'modusYaCFST'.$x} += $tambahYaCFST;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakCFST = 1;
+					${'modusTidakCFST'.$x} += $tambahTidakCFST;
+				}elseif($nilai[$l] [$x]=="normal"){
+					$tambahTidakCFST = 1;
+					${'modusTidakCFST'.$x} += $tambahTidakCFST;
+				}
+			}
+			for ($y=80; $y <= 180 ; $y++) { 
+				if ($nilai[$l] [87] == $y) {
+					${'tambahCJST'.$y} = 1;
+					${'modusCJST'.$y} += ${'tambahCJST'.$y};
+				}
+			}
+			for ($y=50; $y <= 90 ; $y++) { 
+				if ($nilai[$l] [88] == $y) {
+					${'tambahCKST'.$y} = 1;
+					${'modusCKST'.$y} += ${'tambahCKST'.$y};
+				}
+			}
+			for ($y=26; $y <= 37 ; $y++) { 
+				if ($nilai[$l] [89] == $y) {
+					${'tambahCLST'.$y} = 1;
+					${'modusCLST'.$y} += ${'tambahCLST'.$y};
+				}
+			}
+			for ($y=60; $y <= 88 ; $y++) { 
+				if ($nilai[$l] [90] == $y) {
+					${'tambahCMST'.$y} = 1;
+					${'modusCMST'.$y} += ${'tambahCMST'.$y};
+				}
+			}
+			for ($y=16; $y <= 25 ; $y++) { 
+				if ($nilai[$l] [91] == $y) {
+					${'tambahCNST'.$y} = 1;
+					${'modusCNST'.$y} += ${'tambahCNST'.$y};
+				}
+			}
+			for ($x=92; $x <=103 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaCOST = 1;
+					${'modusYaCOST'.$x} += $tambahYaCOST;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakCOST = 1;
+					${'modusTidakCOST'.$x} += $tambahTidakCOST;
+				}elseif($nilai[$l] [$x]=="normal"){
+					$tambahNormalCOST = 1;
+					${'modusNormalCOST'.$x} += $tambahNormalCOST;
+				}elseif($nilai[$l] [$x]=="karies"){
+					$tambahKariesCOST = 1;
+					${'modusKariesCOST'.$x} += $tambahKariesCOST;
+				}elseif($nilai[$l] [$x]=="cyanosis"){
+					$tambahCyanosisCOST = 1;
+					${'modusCyanosisCOST'.$x} += $tambahCyanosisCOST;
+				}elseif($nilai[$l] [$x]=="teraba"){
+					$tambahTerabaCOST = 1;
+					${'modusTerabaCOST'.$x} += $tambahTerabaCOST;
+				}elseif($nilai[$l] [$x]=="oederma"){
+					$tambahOedermaCOST = 1;
+					${'modusOedermaCOST'.$x} += $tambahOedermaCOST;
+				}elseif($nilai[$l] [$x]=="ada"){
+					$tambahAdaCOT = 1;
+					${'modusAdaCOST'.$x} += $tambahAdaCOST;
+				}
+			}
+			for ($y=0; $y <= 38 ; $y++) { 
+				if ($nilai[$l] [104] == $y) {
+					${'tambahDAST'.$y} = 1;
+					${'modusDAST'.$y} += ${'tambahDAST'.$y};
+				}
+			}
+			for ($y=2; $y <= 56 ; $y++) { 
+				if ($nilai[$l] [105] == $y) {
+					${'tambahDBST'.$y} = 1;
+					${'modusDBST'.$y} += ${'tambahDBST'.$y};
+				}
+			}
+			for ($x=106; $x <=108 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaDCST= 1;
+					${'modusYaDCST'.$x} += $tambahYaDCST;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakDCST = 1;
+					${'modusTidakDCST'.$x} += $tambahTidakDCST;
+				}elseif($nilai[$l] [$x]=="normal"){
+					$tambahNormalDCST = 1;
+					${'modusNormalDCST'.$x} += $tambahNormalDCST;
+				}elseif($nilai[$l] [$x]=="bujur"){
+					$tambahBujurDCST = 1;
+					${'modusBujurDCST'.$x} += $tambahBujurDCST;
+				}elseif($nilai[$l] [$x]=="kepala"){
+					$tambahKepalaDCST = 1;
+					${'modusKepalaDCST'.$x} += $tambahKepalaDCST;
+				}elseif($nilai[$l] [$x]=="lintang"){
+					$tambahLintangDCST = 1;
+					${'modusLintangST'.$x} += $tambahLintangDCST;
+				}elseif($nilai[$l] [$x]=="sungsang"){
+					$tambahSungsangDCST = 1;
+					${'modusSungsangDCST'.$x} += $tambahSungsangDCST;
+				}elseif($nilai[$l] [$x]=="kelainan"){
+					$tambahKelainanDCST = 1;
+					${'modusKelainanDCST'.$x} += $tambahKelainanDCST;
+				}
+			}
+			for ($y=0; $y <= 1 ; $y++) { 
+				if ($nilai[$l] [109] == $y) {
+					${'tambahDFST'.$y} = 1;
+					${'modusDFST'.$y} += ${'tambahDFST'.$y};
+				}
+			}
+			for ($y=126; $y <= 158 ; $y++) { 
+				if ($nilai[$l] [110] == $y) {
+					${'tambahDGST'.$y} = 1;
+					${'modusDGST'.$y} += ${'tambahDGST'.$y};
+				}
+			}
+			for ($x=111; $x <=111 ; $x++) { 
+				if($nilai[$l] [$x]=="ya"){
+					$tambahYaDHST = 1;
+					${'modusYaDHST'.$x} += $tambahYaDHST;
+				}elseif($nilai[$l] [$x]=="tidak"){
+					$tambahTidakDHST = 1;
+					${'modusTidakDHST'.$x} += $tambahTidakDHST;
+				}
+			}
+			for ($y=7; $y <= 15 ; $y++) { 
+				for ($z=0; $z <100 ; $z++) { 
+					 $cekNilaiST = $y.".".$z;
+					 $floatvalST = floatval($cekNilaiST);
+					//echo "cekNilai ".$cekNilai."<br>";
+					if ($nilai[$l] [112] == $floatvalST) {
+						${'tambahDIT'.$y} = 1;
+						${'modusDIT'.$y} += ${'tambahDIT'.$y};
+					}
+				}
+
+			}
+			for ($y=0; $y <= 1 ; $y++) { 
+				if ($nilai[$l] [113] == $y) {
+					${'tambahDJST'.$y} = 1;
+					${'modusDJST'.$y} += ${'tambahDJST'.$y};
+				}
+			}
+			for ($y=0; $y <= 1 ; $y++) { 
+				if ($nilai[$l] [114] == $y) {
+					${'tambahDKST'.$y} = 1;
+					${'modusDKST'.$y} += ${'tambahDKST'.$y};
+				}
+			}
+			for ($x=115; $x <=115 ; $x++) { 
+				if($nilai[$l] [$x]=="A"){
+					$tambahADLST = 1;
+					${'modusADLST'.$x} += $tambahADLST;
+				}elseif($nilai[$l] [$x]=="B"){
+					$tambahBDLST = 1;
+					${'modusBDLST'.$x} += $tambahBDLST;
+				}elseif($nilai[$l] [$x]=="O"){
+					$tambahODLST = 1;
+					${'modusODLST'.$x} += $tambahODLST;
+				}elseif($nilai[$l] [$x]=="AB"){
+					$tambahABDLST = 1;
+					${'modusABDLST'.$x} += $tambahABDLST;
+				}
+			}
+			for ($x=116; $x <=116 ; $x++) { 
+				if($nilai[$l] [$x]=="Kehamilan-Resiko-SangatTinggi"){
+					$tambahResikoSTDMST = 1;
+					${'modusResikoSTDMST'.$x} += $tambahResikoSTDMST;
+				}elseif($nilai[$l] [$x]=="Kehamilan-Resiko-Tinggi"){
+					$tambahResikoTDMST = 1;
+					${'modusResikoTDMST'.$x} += $tambahResikoTDMST;
+				}elseif($nilai[$l] [$x]=="Kehamilan-Resiko-Rendah"){
+					$tambahResikoRDMST = 1;
+					${'modusResikoRDMST'.$x} += $tambahResikoRDMST;
+				}
+			}
 		} 
 	}
 
