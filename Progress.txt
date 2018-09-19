@@ -1,4 +1,4 @@
-20%, Melanjutkan algoritma K-Medoid
+40%, Melanjutkan algoritma K-Medoid
 
 
 C:/xampp/htdocs/ibuhamil
