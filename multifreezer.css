@@ -36,7 +36,7 @@ https://jsfiddle.net/2oj9c5q2/21
 */
 .table-freeze-multi,
 .table-freeze-multi-clone {
-    table-layout: fixed;
+/*    table-layout: fixed;*/
     width: 100%;
 }
 .freeze-multi-scroll-wrapper {

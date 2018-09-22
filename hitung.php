@@ -24,6 +24,7 @@ if(isset($_POST['contoh'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <link rel="stylesheet" type="text/css" href="css/custom.css">
+     <link href="style.css" rel="stylesheet">
 
   </head>
   <body id="bodyhitung">
@@ -37,10 +38,10 @@ if(isset($_POST['contoh'])){
                 <li><a style="font-family: 'Montserrat';" href="hitung.php">Hitung</a></li>
               </ul>
 
-<link href="multifreezer.css" rel="stylesheet">
+<!-- <link href="multifreezer.css" rel="stylesheet"> -->
 <!-- JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="multifreezer.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="multifreezer.js"></script> -->
 
 <!-- <table class="table horizontal-scrollbar table-condensed table-freeze-multi table-bordered table-striped table-hover table-responsive" data-scroll-height="500" >
 <?php
@@ -59,7 +60,12 @@ if(isset($_POST['contoh'])){
 
 ?>
 </table> -->
-<table  class="table table-bordered table-condensed table-hover table-freeze-multi" data-scroll-height="500">
+<!-- <table class="table table-bordered table-condensed table-hover table-freeze-multi" data-scroll-height="500">
+ -->
+ <div class="outer">
+  <div class="inner">
+
+ <table class="table table-bordered table-condensed table-hover ">
 <?php
 $row = 1;
 ini_set('auto_detect_line_endings',TRUE);
@@ -86,6 +92,12 @@ if (($handle = fopen("DatasetIbuHamil.csv", "r")) !== FALSE) {
 }
 ?>
 </table>
+</div></div>
+            <div class="tab-content no-padding">
+              <!-- Morris chart - Sales
+              <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
+              <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
+            </div>
 
               <!-- <h2>Algoritma K-Medoids</h2>
               <p style="font-size:12pt;">Untuk melakukan perhitungan dengan menggunakan algoritma k-medoids. Input beberapa data untuk digunakan dalam memperoleh hasil.
