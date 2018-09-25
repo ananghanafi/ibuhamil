@@ -1,4 +1,4 @@
-40%, Melanjutkan algoritma K-Medoid
+55%, Mempelaajari Algoritma C5
 
 
 C:/xampp/htdocs/ibuhamil

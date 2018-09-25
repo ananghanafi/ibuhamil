@@ -1,2 +1,9 @@
 117 kolom 
 401 baris
+
+K-Medoid
+1. 
+C5
+ -Ada 117 atribut
+ -Untuk menentukan node terpilih dengan menggunakan entropy dari setiap kriteriadengan data sample yang di tentukan. Node terpilih adalah kriteria dengan entropy paling kecil
+ - untuk menentukan root di pilih gain paling besar

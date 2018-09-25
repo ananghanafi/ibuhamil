@@ -38,63 +38,39 @@ if(isset($_POST['contoh'])){
                 <li><a style="font-family: 'Montserrat';" href="hitung.php">Hitung</a></li>
               </ul>
 
-<!-- <link href="multifreezer.css" rel="stylesheet"> -->
-<!-- JS -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="multifreezer.js"></script> -->
+<div class="outer">
+    <div class="inner">
+      <table class="table table-bordered table-condensed table-hover ">
+      <?php
+      $row = 1;
+      ini_set('auto_detect_line_endings',TRUE);
+      if (($handle = fopen("DatasetIbuHamil.csv", "r")) !== FALSE) {
+          while (($data = fgetcsv($handle, 1050, ",")) !== FALSE) {
 
-<!-- <table class="table horizontal-scrollbar table-condensed table-freeze-multi table-bordered table-striped table-hover table-responsive" data-scroll-height="500" >
-<?php
-// $file = 'DatasetIbuHamil.csv';
-// $target = fopen($file, 'r');
-// while($baris = fgetcsv($target, 10000, ',')){
-//     echo '<tr>';
-//     for($i=0,$kolom=count($baris); $i<$kolom; $i++){
-//         echo '<td>'.$baris[$i].'</td>';
-//     //  echo $baris[$i];
-//     }
-//     //echo $kolom;
-//     echo '</tr>';
-// }
-// fclose($target);
+              $num = count($data);
 
-?>
-</table> -->
-<!-- <table class="table table-bordered table-condensed table-hover table-freeze-multi" data-scroll-height="500">
- -->
- <div class="outer">
-  <div class="inner">
+              echo "<tr>";
+              for ($c=0; $c < $num; $c++) {
 
- <table class="table table-bordered table-condensed table-hover ">
-<?php
-$row = 1;
-ini_set('auto_detect_line_endings',TRUE);
-if (($handle = fopen("DatasetIbuHamil.csv", "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 1050, ",")) !== FALSE) {
+                  if ($row == 1) {
+                      echo "<th>" . $data[$c] . "</th>\n";
+                  } else {
+                      echo "<td>" . $data[$c] . "</td>\n";
+                  }
+              }
 
-        $num = count($data);
-
-        echo "<tr>";
-        for ($c=0; $c < $num; $c++) {
-
-            if ($row == 1) {
-                echo "<th>" . $data[$c] . "</th>\n";
-            } else {
-                echo "<td>" . $data[$c] . "</td>\n";
-            }
-        }
-
-        echo "</tr>\n";
-        $row++;
-    }
-    ini_set('auto_detect_line_endings',FALSE);
-    fclose($handle);
-}
-?>
-</table>
-</div></div>
+              echo "</tr>\n";
+              $row++;
+          }
+          ini_set('auto_detect_line_endings',FALSE);
+          fclose($handle);
+      }
+      ?>
+      </table>
+   </div>
+</div>
             <div class="tab-content no-padding">
-              <!-- Morris chart - Sales
+<!--               Morris chart - Sales -->
               <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
               <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
             </div>
@@ -102,7 +78,7 @@ if (($handle = fopen("DatasetIbuHamil.csv", "r")) !== FALSE) {
               <!-- <h2>Algoritma K-Medoids</h2>
               <p style="font-size:12pt;">Untuk melakukan perhitungan dengan menggunakan algoritma k-medoids. Input beberapa data untuk digunakan dalam memperoleh hasil.
                 Jika ingin melihat contoh hasil silahkan pilih tombol contoh.
-                Jika ingin menginputkan data silahkan klik tomboh input data</p><br/><br/> -->
+                Jika ingin menginputkan data silahkan klik tomboh input data</p><br/><br/>
 <!--                 <div class="inti"> -->
 <!--                 <div class="col-md-3">
                     <button style="font-family: 'Montserrat';" type="button" class="btn btn-success " data-toggle="modal" data-target="#myModal">Input Data</button>
