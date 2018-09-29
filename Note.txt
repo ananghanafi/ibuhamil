@@ -7,3 +7,7 @@ C5
  -Ada 117 atribut
  -Untuk menentukan node terpilih dengan menggunakan entropy dari setiap kriteriadengan data sample yang di tentukan. Node terpilih adalah kriteria dengan entropy paling kecil
  - untuk menentukan root di pilih gain paling besar
+ - Nilai gain yang paling besar menjadi acuan awal
+ - Entrophy : ukuran kemurnian, semakin murni, semakin homogen, semakin rendah nilainya.
+ - Information Gain : pengurangan entropy disebabkan oleh partisi berdasarkan suatu atribut. Semakin besar info gain atribut itu semakin membuat homogen, semakin bagus.
+ Nan = 0; Hasil entropi setiap isi variable

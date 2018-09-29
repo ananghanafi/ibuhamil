@@ -1,4 +1,4 @@
-55%, Mempelaajari Algoritma C5
+70%, Information Gain
 
 
 C:/xampp/htdocs/ibuhamil
