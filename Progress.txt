@@ -1,4 +1,4 @@
-70%, Information Gain
+80%, Information Gain
 
 
 C:/xampp/htdocs/ibuhamil

@@ -412,6 +412,7 @@ $nilai=array(
 //	array(),
 
 ); 
+ini_set('max_execution_time', 60); 
 $banyakBaris= 400;
 // $hasildfd = -(20/28)*(log(20, 2)- log(28,2)) - (8/28)*(log(8, 2)- log(28,2));
 // echo "Hasil fkfj ".$hasildfd;
@@ -1538,18 +1539,13 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 	// }
 	
 }
-for ($i=0; $i < $banyakBaris ; $i++) { 
-}
-	echo "nilai ";
-$hasilEntropiTotalA = 0.0;
 	for ($y=1; $y <= 4 ; $y++) { 
-		echo "nilai ".$y." Hasil ".${'ctHamil'.$y};
 		$tambahSemuaRA += ${'ct1Hamil'.$y} ;
 		$tambahSemuaTA += ${'ct2Hamil'.$y} ;
 		$tambahSemuaSTA += ${'ct3Hamil'.$y} ;
-		${'hasilEntropiA'.$y}= - ${'ct1Hamil'.$y}  /$banyakBaris*(log(${'ct1Hamil'.$y} ,2) - log($banyakBaris, 2)) - ${'ct2Hamil'.$y} /$banyakBaris*(log(${'ct2Hamil'.$y} ,2) - log($banyakBaris, 2))- ${'ct3Hamil'.$y} /$banyakBaris*(log(${'ct3Hamil'.$y}  ,2) - log($banyakBaris, 2));
-		$tempHasilEntropiTotalA = ${'ctHamil'.$y} /$banyakBaris*${'hasilEntropiA'.$y};
-		echo "tempHasilEntropiTotalA ".$tempHasilEntropiTotalA;
+		${'hasilEntropiA'.$y}= - ${'ct1Hamil'.$y}  /${'ctHamil'.$y} *(log(${'ct1Hamil'.$y} ,2) - log(${'ctHamil'.$y} , 2)) - ${'ct2Hamil'.$y} /${'ctHamil'.$y} *(log(${'ct2Hamil'.$y} ,2) - log(${'ctHamil'.$y} , 2))- ${'ct3Hamil'.$y} /${'ctHamil'.$y} *(log(${'ct3Hamil'.$y}  ,2) - log(${'ctHamil'.$y} , 2));
+		$tempHasilEntropiTotalA = (${'ctHamil'.$y} /$banyakBaris)*${'hasilEntropiA'.$y};
+
 		//Entropi Total
 		$hasilEntropiTotalA += $tempHasilEntropiTotalA;
 		echo "hasilEntropiTotalA ".$hasilEntropiTotalA;		
@@ -1562,16 +1558,15 @@ $hasilEntropiTotalA = 0.0;
 		echo "hasilInformationGainA ".$hasilInformationGainA;
 
 	for ($y=15; $y <= 42 ; $y++) { 
-				echo "nilai ".$y." Hasil ".${'ctHamil'.$y};
 		$tambahSemuaRB += ${'ct1Ui'.$y} ;
 		$tambahSemuaTB += ${'ct2Ui'.$y} ;
 		$tambahSemuaSTB += ${'ct3Ui'.$y} ;
-
-		${'hasilEntropiB'.$y}= - ${'ct1Ui'.$y}  /$banyakBaris*(log(${'ct1Ui'.$y} ,2) - log($banyakBaris, 2)) - ${'ct2Hamil'.$y} /$banyakBaris*(log(${'ct2Hamil'.$y} ,2) - log($banyakBaris, 2))- ${'ct3Ui'.$y} /$banyakBaris*(log(${'ct3Ui'.$y}  ,2) - log($banyakBaris, 2));
+		echo "tempHasilEntropiTotalCek  ".$tambahSemuaSTB ;
+		${'hasilEntropiB'.$y}= - ${'ct1Ui'.$y}  /${'ctUi'.$y}*(log(${'ct1Ui'.$y} ,2) - log(${'ctUi'.$y}, 2)) - ${'ct2Ui'.$y} /${'ctUi'.$y}*(log(${'ct2Ui'.$y} ,2) - log(${'ctUi'.$y}, 2))- ${'ct3Ui'.$y} /${'ctUi'.$y}*(log(${'ct3Ui'.$y}  ,2) - log(${'ctUi'.$y}, 2));
 		if(is_nan(${'hasilEntropiB'.$y})){
 			${'hasilEntropiB'.$y}=0;
 		}
-		$tempHasilEntropiTotalB = ${'ctUi'.$y} /$banyakBaris*${'hasilEntropiB'.$y};
+		$tempHasilEntropiTotalB = (${'ctUi'.$y} /$banyakBaris)*${'hasilEntropiB'.$y};
 		echo "tempHasilEntropiTotalA ".$tempHasilEntropiTotalB;
 		//Entropi Total
 		$hasilEntropiTotalB += $tempHasilEntropiTotalB;
@@ -1590,22 +1585,28 @@ $hasilEntropiTotalA = 0.0;
 		${'tambahSemuaSTC'.$x} = ${'ct3Ya'.$x} + ${'ct3Tidak'.$x} ;
 		${'totalYaC'.$x} = ${'ct1Ya'.$x} +${'ct2Ya'.$x} +${'ct2Ya'.$x} ;
 		${'totalTidakC'.$x} =  ${'ct1Tidak'.$x}+ ${'ct2Tidak'.$x}+ ${'ct3Tidak'.$x};
-		echo "R ".${'tambahSemuaRC'.$x}." T ".${'tambahSemuaTC'.$x}." ST ".${'tambahSemuaSTC'.$x};
+		//echo "R ".${'tambahSemuaRC'.$x}." T ".${'tambahSemuaTC'.$x}." ST ".${'tambahSemuaSTC'.$x};
 	//	$hasildfd = -(20/28)*(log(20, 2)- log(28,2)) - (8/28)*(log(8, 2)- log(28,2));
 		//Semua
 		${'hasilEntropiSemuaC'.$x}= - ${'tambahSemuaRC'.$x} /$banyakBaris*(log(${'tambahSemuaRC'.$x} ,2) - log($banyakBaris, 2)) - ${'tambahSemuaTC'.$x}/$banyakBaris*(log(${'tambahSemuaTC'.$x},2) - log($banyakBaris, 2))- ${'tambahSemuaSTC'.$x}/$banyakBaris*(log(${'tambahSemuaSTC'.$x},2) - log($banyakBaris, 2));
-		// echo "string ".${'hasilEntropiSemuaC'.$x};
 
-		${'hasilEntropiYaC'.$x}= - ${'ct1Ya'.$x}  /${'totalYaC'.$x}*(log(${'ct1Ya'.$x} ,2) - log(${'totalYaC'.$x}, 2)) - ${'ct2Ya'.$x}/${'totalYaC'.$x}*(log(${'ct2Ya'.$x},2) - log(${'totalYaC'.$x}, 2))- ${'ct3Ya'.$x}/${'totalYaC'.$x}*(log(${'ct3Ya'.$x} ,2) - log(${'totalYaC'.$x}, 2));
-		//Tidak		
+		${'hasilEntropiYaC'.$x}= - ${'ct1Ya'.$x}/${'totalYaC'.$x}*(log(${'ct1Ya'.$x} ,2) - log(${'totalYaC'.$x}, 2)) - ${'ct2Ya'.$x}/${'totalYaC'.$x}*(log(${'ct2Ya'.$x},2) - log(${'totalYaC'.$x}, 2))- ${'ct3Ya'.$x}/${'totalYaC'.$x}*(log(${'ct3Ya'.$x} ,2) - log(${'totalYaC'.$x}, 2));
+		 echo "stringYa ".${'totalYaC'.$x};
+		// //Tidak		
 		${'hasilEntropiTidakC'.$x}= - ${'ct1Tidak'.$x}  /${'totalTidakC'.$x}*(log(${'ct1Tidak'.$x} ,2) - log(${'totalTidakC'.$x}, 2)) - ${'ct2Tidak'.$x}/${'totalTidakC'.$x}*(log(${'ct2Tidak'.$x},2) - log(${'totalTidakC'.$x}, 2))- ${'ct3Tidak'.$x}/${'totalTidakC'.$x}*(log(${'ct3Tidak'.$x} ,2) - log(${'totalTidakC'.$x}, 2));
-		if(is_nan(${'hasilEntropiYaC'.$x})){
+		echo "stringTidak ".${'hasilEntropiTidakC'.$x};
+		${'tempHasilEntropiTotalYaC'.$x}= ( ${'totalYaC'.$x}/$banyakBaris)*${'hasilEntropiYaC'.$x};
+		${'tempHasilEntropiTotalTidakC'.$x}=  (${'totalTidakC'.$x}/$banyakBaris)*${'hasilEntropiTidakC'.$x};
+		if(is_nan(${'hasilEntropiYaC'.$x}) || is_nan(${'tempHasilEntropiTotalYaC'.$x})){
 			${'hasilEntropiYaC'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiTidakC'.$x})){
+			${'tempHasilEntropiTotalYaC'.$x} = 0;
+		}if(is_nan(${'hasilEntropiTidakC'.$x})||${'tempHasilEntropiTotalTidakC'.$x}){
 			${'hasilEntropiTidakC'.$x}=0;
+			${'tempHasilEntropiTotalTidakC'.$x} = 0;
 		}
 		//Entropi Total
-		${'hasilEntropiTotalC'.$x}= ( ${'totalYaC'.$x}/$banyakBaris)*${'hasilEntropiYaC'.$x}  + (${'totalTidakC'.$x}/$banyakBaris)*${'hasilEntropiTidakC'.$x};
+		${'hasilEntropiTotalX'.$x}= ${'tempHasilEntropiTotalYaC'.$x}+${'tempHasilEntropiTotalTidakC'.$x};
+
 		echo "hasilEntropiTotalC ".${'hasilEntropiTotalC'.$x};
 		//Information Gain
 		${'hasilInformationGainC'.$x} = ${'hasilEntropiSemuaC'.$x} - ${'hasilEntropiTotalC'.$x};
@@ -1623,16 +1624,24 @@ $hasilEntropiTotalA = 0.0;
 		${'hasilEntropiLV'.$x}= - ${'ct1L'.$x}  /${'ctL'.$x}*(log(${'ct1L'.$x} ,2) - log(${'ctL'.$x}, 2)) - ${'ct2L'.$x}/${'ctL'.$x}*(log(${'ct2L'.$x},2) - log(${'ctL'.$x}, 2))- ${'ct3L'.$x}/${'ctL'.$x}*(log(${'ct3L'.$x} ,2) - log(${'ctL'.$x}, 2));
 		${'hasilEntropiPV'.$x}= - ${'ct1P'.$x}  /${'ctP'.$x}*(log(${'ct1P'.$x} ,2) - log(${'ctP'.$x}, 2)) - ${'ct2P'.$x}/${'ctP'.$x}*(log(${'ct2P'.$x},2) - log(${'ctP'.$x}, 2))- ${'ct3P'.$x}/${'ctP'.$x}*(log(${'ct3P'.$x} ,2) - log(${'ctP'.$x}, 2));
 		${'hasilEntropiLPV'.$x}= - ${'ct1LP'.$x}  /${'ctTidakLP'.$x}*(log(${'ct1LP'.$x} ,2) - log(${'ctTidakLP'.$x}, 2)) - ${'ct2LP'.$x}/${'ctTidakLP'.$x}*(log(${'ct2LP'.$x},2) - log(${'ctTidakLP'.$x}, 2))- ${'ct3LP'.$x}/${'ctTidakLP'.$x}*(log(${'ct3LP'.$x} ,2) - log(${'ctTidakLP'.$x}, 2));
-		if(is_nan(${'hasilEntropiLV'.$x})){
-			${'hasilEntropiLV'.$x}=0;
-		}elseif (is_nan(${'hasilEntropiPV'.$x})) {
+
+		${'tempHasilEntropiEntropiTotalPV'.$x} = ( ${'ctP'.$x}/$banyakBaris)*${'hasilEntropiPV'.$x}; 
+		${'tempHasilEntropiEntropiTotalLV'.$x} = ( ${'ctL'.$x}/$banyakBaris)*${'hasilEntropiLV'.$x}; 
+		${'tempHasilEntropiEntropiTotalLPV'.$x} = ( ${'ctLP'.$x}/$banyakBaris)*${'hasilEntropiLPV'.$x}; 
+
+		if(is_nan(${'hasilEntropiLV'.$x} )|| is_nan(${'tempHasilEntropiEntropiTotalLV'.$x})){
+			 ${'hasilEntropiLV'.$x}=0;
+			${'tempHasilEntropiEntropiTotalLV'.$x} = 0;
+		}if (is_nan(${'hasilEntropiPV'.$x})|| is_nan(${'tempHasilEntropiEntropiTotalPV'.$x})) {
 			${'hasilEntropiPV'.$x}=0;
-		}elseif (is_nan(${'hasilEntropiLPV'.$x})) {
+			${'tempHasilEntropiEntropiTotalPV'.$x} = 0;
+		}if (is_nan(${'hasilEntropiLPV'.$x})|| is_nan(${'tempHasilEntropiEntropiTotalLPV'.$x})) {
 			${'hasilEntropiLPV'.$x}=0;
+			${'tempHasilEntropiEntropiTotalLPV'.$x} = 0;
 		}
 
 		//Entropi Total
-		${'hasilEntropiTotalV'.$x}= ( ${'ctL'.$x}/$banyakBaris)*${'hasilEntropiLV'.$x}  + (${'ctP'.$x}/$banyakBaris)*${'hasilEntropiPV'.$x}+ (${'ctLP'.$x}/$banyakBaris)*${'hasilEntropiLPV'.$x};
+		${'hasilEntropiTotalV'.$x}= ${'tempHasilEntropiEntropiTotalPV'.$x} + ${'tempHasilEntropiEntropiTotalLV'.$x} + ${'tempHasilEntropiEntropiTotalLPV'.$x} ;
 
 		//Information Gain
 		${'hasilInformationGainV'.$x} = ${'hasilEntropiSemuaV'.$x} - ${'hasilEntropiTotalV'.$x};
@@ -1643,17 +1652,16 @@ $hasilEntropiTotalA = 0.0;
 		$tambahSemuaRW += ${'s1tambahw'.$y} ;
 		$tambahSemuaTW += ${'s2tambahw'.$y};
 		$tambahSemuaSTW += ${'s3tambahw'.$y} ;
-		${'hasilEntropiW'.$y}= - ${'s1tambahw'.$y}  /$banyakBaris*(log(${'s1tambahw'.$y} ,2) - log($banyakBaris, 2)) - ${'s2tambahw'.$y} /$banyakBaris*(log(${'s2tambahw'.$y} ,2) - log($banyakBaris, 2))- ${'s3tambahw'.$y}/$banyakBaris*(log(${'s3tambahw'.$y}  ,2) - log($banyakBaris, 2));
+		${'hasilEntropiW'.$y}= - ${'s1tambahw'.$y}  /${'ctW'.$y}*(log(${'s1tambahw'.$y} ,2) - log(${'ctW'.$y}, 2)) - ${'s2tambahw'.$y} /${'ctW'.$y}*(log(${'s2tambahw'.$y} ,2) - log(${'ctW'.$y}, 2))- ${'s3tambahw'.$y}/${'ctW'.$y}*(log(${'s3tambahw'.$y}  ,2) - log(${'ctW'.$y}, 2));
 
 		$tempHasilEntropiTotalW = ${'ctW'.$y} /$banyakBaris*${'hasilEntropiW'.$y};
-		echo "tempHasilEntropiTotalW ".$tempHasilEntropiTotalW;
 		if (is_nan($tempHasilEntropiTotalW)) {
 			$tempHasilEntropiTotalW =0;
 		}
 	
 		//Entropi Total
 		$hasilEntropiTotalW += $tempHasilEntropiTotalW;
-		echo "hasilEntropiTotalA ".$hasilEntropiTotalW;
+	//	echo "hasilEntropiTotalW ".$hasilEntropiTotalW;
 	}
 			//Semua
 		$hasilEntropiSemuaW = - $tambahSemuaRW /$banyakBaris*(log($tambahSemuaRW ,2) - log($banyakBaris, 2)) - $tambahSemuaTW/$banyakBaris*(log($tambahSemuaTW,2) - log($banyakBaris, 2))- $tambahSemuaSTW/$banyakBaris*(log($tambahSemuaSTW,2) - log($banyakBaris, 2));
@@ -1673,13 +1681,17 @@ $hasilEntropiTotalA = 0.0;
 		${'hasilEntropiYaX'.$x}= - ${'ct1YaX'.$x}  /${'ctYaX'.$x}*(log(${'ct1YaX'.$x} ,2) - log(${'ctYaX'.$x}, 2)) - ${'ct2YaX'.$x}/${'ctYaX'.$x}*(log(${'ct2YaX'.$x},2) - log(${'ctYaX'.$x}, 2))- ${'ct3YaX'.$x}/${'ctYaX'.$x}*(log(${'ct3YaX'.$x} ,2) - log(${'ctYaX'.$x}, 2));
 		//Tidak		
 		${'hasilEntropiTidakX'.$x}= - ${'ct1TidakX'.$x}  /${'ctTidakX'.$x}*(log(${'ct1TidakX'.$x} ,2) - log(${'ctTidakX'.$x}, 2)) - ${'ct2TidakX'.$x}/${'ctTidakX'.$x}*(log(${'ct2TidakX'.$x},2) - log(${'ctTidakX'.$x}, 2))- ${'ct3TidakX'.$x}/${'ctTidakX'.$x}*(log(${'ct3TidakX'.$x} ,2) - log(${'ctTidakX'.$x}, 2));
-		if(is_nan(${'hasilEntropiYaX'.$x})){
+		${'tempHasilEntropiTotalYaX'.$x}= ( ${'totalYaX'.$x}/$banyakBaris)*${'hasilEntropiYaX'.$x};
+		${'tempHasilEntropiTotalTidakX'.$x}=  (${'totalTidakX'.$x}/$banyakBaris)*${'hasilEntropiTidakX'.$x};
+		if(is_nan(${'hasilEntropiYaX'.$x}) || is_nan(${'tempHasilEntropiTotalYaX'.$x})){
 			${'hasilEntropiYaX'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiTidakX'.$x})){
+			${'tempHasilEntropiTotalYaX'.$x} = 0;
+		}if(is_nan(${'hasilEntropiTidakX'.$x})||${'tempHasilEntropiTotalTidakX'.$x}){
 			${'hasilEntropiTidakX'.$x}=0;
+			${'tempHasilEntropiTotalTidakX'.$x} = 0;
 		}
 		//Entropi Total
-		${'hasilEntropiTotalX'.$x}= ( ${'totalYaX'.$x}/$banyakBaris)*${'hasilEntropiYaX'.$x}  + (${'totalTidakX'.$x}/$banyakBaris)*${'hasilEntropiTidakX'.$x};
+		${'hasilEntropiTotalX'.$x}= ${'tempHasilEntropiTotalYaX'.$x}+${'tempHasilEntropiTotalTidakX'.$x};
 		echo "hasilEntropiTotalC ".${'hasilEntropiTotalX'.$x};
 		//Information Gain
 		${'hasilInformationGainX'.$x} = ${'hasilEntropiSemuaX'.$x} - ${'hasilEntropiTotalX'.$x};
@@ -1689,10 +1701,9 @@ $hasilEntropiTotalA = 0.0;
 		$tambahSemuaRAA += ${'s1tambahAA'.$y} ;
 		$tambahSemuaTAA += ${'s2tambahAA'.$y};
 		$tambahSemuaSTAA += ${'s3tambahAA'.$y} ;
-		${'hasilEntropiAA'.$y}= - ${'s1tambahAA'.$y}  /$banyakBaris*(log(${'s1tambahAA'.$y} ,2) - log($banyakBaris, 2)) - ${'s2tambahAA'.$y} /$banyakBaris*(log(${'s2tambahAA'.$y} ,2) - log($banyakBaris, 2))- ${'s3tambahAA'.$y}/$banyakBaris*(log(${'s3tambahAA'.$y}  ,2) - log($banyakBaris, 2));
+		${'hasilEntropiAA'.$y}= - ${'s1tambahAA'.$y}  /${'ctHamilAA'.$y}*(log(${'s1tambahAA'.$y} ,2) - log(${'ctHamilAA'.$y}, 2)) - ${'s2tambahAA'.$y} /${'ctHamilAA'.$y}*(log(${'s2tambahAA'.$y} ,2) - log(${'ctHamilAA'.$y}, 2))- ${'s3tambahAA'.$y}/${'ctHamilAA'.$y}*(log(${'s3tambahAA'.$y}  ,2) - log(${'ctHamilAA'.$y}, 2));
 
 		$tempHasilEntropiTotalAA = ${'ctHamilAA'.$y} /$banyakBaris*${'hasilEntropiAA'.$y};
-		echo "tempHasilEntropiTotalAA ".$tempHasilEntropiTotalAA;
 		if (is_nan($tempHasilEntropiTotalAA)) {
 			$tempHasilEntropiTotalAA =0;
 		}
@@ -1714,13 +1725,12 @@ $hasilEntropiTotalA = 0.0;
 		//Semua
 		${'hasilEntropiSemuaAB'.$x}= - ${'tambahSemuaRAB'.$x} /$banyakBaris*(log(${'tambahSemuaRAB'.$x} ,2) - log($banyakBaris, 2)) - ${'tambahSemuaTAB'.$x}/$banyakBaris*(log(${'tambahSemuaTAB'.$x},2) - log($banyakBaris, 2))- ${'tambahSemuaSTAB'.$x}/$banyakBaris*(log(${'tambahSemuaSTAB'.$x},2) - log($banyakBaris, 2));
 		// echo "string ".${'hasilEntropiSemuaC'.$x};
-
 		${'hasilEntropiYaAB'.$x}= - ${'ct1YaAB'.$x}  /${'ctYaAB'.$x}*(log(${'ct1YaAB'.$x} ,2) - log(${'ctYaAB'.$x}, 2)) - ${'ct2YaAB'.$x}/${'ctYaAB'.$x}*(log(${'ct2YaAB'.$x},2) - log(${'ctYaAB'.$x}, 2))- ${'ct3YaAB'.$x}/${'ctYaAB'.$x}*(log(${'ct3YaAB'.$x} ,2) - log(${'ctYaAB'.$x}, 2));
 		//Tidak		
 		${'hasilEntropiTidakAB'.$x}= - ${'ct1TidakAB'.$x}  /${'ctTidakAB'.$x}*(log(${'ct1TidakAB'.$x} ,2) - log(${'ctTidakAB'.$x}, 2)) - ${'ct2TidakAB'.$x}/${'ctTidakAB'.$x}*(log(${'ct2TidakAB'.$x},2) - log(${'ctTidakAB'.$x}, 2))- ${'ct3TidakAB'.$x}/${'ctTidakAB'.$x}*(log(${'ct3TidakAB'.$x} ,2) - log(${'ctTidakAB'.$x}, 2));
 		if(is_nan(${'hasilEntropiYaAB'.$x})){
 			${'hasilEntropiYaAB'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiTidakAB'.$x})){
+		}if(is_nan(${'hasilEntropiTidakAB'.$x})){
 			${'hasilEntropiTidakAB'.$x}=0;
 		}
 		//Entropi Total
@@ -1734,10 +1744,9 @@ $hasilEntropiTotalA = 0.0;
 		$tambahSemuaRAC += ${'s1tambahAC'.$y} ;
 		$tambahSemuaTAC += ${'s2tambahAC'.$y};
 		$tambahSemuaSTAC += ${'s3tambahAC'.$y} ;
-		${'hasilEntropiAC'.$y}= - ${'s1tambahAC'.$y}  /$banyakBaris*(log(${'s1tambahAC'.$y} ,2) - log($banyakBaris, 2)) - ${'s2tambahAC'.$y} /$banyakBaris*(log(${'s2tambahAC'.$y} ,2) - log($banyakBaris, 2))- ${'s3tambahAC'.$y}/$banyakBaris*(log(${'s3tambahAC'.$y}  ,2) - log($banyakBaris, 2));
+		${'hasilEntropiAC'.$y}= - ${'s1tambahAC'.$y}  /${'ctHamilAC'.$y}*(log(${'s1tambahAC'.$y} ,2) - log(${'ctHamilAC'.$y}, 2)) - ${'s2tambahAC'.$y} /${'ctHamilAC'.$y}*(log(${'s2tambahAC'.$y} ,2) - log(${'ctHamilAC'.$y}, 2))- ${'s3tambahAC'.$y}/${'ctHamilAC'.$y}*(log(${'s3tambahAC'.$y}  ,2) - log(${'ctHamilAC'.$y}, 2));
 
 		$tempHasilEntropiTotalAC = ${'ctHamilAC'.$y} /$banyakBaris*${'hasilEntropiAC'.$y};
-		echo "tempHasilEntropiTotalAC ".$tempHasilEntropiTotalAC;
 		if (is_nan($tempHasilEntropiTotalAC)) {
 			$tempHasilEntropiTotalAC =0;
 		}
@@ -1756,10 +1765,9 @@ $hasilEntropiTotalA = 0.0;
 		$tambahSemuaRAD += ${'s1tambahAD'.$y} ;
 		$tambahSemuaTAD += ${'s2tambahAD'.$y};
 		$tambahSemuaSTAD += ${'s3tambahAD'.$y} ;
-		${'hasilEntropiAD'.$y}= - ${'s1tambahAD'.$y}  /$banyakBaris*(log(${'s1tambahAD'.$y} ,2) - log($banyakBaris, 2)) - ${'s2tambahAD'.$y} /$banyakBaris*(log(${'s2tambahAD'.$y} ,2) - log($banyakBaris, 2))- ${'s3tambahAD'.$y}/$banyakBaris*(log(${'s3tambahAD'.$y}  ,2) - log($banyakBaris, 2));
+		${'hasilEntropiAD'.$y}= - ${'s1tambahAD'.$y}  /${'ctHamilAD'.$y}*(log(${'s1tambahAD'.$y} ,2) - log(${'ctHamilAD'.$y}, 2)) - ${'s2tambahAD'.$y} /${'ctHamilAD'.$y}*(log(${'s2tambahAD'.$y} ,2) - log(${'ctHamilAD'.$y}, 2))- ${'s3tambahAD'.$y}/${'ctHamilAD'.$y}*(log(${'s3tambahAD'.$y}  ,2) - log(${'ctHamilAD'.$y}, 2));
 
 		$tempHasilEntropiTotalAD = ${'ctHamilAD'.$y} /$banyakBaris*${'hasilEntropiAD'.$y};
-		echo "tempHasilEntropiTotalAD ".$tempHasilEntropiTotalAD;
 		if (is_nan($tempHasilEntropiTotalAD)) {
 			$tempHasilEntropiTotalAD =0;
 		}
@@ -1773,16 +1781,19 @@ $hasilEntropiTotalA = 0.0;
 		echo "hasilEntropiSemuaAD ".$hasilEntropiSemuaAD;
 		//Information Gain
 		$hasilInformationGainAD = $hasilEntropiSemuaAD - $hasilEntropiTotalAD;
-		echo "hasilInformationGainAD ".$hasilInformationGainAD;
-	}			
+		echo "hasilInformationGainAD ".$hasilInformationGainAD;		
 	for ($x=30; $x <=74 ; $x++) { 
 		${'tambahSemuaRAE'.$x} = ${'ct1YaAE'.$x} + ${'ct1TidakAE'.$x} + ${'ct1KadangAE'.$x} + ${'ct1TerusAE'.$x} + ${'ct1AdaAE'.$x} + ${'ct1MenurunAE'.$x} + ${'ct1BaikAE'.$x} + ${'ct1JarangAE'.$x} + ${'ct1AktifAE'.$x} + ${'ct1PernahAE'.$x} + ${'ct1PutihBAE'.$x} + ${'ct1PutihSAE'.$x} + ${'ct1PutihAE'.$x} + ${'ct1PutihKAE'.$x} ;
 		${'tambahSemuaTAE'.$x} = ${'ct2YaAE'.$x} + ${'ct2TidakAE'.$x} + ${'ct2KadangAE'.$x} + ${'ct2TerusAE'.$x} + ${'ct2AdaAE'.$x} + ${'ct2MenurunAE'.$x} + ${'ct2BaikAE'.$x} + ${'ct2JarangAE'.$x} + ${'ct2AktifAE'.$x} + ${'ct2PernahAE'.$x} + ${'ct2PutihBAE'.$x} + ${'ct2PutihSAE'.$x} + ${'ct2PutihAE'.$x} + ${'ct2PutihKAE'.$x} ;
 		${'tambahSemuaSTAE'.$x} = ${'ct3YaAE'.$x} + ${'ct3TidakAE'.$x} + ${'ct3KadangAE'.$x} + ${'ct3TerusAE'.$x} + ${'ct3AdaAE'.$x} + ${'ct3MenurunAE'.$x} + ${'ct3BaikAE'.$x} + ${'ct3JarangAE'.$x} + ${'ct3AktifAE'.$x} + ${'ct3PernahAE'.$x} + ${'ct3PutihBAE'.$x} + ${'ct3PutihSAE'.$x} + ${'ct3PutihAE'.$x} + ${'ct3PutihKAE'.$x} ;
+// echo "SemuaRAE ".${'tambahSemuaRAE'.$x};
+// echo "SemuaTAE ".${'tambahSemuaTAE'.$x} ;
+// echo "SemuaSTAE ".${'tambahSemuaSTAE'.$x};
 		//Semua
 		${'hasilEntropiSemuaAE'.$x}= - ${'tambahSemuaRAE'.$x} /$banyakBaris*(log(${'tambahSemuaRAE'.$x} ,2) - log($banyakBaris, 2)) - ${'tambahSemuaTAE'.$x}/$banyakBaris*(log(${'tambahSemuaTAE'.$x},2) - log($banyakBaris, 2))- ${'tambahSemuaSTAE'.$x}/$banyakBaris*(log(${'tambahSemuaSTAE'.$x},2) - log($banyakBaris, 2));
-		// echo "string ".${'hasilEntropiSemuaC'.$x};
+
 		${'hasilEntropiYaAE'.$x}= - ${'ct1YaAE'.$x}  /${'ctYaAE'.$x}*(log(${'ct1YaAE'.$x} ,2) - log(${'ctYaAE'.$x}, 2)) - ${'ct2YaAE'.$x}/${'ctYaAE'.$x}*(log(${'ct2YaAE'.$x},2) - log(${'ctYaAE'.$x}, 2))- ${'ct3YaAE'.$x}/${'ctYaAE'.$x}*(log(${'ct3YaAE'.$x} ,2) - log(${'ctYaAE'.$x}, 2));
+	 // echo "string ".${'hasilEntropiYaAE'.$x};
 		//Tidak		
 		${'hasilEntropiTidakAE'.$x}= - ${'ct1TidakAE'.$x}  /${'ctTidakAE'.$x}*(log(${'ct1TidakAE'.$x} ,2) - log(${'ctTidakAE'.$x}, 2)) - ${'ct2TidakAE'.$x}/${'ctTidakAE'.$x}*(log(${'ct2TidakAE'.$x},2) - log(${'ctTidakAE'.$x}, 2))- ${'ct3TidakAE'.$x}/${'ctTidakAE'.$x}*(log(${'ct3TidakAE'.$x} ,2) - log(${'ctTidakAE'.$x}, 2));
 		//Kadang	
@@ -1809,39 +1820,72 @@ $hasilEntropiTotalA = 0.0;
 		${'hasilEntropiPutihAE'.$x}= - ${'ct1PutihAE'.$x}  /${'ctPutihAE'.$x}*(log(${'ct1PutihAE'.$x} ,2) - log(${'ctPutihAE'.$x}, 2)) - ${'ct2PutihAE'.$x}/${'ctPutihAE'.$x}*(log(${'ct2PutihAE'.$x},2) - log(${'ctPutihAE'.$x}, 2))- ${'ct3PutihAE'.$x}/${'ctPutihAE'.$x}*(log(${'ct3PutihAE'.$x} ,2) - log(${'ctPutihAE'.$x}, 2));
 			//PutihK	
 		${'hasilEntropiPutihKAE'.$x}= - ${'ct1PutihKAE'.$x}  /${'ctPutihKAE'.$x}*(log(${'ct1PutihKAE'.$x} ,2) - log(${'ctPutihKAE'.$x}, 2)) - ${'ct2PutihKAE'.$x}/${'ctPutihKAE'.$x}*(log(${'ct2PutihKAE'.$x},2) - log(${'ctPutihKAE'.$x}, 2))- ${'ct3PutihKAE'.$x}/${'ctPutihKAE'.$x}*(log(${'ct3PutihKAE'.$x} ,2) - log(${'ctTidakAE'.$x}, 2));
-		
-		if(is_nan(${'hasilEntropiYaAE'.$x})){
+				//Entropi Temp 
+		//${'temphasilEntropiTotalAE'.$x}= ( ${'totalYaAB'.$x}/$banyakBaris)*${'hasilEntropiYaAB'.$x};
+		${'tempHasilEntropiYaAE'.$x} = (${'ctYaAE'.$x}/$banyakBaris)*${'hasilEntropiYaAE'.$x};
+		${'tempHasilEntropiTidakAE'.$x}= (${'ctTidakAE'.$x}/$banyakBaris)*${'hasilEntropiTidakAE'.$x};
+		${'tempHasilEntropiKadangAE'.$x} = (${'ctKadangAE'.$x}/$banyakBaris)*${'hasilEntropiKadangAE'.$x};
+		${'tempHasilEntropiTerusAE'.$x} = (${'ctTerusAE'.$x}/$banyakBaris)*${'hasilEntropiTerusAE'.$x};
+		${'tempHasilEntropiAdaAE'.$x} = (${'ctAdaAE'.$x}/$banyakBaris)*${'hasilEntropiAdaAE'.$x};
+		${'tempHasilEntropiMenurunAE'.$x} =(${'ctMenurunAE'.$x}/$banyakBaris)*${'hasilEntropiMenurunAE'.$x};
+		${'tempHasilEntropiBaikAE'.$x}=(${'ctBaikAE'.$x}/$banyakBaris)*${'hasilEntropiBaikAE'.$x};
+		${'tempHasilEntropiJarangAE'.$x}=(${'ctJarangAE'.$x}/$banyakBaris)*${'hasilEntropiJarangAE'.$x};
+		${'tempHasilEntropiAktifAE'.$x}= (${'ctAktifAE'.$x}/$banyakBaris)*${'hasilEntropiAktifAE'.$x};
+		${'tempHasilEntropiPernahAE'.$x}= (${'ctPernahAE'.$x}/$banyakBaris)*${'hasilEntropiPernahAE'.$x};
+		${'tempHasilEntropiPutihBAE'.$x}= (${'ctPutihBAE'.$x}/$banyakBaris)*${'hasilEntropiPutihBAE'.$x};
+		${'tempHasilEntropiPutihSAE'.$x}= (${'ctPutihSAE'.$x}/$banyakBaris)*${'hasilEntropiPutihSAE'.$x};
+		${'tempHasilEntropiPutihAE'.$x}= (${'ctPutihAE'.$x}/$banyakBaris)*${'hasilEntropiPutihAE'.$x};
+		${'tempHasilEntropiPutihKAE'.$x}= (${'ctPutihKAE'.$x}/$banyakBaris)*${'hasilEntropiPutihKAE'.$x};
+
+
+		if(is_nan(${'hasilEntropiYaAE'.$x})||is_nan(${'tempHasilEntropiYaAE'.$x})){
 			${'hasilEntropiYaAE'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiTidakAE'.$x})){
+			${'tempHasilEntropiYaAE'.$x} = 0;
+		}if(is_nan(${'hasilEntropiTidakAE'.$x})||is_nan(${'tempHasilEntropiTidakAE'.$x})){
 			${'hasilEntropiTidakAE'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiKadangAE'.$x})){
+			${'tempHasilEntropiTidakAE'.$x}=0;
+		}if(is_nan(${'hasilEntropiKadangAE'.$x})||is_nan(${'tempHasilEntropiKadangAE'.$x})){
 			${'hasilEntropiKadangAE'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiTerusAE'.$x})){
+			${'tempHasilEntropiKadangAE'.$x}=0;
+		}if(is_nan(${'hasilEntropiTerusAE'.$x})||is_nan(${'tempHasilEntropiTerusAE'.$x})){
 			${'hasilEntropiTerusAE'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiAdaAE'.$x})){
+			${'tempHasilEntropiTerusAE'.$x} = 0;
+		}if(is_nan(${'hasilEntropiAdaAE'.$x})||is_nan(${'tempHasilEntropiAdaAE'.$x})){
 			${'hasilEntropiAdaAE'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiMenurunAE'.$x})){
+			${'tempHasilEntropiAdaAE'.$x}=0;
+		}if(is_nan(${'hasilEntropiMenurunAE'.$x})||is_nan(${'tempHasilEntropiMenurunAE'.$x})){
 			${'hasilEntropiMenurunAE'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiBaikAE'.$x})){
+			${'tempHasilEntropiMenurunAE'.$x}=0;
+		}if(is_nan(${'hasilEntropiBaikAE'.$x})||is_nan(${'tempHasilEntropiBaikAE'.$x})){
 			${'hasilEntropiBaikAE'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiJarangAE'.$x})){
+			${'tempHasilEntropiBaikAE'.$x}=0;
+		}if(is_nan(${'hasilEntropiJarangAE'.$x})||is_nan(${'tempHasilEntropiJarangAE'.$x})){
 			${'hasilEntropiJarangAE'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiAktifAE'.$x})){
+			${'tempHasilEntropiJarangAE'.$x}=0;
+		}if(is_nan(${'hasilEntropiAktifAE'.$x})||is_nan(${'tempHasilEntropiAktifAE'.$x})){
 			${'hasilEntropiAktifAE'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiPernahAE'.$x})){
+			${'tempHasilEntropiAktifAE'.$x}=0;
+		}if(is_nan(${'hasilEntropiPernahAE'.$x})||is_nan(${'tempHasilEntropiPernahAE'.$x})){
 			${'hasilEntropiPernahAE'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiPutihBAE'.$x})){
+			${'tempHasilEntropiPernahAE'.$x}=0;
+		}if(is_nan(${'hasilEntropiPutihBAE'.$x})||is_nan(${'tempHasilEntropiPutihBAE'.$x})){
 			${'hasilEntropiPutihBAE'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiPutihSAE'.$x})){
+			${'tempHasilEntropiPutihBAE'.$x}=0;
+		}if(is_nan(${'hasilEntropiPutihSAE'.$x})||is_nan(${'tempHasilEntropiPutihSAE'.$x})){
 			${'hasilEntropiPutihSAE'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiPutihAE'.$x})){
+			${'tempHasilEntropiPutihSAE'.$x}=0;
+		}if(is_nan(${'hasilEntropiPutihAE'.$x})||is_nan(${'tempHasilEntropiPutihAE'.$x})){
 			${'hasilEntropiPutihAE'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiPutihKAE'.$x})){
+			${'tempHasilEntropiPutihAE'.$x}=0;
+		}if(is_nan(${'hasilEntropiPutihKAE'.$x})||is_nan(${'tempHasilEntropiPutihKAE'.$x})){
 			${'hasilEntropiPutihKAE'.$x}=0;
+			${'tempHasilEntropiPutihKAE'.$x}=0;
 		}
+
 		//Entropi Total
-		${'hasilEntropiTotalAE'.$x}= ( ${'totalYaAE'.$x}/$banyakBaris)*${'hasilEntropiYaAE'.$x}  + (${'totalTidakAE'.$x}/$banyakBaris)*${'hasilEntropiTidakAE'.$x};
-		echo "hasilEntropiTotalAE ".${'hasilEntropiTotalAE'.$x};
+		${'hasilEntropiTotalAE'.$x}= ${'tempHasilEntropiYaAE'.$x} + ${'tempHasilEntropiTidakAE'.$x} + ${'tempHasilEntropiKadangAE'.$x} + ${'tempHasilEntropiTerusAE'.$x}+ ${'tempHasilEntropiAdaAE'.$x}+ ${'tempHasilEntropiMenurunAE'.$x}+ ${'tempHasilEntropiBaikAE'.$x}+ ${'tempHasilEntropiJarangAE'.$x}+ ${'tempHasilEntropiAktifAE'.$x}+ ${'tempHasilEntropiPernahAE'.$x}+ ${'tempHasilEntropiPutihBAE'.$x}+ ${'tempHasilEntropiPutihSAE'.$x}+ ${'tempHasilEntropiPutihAE'.$x}+ ${'tempHasilEntropiPutihKAE'.$x};
+		echo "HasilEntropiTotalAE ".${'hasilEntropiTotalAE'.$x};
+
 		//Information Gain
 		${'hasilInformationGainAE'.$x} = ${'hasilEntropiSemuaAE'.$x} - ${'hasilEntropiTotalAE'.$x};
 			echo "hasilInformationGainAE ".${'hasilInformationGainAE'.$x}." ke ".$x;
@@ -1850,10 +1894,9 @@ $hasilEntropiTotalA = 0.0;
 		$tambahSemuaRBX += ${'s1tambahBX'.$y} ;
 		$tambahSemuaTBX += ${'s2tambahBX'.$y};
 		$tambahSemuaSTBX += ${'s3tambahBX'.$y} ;
-		${'hasilEntropiBX'.$y}= - ${'s1tambahBX'.$y}  /$banyakBaris*(log(${'s1tambahBX'.$y} ,2) - log($banyakBaris, 2)) - ${'s2tambahBX'.$y} /$banyakBaris*(log(${'s2tambahBX'.$y} ,2) - log($banyakBaris, 2))- ${'s3tambahBX'.$y}/$banyakBaris*(log(${'s3tambahBX'.$y}  ,2) - log($banyakBaris, 2));
+		${'hasilEntropiBX'.$y}= - ${'s1tambahBX'.$y}  /${'ctHamilBX'.$y}*(log(${'s1tambahBX'.$y} ,2) - log(${'ctHamilBX'.$y}, 2)) - ${'s2tambahBX'.$y} /${'ctHamilBX'.$y}*(log(${'s2tambahBX'.$y} ,2) - log(${'ctHamilBX'.$y}, 2))- ${'s3tambahBX'.$y}/${'ctHamilBX'.$y}*(log(${'s3tambahBX'.$y}  ,2) - log(${'ctHamilBX'.$y}, 2));
 
 		$tempHasilEntropiTotalBX = ${'ctHamilBX'.$y} /$banyakBaris*${'hasilEntropiBX'.$y};
-		echo "tempHasilEntropiTotalBX ".$tempHasilEntropiTotalBX;
 		if (is_nan($tempHasilEntropiTotalBX)) {
 			$tempHasilEntropiTotalBX =0;
 		}
@@ -1872,10 +1915,9 @@ $hasilEntropiTotalA = 0.0;
 		$tambahSemuaRBY += ${'s1tambahBY'.$y} ;
 		$tambahSemuaTBY += ${'s2tambahBY'.$y};
 		$tambahSemuaSTBY += ${'s3tambahBY'.$y} ;
-		${'hasilEntropiBY'.$y}= - ${'s1tambahBY'.$y}  /$banyakBaris*(log(${'s1tambahBY'.$y} ,2) - log($banyakBaris, 2)) - ${'s2tambahBY'.$y} /$banyakBaris*(log(${'s2tambahBY'.$y} ,2) - log($banyakBaris, 2))- ${'s3tambahBY'.$y}/$banyakBaris*(log(${'s3tambahBY'.$y}  ,2) - log($banyakBaris, 2));
+		${'hasilEntropiBY'.$y}= - ${'s1tambahBY'.$y}  /${'ctHamilBY'.$y}*(log(${'s1tambahBY'.$y} ,2) - log(${'ctHamilBY'.$y}, 2)) - ${'s2tambahBY'.$y} /${'ctHamilBY'.$y}*(log(${'s2tambahBY'.$y} ,2) - log(${'ctHamilBY'.$y}, 2))- ${'s3tambahBY'.$y}/${'ctHamilBY'.$y}*(log(${'s3tambahBY'.$y}  ,2) - log(${'ctHamilBY'.$y}, 2));
 
 		$tempHasilEntropiTotalBY = ${'ctHamilBY'.$y} /$banyakBaris*${'hasilEntropiBY'.$y};
-		echo "tempHasilEntropiTotalBY ".$tempHasilEntropiTotalBY;
 		if (is_nan($tempHasilEntropiTotalBY)) {
 			$tempHasilEntropiTotalBY =0;
 		}
@@ -1901,13 +1943,18 @@ $hasilEntropiTotalA = 0.0;
 		${'hasilEntropiYaBZ'.$x}= - ${'ct1YaBZ'.$x}  /${'ctYaBZ'.$x}*(log(${'ct1YaBZ'.$x} ,2) - log(${'ctYaBZ'.$x}, 2)) - ${'ct2YaBZ'.$x}/${'ctYaBZ'.$x}*(log(${'ct2YaBZ'.$x},2) - log(${'ctYaBZ'.$x}, 2))- ${'ct3YaBZ'.$x}/${'ctYaBZ'.$x}*(log(${'ct3YaBZ'.$x} ,2) - log(${'ctYaBZ'.$x}, 2));
 		//Tidak		
 		${'hasilEntropiTidakBZ'.$x}= - ${'ct1TidakBZ'.$x}  /${'ctTidakBZ'.$x}*(log(${'ct1TidakBZ'.$x} ,2) - log(${'ctTidakBZ'.$x}, 2)) - ${'ct2TidakBZ'.$x}/${'ctTidakBZ'.$x}*(log(${'ct2TidakBZ'.$x},2) - log(${'ctTidakBZ'.$x}, 2))- ${'ct3TidakBZ'.$x}/${'ctTidakBZ'.$x}*(log(${'ct3TidakBZ'.$x} ,2) - log(${'ctTidakBZ'.$x}, 2));
-		if(is_nan(${'hasilEntropiYaBZ'.$x})){
+
+		${'hasilEntropiYaBZ'.$x} = ( ${'totalYaBZ'.$x}/$banyakBaris)*${'hasilEntropiYaBZ'.$x} ;
+		${'hasilEntropiTidakBZ'.$x} = (${'totalTidakBZ'.$x}/$banyakBaris)*${'hasilEntropiTidakBZ'.$x};
+		if(is_nan(${'hasilEntropiYaBZ'.$x})||${'hasilEntropiYaBZ'.$x}){
 			${'hasilEntropiYaBZ'.$x}=0;
-		}elseif(is_nan(${'hasilEntropiTidakBZ'.$x})){
+			${'hasilEntropiYaBZ'.$x}=0;
+		}if(is_nan(${'hasilEntropiTidakBZ'.$x})||${'hasilEntropiTidakBZ'.$x}){
+			${'hasilEntropiTidakBZ'.$x}=0;
 			${'hasilEntropiTidakBZ'.$x}=0;
 		}
 		//Entropi Total
-		${'hasilEntropiTotalBZ'.$x}= ( ${'totalYaBZ'.$x}/$banyakBaris)*${'hasilEntropiYaBZ'.$x}  + (${'totalTidakBZ'.$x}/$banyakBaris)*${'hasilEntropiTidakBZ'.$x};
+		${'hasilEntropiTotalBZ'.$x}= ${'hasilEntropiYaBZ'.$x}+${'hasilEntropiTidakBZ'.$x};
 		echo "hasilEntropiTotalBZ ".${'hasilEntropiTotalBZ'.$x};
 		//Information Gain
 		${'hasilInformationGainBZ'.$x} = ${'hasilEntropiSemuaBZ'.$x} - ${'hasilEntropiTotalBZ'.$x};
@@ -1921,7 +1968,6 @@ $hasilEntropiTotalA = 0.0;
 		${'hasilEntropiCB'.$y}= - ${'s1tambahCB'.$y}  /$banyakBaris*(log(${'s1tambahCB'.$y} ,2) - log($banyakBaris, 2)) - ${'s2tambahCB'.$y} /$banyakBaris*(log(${'s2tambahCB'.$y} ,2) - log($banyakBaris, 2))- ${'s3tambahCB'.$y}/$banyakBaris*(log(${'s3tambahCB'.$y}  ,2) - log($banyakBaris, 2));
 
 		$tempHasilEntropiTotalCB = ${'ctHamilCB'.$y} /$banyakBaris*${'hasilEntropiCB'.$y};
-		echo "tempHasilEntropiTotalCB ".$tempHasilEntropiTotalCB;
 		if (is_nan($tempHasilEntropiTotalCB)) {
 			$tempHasilEntropiTotalCB =0;
 		}
@@ -1940,10 +1986,9 @@ $hasilEntropiTotalA = 0.0;
 		$tambahSemuaRCC += ${'s1tambahCC'.$y} ;
 		$tambahSemuaTCC += ${'s2tambahCC'.$y};
 		$tambahSemuaSTCC += ${'s3tambahCC'.$y} ;
-		${'hasilEntropiCC'.$y}= - ${'s1tambahCC'.$y}  /$banyakBaris*(log(${'s1tambahCC'.$y} ,2) - log($banyakBaris, 2)) - ${'s2tambahCC'.$y} /$banyakBaris*(log(${'s2tambahCC'.$y} ,2) - log($banyakBaris, 2))- ${'s3tambahCC'.$y}/$banyakBaris*(log(${'s3tambahCC'.$y}  ,2) - log($banyakBaris, 2));
+		${'hasilEntropiCC'.$y}= - ${'s1tambahCC'.$y}  /${'ctCC'.$y}*(log(${'s1tambahCC'.$y} ,2) - log(${'ctCC'.$y}, 2)) - ${'s2tambahCC'.$y} /${'ctCC'.$y}*(log(${'s2tambahCC'.$y} ,2) - log(${'ctCC'.$y}, 2))- ${'s3tambahCC'.$y}/${'ctCC'.$y}*(log(${'s3tambahCC'.$y}  ,2) - log(${'ctCC'.$y}, 2));
 
 		$tempHasilEntropiTotalCC = ${'ctCC'.$y} /$banyakBaris*${'hasilEntropiCC'.$y};
-		echo "tempHasilEntropiTotalCC ".$tempHasilEntropiTotalCC;
 		if (is_nan($tempHasilEntropiTotalCC)) {
 			$tempHasilEntropiTotalCC =0;
 		}
@@ -1962,10 +2007,9 @@ $hasilEntropiTotalA = 0.0;
 		$tambahSemuaRCD += ${'s1tambahCD'.$y} ;
 		$tambahSemuaTCD += ${'s2tambahCD'.$y};
 		$tambahSemuaSTCD += ${'s3tambahCD'.$y} ;
-		${'hasilEntropiCD'.$y}= - ${'s1tambahCD'.$y}  /$banyakBaris*(log(${'s1tambahCD'.$y} ,2) - log($banyakBaris, 2)) - ${'s2tambahCD'.$y} /$banyakBaris*(log(${'s2tambahCD'.$y} ,2) - log($banyakBaris, 2))- ${'s3tambahCD'.$y}/$banyakBaris*(log(${'s3tambahCD'.$y}  ,2) - log($banyakBaris, 2));
+		${'hasilEntropiCD'.$y}= - ${'s1tambahCD'.$y} /${'ctCD'.$y}*(log(${'s1tambahCD'.$y} ,2) - log(${'ctCD'.$y}, 2)) - ${'s2tambahCD'.$y} /${'ctCD'.$y}*(log(${'s2tambahCD'.$y} ,2) - log(${'ctCD'.$y}, 2))- ${'s3tambahCD'.$y}/${'ctCD'.$y}*(log(${'s3tambahCD'.$y}  ,2) - log(${'ctCD'.$y}, 2));
 
 		$tempHasilEntropiTotalCD = ${'ctCD'.$y} /$banyakBaris*${'hasilEntropiCD'.$y};
-		echo "tempHasilEntropiTotalCD ".$tempHasilEntropiTotalCD;
 		if (is_nan($tempHasilEntropiTotalCD)) {
 			$tempHasilEntropiTotalCD =0;
 		}
@@ -1981,27 +2025,12 @@ $hasilEntropiTotalA = 0.0;
 		$hasilInformationGainCD = $hasilEntropiSemuaCD - $hasilEntropiTotalCD;
 		echo "hasilInformationGainCD ".$hasilInformationGainCD;
 	for ($y=12; $y <= 42 ; $y++) { 
-		if ($nilai[$l] [82] == $y) {
-			${'tambahCE'.$y} = 1;
-			${'ctCE'.$y} += ${'tambahCE'.$y};
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				${'s1tambahCE'.$y} = 1;
-				${'ct1CE'.$y} += ${'s1tambahCE'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				${'s2tambahCE'.$y} = 1;
-				${'ct2CE'.$y} += ${'s2tambahCE'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				${'s3tambahCE'.$y} = 1;
-				${'ct3CE'.$y} += ${'s3tambahCE'.$y};
-			}
-		}
 		$tambahSemuaRCE += ${'s1tambahCE'.$y} ;
 		$tambahSemuaTCE += ${'s2tambahCE'.$y};
 		$tambahSemuaSTCE += ${'s3tambahCE'.$y} ;
-		${'hasilEntropiCE'.$y}= - ${'s1tambahCE'.$y}  /$banyakBaris*(log(${'s1tambahCE'.$y} ,2) - log($banyakBaris, 2)) - ${'s2tambahCE'.$y} /$banyakBaris*(log(${'s2tambahCE'.$y} ,2) - log($banyakBaris, 2))- ${'s3tambahCE'.$y}/$banyakBaris*(log(${'s3tambahCE'.$y}  ,2) - log($banyakBaris, 2));
+		${'hasilEntropiCE'.$y}= - ${'s1tambahCE'.$y}  /${'ctCE'.$y}*(log(${'s1tambahCE'.$y} ,2) - log(${'ctCE'.$y}, 2)) - ${'s2tambahCE'.$y} /${'ctCE'.$y}*(log(${'s2tambahCE'.$y} ,2) - log(${'ctCE'.$y}, 2))- ${'s3tambahCE'.$y}/${'ctCE'.$y}*(log(${'s3tambahCE'.$y}  ,2) - log(${'ctCE'.$y}, 2));
 
 		$tempHasilEntropiTotalCE = ${'ctCE'.$y} /$banyakBaris*${'hasilEntropiCE'.$y};
-		echo "tempHasilEntropiTotalCE ".$tempHasilEntropiTotalCE;
 		if (is_nan($tempHasilEntropiTotalCE)) {
 			$tempHasilEntropiTotalCE =0;
 		}
@@ -2017,446 +2046,392 @@ $hasilEntropiTotalA = 0.0;
 		$hasilInformationGainCE = $hasilEntropiSemuaCE - $hasilEntropiTotalCE;
 		echo "hasilInformationGainCE ".$hasilInformationGainCE;
 	for ($x=83; $x <=86 ; $x++) { 
-		if($nilai[$l] [$x]=="ya"){
-			$tambahYaCF = 1;
-			${'ctYaCF'.$x} += $tambahYaCF;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahYaCF = 1;
-				${'ct1YaCF'.$x} += $s1tambahYaCF;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahYaCF = 1;
-				${'ct2YaCF'.$x} += $s2tambahYaCF;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahYaCF = 1;
-				${'ct3YaCF'.$x} += $s3tambahYaCF;
-			}
-		}elseif($nilai[$l] [$x]=="tidak"){
-			$tambahTidakCF = 1;
-			${'ctTidakCF'.$x} += $tambahTidakCF;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahTidakCF = 1;
-				${'ct1TidakCF'.$x} += $s1tambahTidakCF;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahTidakCF = 1;
-				${'ct2TidakCF'.$x} += $s2tambahTidakCF;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahTidakCF = 1;
-				${'ct3TidakCF'.$x} += $s3tambahTidakCF;
-			}
-		}elseif($nilai[$l] [$x]=="normal"){
-			$tambahTidakCF = 1;
-			${'ctNormalCF'.$x} += $tambahTidakCF;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahTidakCF = 1;
-				${'ct1NormalCF'.$x} += $s1tambahTidakCF;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahTidakCF = 1;
-				${'ct2NormalCF'.$x} += $s2tambahTidakCF;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahTidakCF = 1;
-				${'ct3NormalCF'.$x} += $s3tambahTidakCF;
-			}
-		}elseif($nilai[$l] [$x]=="baik"){
-			$tambahTidakCF = 1;
-			${'ctBaikCF'.$x} += $tambahTidakCF;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahTidakCF = 1;
-				${'ct1BaikCF'.$x} += $s1tambahTidakCF;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahTidakCF = 1;
-				${'ct2BaikCF'.$x} += $s2tambahTidakCF;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahTidakCF = 1;
-				${'ct3BaikCF'.$x} += $s3tambahTidakCF;
-			}
+		${'tambahSemuaRCF'.$x} = ${'ct1YaCF'.$x} + ${'ct1TidakCF'.$x}+ ${'ct1NormalCF'.$x}+ ${'ct1BaikCF'.$x};
+		${'tambahSemuaTCF'.$x} = ${'ct2YaCF'.$x} + ${'ct2TidakCF'.$x} + ${'ct2NormalCF'.$x}+ ${'ct2BaikCF'.$x} ;
+		${'tambahSemuaSTCF'.$x} = ${'ct3YaCF'.$x} + ${'ct3TidakCF'.$x} + ${'ct3NormalCF'.$x}+ ${'ct3BaikCF'.$x} ;
+		//Semua
+		${'hasilEntropiSemuaCF'.$x}= - ${'tambahSemuaRCF'.$x} /$banyakBaris*(log(${'tambahSemuaRCF'.$x} ,2) - log($banyakBaris, 2)) - ${'tambahSemuaTCF'.$x}/$banyakBaris*(log(${'tambahSemuaTCF'.$x},2) - log($banyakBaris, 2))- ${'tambahSemuaSTCF'.$x}/$banyakBaris*(log(${'tambahSemuaSTCF'.$x},2) - log($banyakBaris, 2));
+		// echo "string ".${'hasilEntropiSemuaC'.$x};
+
+		${'hasilEntropiYaCF'.$x}= - ${'ct1YaCF'.$x}  /${'ctYaCF'.$x}*(log(${'ct1YaCF'.$x} ,2) - log(${'ctYaCF'.$x}, 2)) - ${'ct2YaCF'.$x}/${'ctYaCF'.$x}*(log(${'ct2YaCF'.$x},2) - log(${'ctYaCF'.$x}, 2))- ${'ct3YaCF'.$x}/${'ctYaCF'.$x}*(log(${'ct3YaCF'.$x} ,2) - log(${'ctYaCF'.$x}, 2));
+		//Normal	
+		${'hasilEntropiNormalCF'.$x}= - ${'ct1NormalCF'.$x}  /${'ctNormalCF'.$x}*(log(${'ct1NormalCF'.$x} ,2) - log(${'ctNormalCF'.$x}, 2)) - ${'ct2NormalCF'.$x}/${'ctNormalCF'.$x}*(log(${'ct2NormalCF'.$x},2) - log(${'ctNormalCF'.$x}, 2))- ${'ct3NormalCF'.$x}/${'ctNormalCF'.$x}*(log(${'ct3NormalCF'.$x} ,2) - log(${'ctNormalCF'.$x}, 2));
+		//Tidak		
+		${'hasilEntropiTidakCF'.$x}= - ${'ct1TidakCF'.$x}  /${'ctTidakCF'.$x}*(log(${'ct1TidakCF'.$x} ,2) - log(${'ctTidakCF'.$x}, 2)) - ${'ct2TidakCF'.$x}/${'ctTidakCF'.$x}*(log(${'ct2TidakCF'.$x},2) - log(${'ctTidakCF'.$x}, 2))- ${'ct3TidakCF'.$x}/${'ctTidakCF'.$x}*(log(${'ct3TidakCF'.$x} ,2) - log(${'ctTidakCF'.$x}, 2));
+		//Baik
+		${'hasilEntropiBaikCF'.$x}= - ${'ct1BaikCF'.$x}  /${'ctBaikCF'.$x}*(log(${'ct1BaikCF'.$x} ,2) - log(${'ctBaikCF'.$x}, 2)) - ${'ct2BaikCF'.$x}/${'ctBaikCF'.$x}*(log(${'ct2BaikCF'.$x},2) - log(${'ctBaikCF'.$x}, 2))- ${'ct3BaikCF'.$x}/${'ctBaikCF'.$x}*(log(${'ct3BaikCF'.$x} ,2) - log(${'ctBaikCF'.$x}, 2));
+
+		${'tempHasilEntropiYaCF'.$x} = (${'ctYaCF'.$x}/$banyakBaris)*${'hasilEntropiYaCF'.$x};
+		${'tempHasilEntropiTidakCF'.$x} = (${'ctTidakCF'.$x}/$banyakBaris)*${'hasilEntropiTidakCF'.$x};
+		${'tempHasilEntropiNormalCF'.$x} = (${'ctNormalF'.$x}/$banyakBaris)*${'hasilEntropiNormalCF'.$x};
+		${'tempHasilEntropiBaikCF'.$x}= (${'ctBaikCF'.$x}/$banyakBaris)*${'hasilEntropiBaikCF'.$x};
+
+		if(is_nan(${'hasilEntropiYaCF'.$x})||${'tempHasilEntropiYaCF'.$x}){
+			${'hasilEntropiYaCF'.$x}=0;
+			${'tempHasilEntropiYaCF'.$x}=0;
+		}if(is_nan(${'hasilEntropiTidakCF'.$x})||${'tempHasilEntropiTidakCF'.$x}){
+			${'hasilEntropiTidakCF'.$x}=0;
+			${'tempHasilEntropiTidakCF'.$x}=0;
+		}if(is_nan(${'hasilEntropiNormalCF'.$x})||${'tempHasilEntropiNormalCF'.$x}){
+			${'hasilEntropiNormalCF'.$x}=0;
+			${'tempHasilEntropiNormalCF'.$x}=0;
+		}if(is_nan(${'hasilEntropiBaikCF'.$x})||${'tempHasilEntropiBaikCF'.$x}){
+			${'hasilEntropiBaikCF'.$x}=0;
+			${'tempHasilEntropiBaikCF'.$x}=0;
 		}
+		//Entropi Total
+		${'tempHasilEntropiTotalCF'.$x}= ${'tempHasilEntropiYaCF'.$x} + ${'tempHasilEntropiTidakCF'.$x} + ${'tempHasilEntropiNormalCF'.$x} + ${'tempHasilEntropiBaikCF'.$x};
+		echo "hasilEntropiTotalCF ".${'hasilEntropiTotalCF'.$x};
+		//Information Gain
+		${'hasilInformationGainCF'.$x} = ${'hasilEntropiSemuaCF'.$x} - ${'hasilEntropiTotalCF'.$x};
+			echo "hasilInformationGainCF ".${'hasilInformationGainCF'.$x}." ke ".$x;
 	}
 	for ($y=80; $y <= 180 ; $y++) { 
-		if ($nilai[$l] [87] == $y) {
-			${'tambahCJ'.$y} = 1;
-			${'ctCJ'.$y} += ${'tambahCJ'.$y};
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				${'s1tambahCJ'.$y} = 1;
-				${'ct1CJ'.$y} += ${'s1tambahCJ'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				${'s2tambahCJ'.$y} = 1;
-				${'ct2CJ'.$y} += ${'s2tambahCJ'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				${'s3tambahCJ'.$y} = 1;
-				${'ct3CJ'.$y} += ${'s3tambahCJ'.$y};
-			}
+		$tambahSemuaRCJ += ${'s1tambahCJ'.$y} ;
+		$tambahSemuaTCJ += ${'s2tambahCJ'.$y};
+		$tambahSemuaSTCJ += ${'s3tambahCJ'.$y} ;
+		${'hasilEntropiCJ'.$y}= - ${'s1tambahCJ'.$y}  /${'ctCJ'.$y}*(log(${'s1tambahCJ'.$y} ,2) - log(${'ctCJ'.$y}, 2)) - ${'s2tambahCJ'.$y} /${'ctCJ'.$y}*(log(${'s2tambahCJ'.$y} ,2) - log(${'ctCJ'.$y}, 2))- ${'s3tambahCJ'.$y}/${'ctCJ'.$y}*(log(${'s3tambahCJ'.$y}  ,2) - log(${'ctCJ'.$y}, 2));
+
+		$tempHasilEntropiTotalCJ = ${'ctCJ'.$y} /$banyakBaris*${'hasilEntropiCJ'.$y};
+		if (is_nan($tempHasilEntropiTotalCJ)) {
+			$tempHasilEntropiTotalCJ =0;
 		}
+	
+		//Entropi Total
+		$hasilEntropiTotalCJ += $tempHasilEntropiTotalCJ;
+		echo "hasilEntropiTotalCJ ".$hasilEntropiTotalCJ;
 	}
+			//Semua
+		$hasilEntropiSemuaCJ = - $tambahSemuaRCJ /$banyakBaris*(log($tambahSemuaRCJ ,2) - log($banyakBaris, 2)) - $tambahSemuaTA/$banyakBaris*(log($tambahSemuaTCJ,2) - log($banyakBaris, 2))- $tambahSemuaSTCJ/$banyakBaris*(log($tambahSemuaSTCJ,2) - log($banyakBaris, 2));
+		echo "hasilEntropiSemuaCJ ".$hasilEntropiSemuaCJ;
+		//Information Gain
+		$hasilInformationGainCJ = $hasilEntropiSemuaCJ - $hasilEntropiTotalCJ;
+		echo "hasilInformationGainCJ ".$hasilInformationGainCJ;
 	for ($y=50; $y <= 90 ; $y++) { 
-		if ($nilai[$l] [88] == $y) {
-			${'tambahCK'.$y} = 1;
-			${'ctCK'.$y} += ${'tambahCK'.$y};
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				${'s1tambahCK'.$y} = 1;
-				${'ct1CK'.$y} += ${'s1tambahCK'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				${'s2tambahCK'.$y} = 1;
-				${'ct2CK'.$y} += ${'s2tambahCK'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				${'s3tambahCK'.$y} = 1;
-				${'ct3CK'.$y} += ${'s3tambahCK'.$y};
-			}
+		$tambahSemuaRCK += ${'s1tambahCK'.$y} ;
+		$tambahSemuaTCK += ${'s2tambahCK'.$y};
+		$tambahSemuaSTCK += ${'s3tambahCK'.$y} ;
+		${'hasilEntropiCK'.$y}= - ${'s1tambahCK'.$y}  /${'ctCK'.$y}*(log(${'s1tambahCK'.$y} ,2) - log(${'ctCK'.$y}, 2)) - ${'s2tambahCK'.$y} /${'ctCK'.$y}*(log(${'s2tambahCK'.$y} ,2) - log(${'ctCK'.$y}, 2))- ${'s3tambahCK'.$y}/${'ctCK'.$y}*(log(${'s3tambahCK'.$y}  ,2) - log(${'ctCK'.$y}, 2));
+
+		$tempHasilEntropiTotalCK = ${'ctCK'.$y} /$banyakBaris*${'hasilEntropiCK'.$y};
+		if (is_nan($tempHasilEntropiTotalCK)) {
+			$tempHasilEntropiTotalCK =0;
 		}
+	
+		//Entropi Total
+		$hasilEntropiTotalCK += $tempHasilEntropiTotalCK;
+		echo "hasilEntropiTotalCK ".$hasilEntropiTotalCK;
 	}
+			//Semua
+		$hasilEntropiSemuaCK = - $tambahSemuaRCK /$banyakBaris*(log($tambahSemuaRCK ,2) - log($banyakBaris, 2)) - $tambahSemuaTA/$banyakBaris*(log($tambahSemuaTCK,2) - log($banyakBaris, 2))- $tambahSemuaSTCK/$banyakBaris*(log($tambahSemuaSTCK,2) - log($banyakBaris, 2));
+		echo "hasilEntropiSemuaCK ".$hasilEntropiSemuaCK;
+		//Information Gain
+		$hasilInformationGainCK = $hasilEntropiSemuaCK - $hasilEntropiTotalCK;
+		echo "hasilInformationGainCK ".$hasilInformationGainCK;
 	for ($y=26; $y <= 37 ; $y++) { 
-		if ($nilai[$l] [89] == $y) {
-			${'tambahCL'.$y} = 1;
-			${'ctCL'.$y} += ${'tambahCL'.$y};
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				${'s1tambahCL'.$y} = 1;
-				${'ct1CL'.$y} += ${'s1tambahCL'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				${'s2tambahCL'.$y} = 1;
-				${'ct2CL'.$y} += ${'s2tambahCL'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				${'s3tambahCL'.$y} = 1;
-				${'ct3CL'.$y} += ${'s3tambahCL'.$y};
-			}
+		$tambahSemuaRCL += ${'s1tambahCL'.$y} ;
+		$tambahSemuaTCL += ${'s2tambahCL'.$y};
+		$tambahSemuaSTCL += ${'s3tambahCL'.$y} ;
+		${'hasilEntropiCL'.$y}= - ${'s1tambahCL'.$y}  /${'ctCL'.$y}*(log(${'s1tambahCL'.$y} ,2) - log(${'ctCL'.$y}, 2)) - ${'s2tambahCL'.$y} /${'ctCL'.$y}*(log(${'s2tambahCL'.$y} ,2) - log(${'ctCL'.$y}, 2))- ${'s3tambahCL'.$y}/${'ctCL'.$y}*(log(${'s3tambahCL'.$y}  ,2) - log(${'ctCL'.$y}, 2));
+
+		$tempHasilEntropiTotalCL = ${'ctCL'.$y} /$banyakBaris*${'hasilEntropiCL'.$y};
+		if (is_nan($tempHasilEntropiTotalCL)) {
+			$tempHasilEntropiTotalCL =0;
 		}
+	
+		//Entropi Total
+		$hasilEntropiTotalCL += $tempHasilEntropiTotalCL;
+		echo "hasilEntropiTotalCL ".$hasilEntropiTotalCL;
 	}
+			//Semua
+		$hasilEntropiSemuaCL = - $tambahSemuaRCL /$banyakBaris*(log($tambahSemuaRCL ,2) - log($banyakBaris, 2)) - $tambahSemuaTA/$banyakBaris*(log($tambahSemuaTCL,2) - log($banyakBaris, 2))- $tambahSemuaSTCL/$banyakBaris*(log($tambahSemuaSTCL,2) - log($banyakBaris, 2));
+		echo "hasilEntropiSemuaCL ".$hasilEntropiSemuaCL;
+		//Information Gain
+		$hasilInformationGainCL = $hasilEntropiSemuaCL - $hasilEntropiTotalCL;
+		echo "hasilInformationGainCL ".$hasilInformationGainCL;
 	for ($y=60; $y <= 88 ; $y++) { 
-		if ($nilai[$l] [90] == $y) {
-			${'tambahCM'.$y} = 1;
-			${'ctCM'.$y} += ${'tambahCM'.$y};
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				${'s1tambahCM'.$y} = 1;
-				${'ct1CM'.$y} += ${'s1tambahCM'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				${'s2tambahCM'.$y} = 1;
-				${'ct2CM'.$y} += ${'s2tambahCM'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				${'s3tambahCM'.$y} = 1;
-				${'ct3CM'.$y} += ${'s3tambahCM'.$y};
-			}
+		$tambahSemuaRCM += ${'s1tambahCM'.$y} ;
+		$tambahSemuaTCM += ${'s2tambahCM'.$y};
+		$tambahSemuaSTCM += ${'s3tambahCM'.$y} ;
+		${'hasilEntropiCM'.$y}= - ${'s1tambahCM'.$y}  /${'ctCM'.$y}*(log(${'s1tambahCM'.$y} ,2) - log(${'ctCM'.$y}, 2)) - ${'s2tambahCM'.$y} /${'ctCM'.$y}*(log(${'s2tambahCM'.$y} ,2) - log(${'ctCM'.$y}, 2))- ${'s3tambahCM'.$y}/${'ctCM'.$y}*(log(${'s3tambahCM'.$y}  ,2) - log(${'ctCM'.$y}, 2));
+
+		$tempHasilEntropiTotalCM = ${'ctCM'.$y} /$banyakBaris*${'hasilEntropiCM'.$y};
+		if (is_nan($tempHasilEntropiTotalCM)) {
+			$tempHasilEntropiTotalCM =0;
 		}
+	
+		//Entropi Total
+		$hasilEntropiTotalCM += $tempHasilEntropiTotalCM;
+		echo "hasilEntropiTotalCM ".$hasilEntropiTotalCM;
 	}
+			//Semua
+		$hasilEntropiSemuaCM = - $tambahSemuaRCM /$banyakBaris*(log($tambahSemuaRCM ,2) - log($banyakBaris, 2)) - $tambahSemuaTA/$banyakBaris*(log($tambahSemuaTCM,2) - log($banyakBaris, 2))- $tambahSemuaSTCM/$banyakBaris*(log($tambahSemuaSTCM,2) - log($banyakBaris, 2));
+		echo "hasilEntropiSemuaCM ".$hasilEntropiSemuaCM;
+		//Information Gain
+		$hasilInformationGainCM = $hasilEntropiSemuaCM - $hasilEntropiTotalCM;
+		echo "hasilInformationGainCM ".$hasilInformationGainCM;
 	for ($y=16; $y <= 25 ; $y++) { 
-		if ($nilai[$l] [91] == $y) {
-			${'tambahCN'.$y} = 1;
-			${'ctCN'.$y} += ${'tambahCN'.$y};
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				${'s1tambahCN'.$y} = 1;
-				${'ct1CN'.$y} += ${'s1tambahCN'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				${'s2tambahCN'.$y} = 1;
-				${'ct2CN'.$y} += ${'s2tambahCN'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				${'s3tambahCN'.$y} = 1;
-				${'ct3CN'.$y} += ${'s3tambahCN'.$y};
-			}
+		$tambahSemuaRCN += ${'s1tambahCN'.$y} ;
+		$tambahSemuaTCN += ${'s2tambahCN'.$y};
+		$tambahSemuaSTCN += ${'s3tambahCN'.$y} ;
+		${'hasilEntropiCN'.$y}= - ${'s1tambahCN'.$y}  /${'ctCN'.$y}*(log(${'s1tambahCN'.$y} ,2) - log(${'ctCN'.$y}, 2)) - ${'s2tambahCN'.$y} /${'ctCN'.$y}*(log(${'s2tambahCN'.$y} ,2) - log(${'ctCN'.$y}, 2))- ${'s3tambahCN'.$y}/${'ctCN'.$y}*(log(${'s3tambahCN'.$y}  ,2) - log(${'ctCN'.$y}, 2));
+
+		$tempHasilEntropiTotalCN = ${'ctCN'.$y} /$banyakBaris*${'hasilEntropiCN'.$y};
+		if (is_nan($tempHasilEntropiTotalCN)) {
+			$tempHasilEntropiTotalCN =0;
 		}
+	
+		//Entropi Total
+		$hasilEntropiTotalCN += $tempHasilEntropiTotalCN;
+		echo "hasilEntropiTotalCN ".$hasilEntropiTotalCN;
 	}
+			//Semua
+		$hasilEntropiSemuaCN = - $tambahSemuaRCN /$banyakBaris*(log($tambahSemuaRCN ,2) - log($banyakBaris, 2)) - $tambahSemuaTA/$banyakBaris*(log($tambahSemuaTCN,2) - log($banyakBaris, 2))- $tambahSemuaSTCN/$banyakBaris*(log($tambahSemuaSTCN,2) - log($banyakBaris, 2));
+		echo "hasilEntropiSemuaCN ".$hasilEntropiSemuaCN;
+		//Information Gain
+		$hasilInformationGainCN = $hasilEntropiSemuaCN - $hasilEntropiTotalCN;
+		echo "hasilInformationGainCN ".$hasilInformationGainCN;
 	for ($x=92; $x <=103 ; $x++) { 
-		if($nilai[$l] [$x]=="ya"){
-			$tambahYaCO = 1;
-			${'ctYaCO'.$x} += $tambahYaCO;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahYaCO = 1;
-				${'ct1YaCO'.$x} += $s1tambahYaCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahYaCO = 1;
-				${'ct2YaCO'.$x} += $s2tambahYaCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahYaCO = 1;
-				${'ct3YaCO'.$x} += $s3tambahYaCO;
-			}
-		}elseif($nilai[$l] [$x]=="tidak"){
-			$tambahTidakCO = 1;
-			${'ctTidakCO'.$x} += $tambahTidakCO;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahTidakCO = 1;
-				${'ct1TidakCO'.$x} += $s1tambahTidakCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahTidakCO = 1;
-				${'ct2TidakCO'.$x} += $s2tambahTidakCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahTidakCO = 1;
-				${'ct3TidakCO'.$x} += $s3tambahTidakCO;
-			}
-		}elseif($nilai[$l] [$x]=="normal"){
-			$tambahNormalCO = 1;
-			${'ctNormalCO'.$x} += $tambahNormalCO;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahNormalCO = 1;
-				${'ct1NormalCO'.$x} += $s1tambahNormalCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahNormalCO = 1;
-				${'ct2NormalCO'.$x} += $s2tambahNormalCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahNormalCO = 1;
-				${'ct3NormalCO'.$x} += $s3tambahNormalCO;
-			}
-		}elseif($nilai[$l] [$x]=="karies"){
-			$tambahKariesCO = 1;
-			${'ctKariesCO'.$x} += $tambahKariesCO;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahKariesCO = 1;
-				${'ct1KariesCO'.$x} += $s1tambahKariesCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahKariesCO = 1;
-				${'ct2KariesCO'.$x} += $s2tambahKariesCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahKariesCO = 1;
-				${'ct3KariesCO'.$x} += $s3tambahKariesCO;
-			}
-		}elseif($nilai[$l] [$x]=="cyanosis"){
-			$tambahCyanosisCO = 1;
-			${'ctCyanosisCO'.$x} += $tambahCyanosisCO;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahCyanosisCO = 1;
-				${'ct1CyanosisCO'.$x} += $s1tambahCyanosisCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahCyanosisCO = 1;
-				${'ct2CyanosisCO'.$x} += $s2tambahCyanosisCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahCyanosisCO = 1;
-				${'ct3CyanosisCO'.$x} += $s3tambahCyanosisCO;
-			}
-		}elseif($nilai[$l] [$x]=="teraba"){
-			$tambahTerabaCO = 1;
-			${'ctTerabaCO'.$x} += $tambahTerabaCO;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahTerabaCO = 1;
-				${'ct1TerabaCO'.$x} += $s1tambahTerabaCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahTerabaCO = 1;
-				${'ct2TerabaCO'.$x} += $s2tambahTerabaCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahTerabaCO = 1;
-				${'ct3TerabaCO'.$x} += $s3tambahTerabaCO;
-			}
-		}elseif($nilai[$l] [$x]=="oederma"){
-			$tambahOedermaCO = 1;
-			${'ctOedermaCO'.$x} += $tambahOedermaCO;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahOedermaCO = 1;
-				${'ct1OedermaCO'.$x} += $s1tambahOedermaCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahOedermaCO = 1;
-				${'ct2OedermaCO'.$x} += $s2tambahOedermaCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahOedermaCO = 1;
-				${'ct3OedermaCO'.$x} += $s3tambahOedermaCO;
-			}
-		}elseif($nilai[$l] [$x]=="ada"){
-			$tambahAdaCO = 1;
-			${'ctAdaCO'.$x} += $tambahAdaCO;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahAdaCO = 1;
-				${'ct1AdaCO'.$x} += $s1tambahAdaCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahAdaCO = 1;
-				${'ct2AdaCO'.$x} += $s2tambahAdaCO;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahAdaCO = 1;
-				${'ct3AdaCO'.$x} += $s3tambahAdaCO;
-			}
+		${'tambahSemuaRCO'.$x} = ${'ct1YaCO'.$x} + ${'ct1TidakCO'.$x} + ${'ct1NormalCO'.$x} + ${'ct1BaikCO'.$x}+${'ct1KariesCO'.$x}+ ${'ct1CyonosisCO'.$x}+${'ct1TerabaCO'.$x}+ ${'ct1OedermaCO'.$x}+ ${'ct1AdaCO'.$x};
+		${'tambahSemuaTCO'.$x} = ${'ct2YaCO'.$x} + ${'ct2TidakCO'.$x} + ${'ct2NormalCO'.$x}+ ${'ct2BaikCO'.$x}+${'ct2KariesCO'.$x}+ ${'ct2CyonosisCO'.$x}+${'ct2TerabaCO'.$x}+ ${'ct2OedermaCO'.$x}+ ${'ct2AdaCO'.$x} ;
+		${'tambahSemuaSTCO'.$x} = ${'ct3YaCO'.$x} + ${'ct3TidakCO'.$x} + ${'ct3NormalCO'.$x}+ ${'ct3BaikCO'.$x} +${'ct3KariesCO'.$x}+ ${'ct3CyonosisCO'.$x}+${'ct3TerabaCO'.$x}+ ${'ct3OedermaCO'.$x}+ ${'ct3AdaCO'.$x};
+		//Semua
+		${'hasilEntropiSemuaCO'.$x}= - ${'tambahSemuaRCO'.$x} /$banyakBaris*(log(${'tambahSemuaRCO'.$x} ,2) - log($banyakBaris, 2)) - ${'tambahSemuaTCO'.$x}/$banyakBaris*(log(${'tambahSemuaTCO'.$x},2) - log($banyakBaris, 2))- ${'tambahSemuaSTCO'.$x}/$banyakBaris*(log(${'tambahSemuaSTCO'.$x},2) - log($banyakBaris, 2));
+		// echo "string ".${'hasilEntropiSemuaC'.$x};
+
+		${'hasilEntropiYaCO'.$x}= - ${'ct1YaCO'.$x}  /${'ctYaCO'.$x}*(log(${'ct1YaCO'.$x} ,2) - log(${'ctYaCO'.$x}, 2)) - ${'ct2YaCO'.$x}/${'ctYaCO'.$x}*(log(${'ct2YaCO'.$x},2) - log(${'ctYaCO'.$x}, 2))- ${'ct3YaCO'.$x}/${'ctYaCO'.$x}*(log(${'ct3YaCO'.$x} ,2) - log(${'ctYaCO'.$x}, 2));
+		//Normal	
+		${'hasilEntropiNormalCO'.$x}= - ${'ct1NormalCO'.$x}  /${'ctNormalCO'.$x}*(log(${'ct1NormalCO'.$x} ,2) - log(${'ctNormalCO'.$x}, 2)) - ${'ct2NormalCO'.$x}/${'ctNormalCO'.$x}*(log(${'ct2NormalCO'.$x},2) - log(${'ctNormalCO'.$x}, 2))- ${'ct3NormalCO'.$x}/${'ctNormalCO'.$x}*(log(${'ct3NormalCO'.$x} ,2) - log(${'ctNormalCO'.$x}, 2));
+		//Tidak		
+		${'hasilEntropiTidakCO'.$x}= - ${'ct1TidakCO'.$x}  /${'ctTidakCO'.$x}*(log(${'ct1TidakCO'.$x} ,2) - log(${'ctTidakCO'.$x}, 2)) - ${'ct2TidakCO'.$x}/${'ctTidakCO'.$x}*(log(${'ct2TidakCO'.$x},2) - log(${'ctTidakCO'.$x}, 2))- ${'ct3TidakCO'.$x}/${'ctTidakCO'.$x}*(log(${'ct3TidakCO'.$x} ,2) - log(${'ctTidakCO'.$x}, 2));
+		//Baik
+		${'hasilEntropiBaikCO'.$x}= - ${'ct1BaikCO'.$x}  /${'ctBaikCO'.$x}*(log(${'ct1BaikCO'.$x} ,2) - log(${'ctBaikCO'.$x}, 2)) - ${'ct2BaikCO'.$x}/${'ctBaikCO'.$x}*(log(${'ct2BaikCO'.$x},2) - log(${'ctBaikCO'.$x}, 2))- ${'ct3BaikCO'.$x}/${'ctBaikCO'.$x}*(log(${'ct3BaikCO'.$x} ,2) - log(${'ctBaikCO'.$x}, 2));
+		//Karies
+		${'hasilEntropiKariesCO'.$x}= - ${'ct1KariesCO'.$x}  /${'ctKariesCO'.$x}*(log(${'ct1KariesCO'.$x} ,2) - log(${'ctKariesCO'.$x}, 2)) - ${'ct2KariesCO'.$x}/${'ctKariesCO'.$x}*(log(${'ct2KariesCO'.$x},2) - log(${'ctKariesCO'.$x}, 2))- ${'ct3KariesCO'.$x}/${'ctKariesCO'.$x}*(log(${'ct3KariesCO'.$x} ,2) - log(${'ctKariesCO'.$x}, 2));
+		//Cyanosis
+		${'hasilEntropiCyanosisCO'.$x}= - ${'ct1CyanosisCO'.$x}  /${'ctCyanosisCO'.$x}*(log(${'ct1CyanosisCO'.$x} ,2) - log(${'ctCyanosisCO'.$x}, 2)) - ${'ct2CyanosisCO'.$x}/${'ctCyanosisCO'.$x}*(log(${'ct2CyanosisCO'.$x},2) - log(${'ctCyanosisCO'.$x}, 2))- ${'ct3CyanosisCO'.$x}/${'ctCyanosisCO'.$x}*(log(${'ct3CyanosisCO'.$x} ,2) - log(${'ctCyanosisCO'.$x}, 2));
+		//Teraba
+		${'hasilEntropiTerabaCO'.$x}= - ${'ct1TerabaCO'.$x}  /${'ctTerabaCO'.$x}*(log(${'ct1TerabaCO'.$x} ,2) - log(${'ctTerabaCO'.$x}, 2)) - ${'ct2TerabaCO'.$x}/${'ctTerabaCO'.$x}*(log(${'ct2TerabaCO'.$x},2) - log(${'ctTerabaCO'.$x}, 2))- ${'ct3TerabaCO'.$x}/${'ctTerabaCO'.$x}*(log(${'ct3TerabaCO'.$x} ,2) - log(${'ctTerabaCO'.$x}, 2));
+		//Ooderma
+		${'hasilEntropiOedermaCO'.$x}= - ${'ct1OedermaCO'.$x}  /${'ctOedermaCO'.$x}*(log(${'ct1OedermaCO'.$x} ,2) - log(${'ctOedermaCO'.$x}, 2)) - ${'ct2OedermaCO'.$x}/${'ctOedermaCO'.$x}*(log(${'ct2OedermaCO'.$x},2) - log(${'ctOedermaCO'.$x}, 2))- ${'ct3OedermaCO'.$x}/${'ctOedermaCO'.$x}*(log(${'ct3OedermaCO'.$x} ,2) - log(${'ctOedermaCO'.$x}, 2));
+		//Ada
+		${'hasilEntropiAdaCO'.$x}= - ${'ct1AdaCO'.$x}  /${'ctAdaCO'.$x}*(log(${'ct1AdaCO'.$x} ,2) - log(${'ctAdaCO'.$x}, 2)) - ${'ct2AdaCO'.$x}/${'ctAdaCO'.$x}*(log(${'ct2AdaCO'.$x},2) - log(${'ctAdaCO'.$x}, 2))- ${'ct3AdaCO'.$x}/${'ctAdaCO'.$x}*(log(${'ct3AdaCO'.$x} ,2) - log(${'ctAdaCO'.$x}, 2));
+
+		${'tempHasilEntropiYaCO'.$x} = (${'ctYaCO'.$x}/$banyakBaris)*${'hasilEntropiYaCO'.$x};
+		${'tempHasilEntropiTidakCO'.$x} = (${'ctTidakCO'.$x}/$banyakBaris)*${'hasilEntropiTidakCO'.$x};
+		${'tempHasilEntropiNormalCO'.$x} = (${'ctNormalCO'.$x}/$banyakBaris)*${'hasilEntropiNormalCO'.$x};
+		${'tempHasilEntropiBaikCO'.$x}=(${'ctBaikCO'.$x}/$banyakBaris)*${'hasilEntropiBaikCO'.$x};
+		${'tempHasilEntropiAdaCO'.$x}=(${'ctAdaCO'.$x}/$banyakBaris)*${'hasilEntropiAdaCO'.$x};
+		${'tempHasilEntropiOedermaCO'.$x}=(${'ctOedermaCO'.$x}/$banyakBaris)*${'hasilEntropiOedarmaCO'.$x};
+		${'tempHasilEntropiTerabaCO'.$x}=(${'ctTerabaCO'.$x}/$banyakBaris)*${'hasilEntropiTerabaCO'.$x};
+		${'tempHasilEntropiCyanosisCO'.$x}= (${'ctCyanosisCO'.$x}/$banyakBaris)*${'hasilEntropiCyanosisCO'.$x};
+		${'tempHasilEntropiKariesCO'.$x}= (${'ctKariesCO'.$x}/$banyakBaris)*${'hasilEntropiKariesCO'.$x};
+
+		if(is_nan(${'hasilEntropiYaCO'.$x})||is_nan(${'tempHasilEntropiYaCO'.$x})){
+			${'hasilEntropiYaCO'.$x}=0;
+			${'tempHasilEntropiYaCO'.$x} =0;
+		}if(is_nan(${'hasilEntropiTidakCO'.$x})||is_nan(${'tempHasilEntropiTidakCO'.$x})){
+			${'hasilEntropiTidakCO'.$x}=0;
+			${'tempHasilEntropiTidakCO'.$x}=0;
+		}if(is_nan(${'hasilEntropiNormalCO'.$x})||is_nan(${'tempHasilEntropiNormalCO'.$x})){
+			${'hasilEntropiNormalCO'.$x}=0;
+			${'tempHasilEntropiNormalCO'.$x}=0;
+		}if(is_nan(${'hasilEntropiBaikCO'.$x})||is_nan(${'tempHasilEntropiBaikCO'.$x})){
+			${'hasilEntropiBaikCO'.$x}=0;
+			${'tempHasilEntropiBaikCO'.$x} = 0;
+		}if(is_nan(${'hasilEntropiAdaCO'.$x})||is_nan(${'tempHasilEntropiAdaCO'.$x})){
+			${'hasilEntropiAdaCO'.$x}=0;
+			${'tempHasilEntropiAdaCO'.$x}=0;
+		}if(is_nan(${'hasilEntropiOedermaCO'.$x})||is_nan(${'tempHasilEntropiOedermaCO'.$x})){
+			${'hasilEntropiOedermaCO'.$x}=0;
+			${'tempHasilEntropiOedermaCO'.$x} = 0;
+		}if(is_nan(${'hasilEntropiTerabaCO'.$x})||is_nan(${'tempHasilEntropiTerabaCO'.$x})){
+			${'hasilEntropiTerabaCO'.$x}=0;
+			${'tempHasilEntropiTerabaCO'.$x}=0;
+		}if(is_nan(${'hasilEntropiCyanosisCO'.$x})||is_nan(${'tempHasilEntropiCyanosisCO'.$x})){
+			${'hasilEntropiCyanosisCO'.$x}=0;
+			${'tempHasilEntropiCyanosisCO'.$x} = 0;
+		}if(is_nan(${'hasilEntropiKariesCO'.$x})||is_nan(${'tempHasilEntropiKariesCO'.$x})){
+			${'hasilEntropiKariesCO'.$x}=0;
+			${'tempHasilEntropiKariesCO'.$x}=0;
 		}
+		//Entropi Total
+		${'hasilEntropiTotalCO'.$x}= ${'tempHasilEntropiYaCO'.$x} + ${'tempHasilEntropiTidakCO'.$x} + ${'tempHasilEntropiNormalCO'.$x} + ${'tempHasilEntropiBaikCO'.$x}+ ${'tempHasilEntropiAdaCO'.$x}+ ${'tempHasilEntropiOedermaCO'.$x}+ ${'tempHasilEntropiTerabaCO'.$x}+ ${'tempHasilEntropiCyanosisCO'.$x}+ ${'tempHasilEntropiKariesCO'.$x};
+		//Information Gain
+		${'hasilInformationGainCO'.$x} = ${'hasilEntropiSemuaCO'.$x} - ${'hasilEntropiTotalCO'.$x};
+			echo "hasilInformationGainCO ".${'hasilInformationGainCO'.$x}." ke ".$x;
 	}
 	for ($y=0; $y <= 38 ; $y++) { 
-		if ($nilai[$l] [104] == $y) {
-			${'tambahDA'.$y} = 1;
-			${'ctDA'.$y} += ${'tambahDA'.$y};
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				${'s1tambahDA'.$y} = 1;
-				${'ct1DA'.$y} += ${'s1tambahDA'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				${'s2tambahDA'.$y} = 1;
-				${'ct2DA'.$y} += ${'s2tambahDA'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				${'s3tambahDA'.$y} = 1;
-				${'ct3DA'.$y} += ${'s3tambahDA'.$y};
-			}
+		$tambahSemuaRDA += ${'s1tambahDA'.$y} ;
+		$tambahSemuaTDA += ${'s2tambahDA'.$y};
+		$tambahSemuaSTDA += ${'s3tambahDA'.$y} ;
+		${'hasilEntropiDA'.$y}= - ${'s1tambahDA'.$y}  /${'ctDA'.$y}*(log(${'s1tambahDA'.$y} ,2) - log(${'ctDA'.$y}, 2)) - ${'s2tambahDA'.$y} /${'ctDA'.$y}*(log(${'s2tambahDA'.$y} ,2) - log(${'ctDA'.$y}, 2))- ${'s3tambahDA'.$y}/${'ctDA'.$y}*(log(${'s3tambahDA'.$y}  ,2) - log(${'ctDA'.$y}, 2));
+
+		$tempHasilEntropiTotalDA = ${'ctDA'.$y} /$banyakBaris*${'hasilEntropiDA'.$y};
+		if (is_nan($tempHasilEntropiTotalDA)) {
+			$tempHasilEntropiTotalDA =0;
 		}
+	
+		//Entropi Total
+		$hasilEntropiTotalDA += $tempHasilEntropiTotalDA;
+		echo "hasilEntropiTotalDA ".$hasilEntropiTotalDA;
 	}
+			//Semua
+		$hasilEntropiSemuaDA = - $tambahSemuaRDA /$banyakBaris*(log($tambahSemuaRDA ,2) - log($banyakBaris, 2)) - $tambahSemuaTA/$banyakBaris*(log($tambahSemuaTDA,2) - log($banyakBaris, 2))- $tambahSemuaSTDA/$banyakBaris*(log($tambahSemuaSTDA,2) - log($banyakBaris, 2));
+		echo "hasilEntropiSemuaDA ".$hasilEntropiSemuaDA;
+		//Information Gain
+		$hasilInformationGainDA = $hasilEntropiSemuaDA - $hasilEntropiTotalDA;
+		echo "hasilInformationGainDA ".$hasilInformationGainDA;
 	for ($y=2; $y <= 56 ; $y++) { 
-		if ($nilai[$l] [105] == $y) {
-			${'tambahDB'.$y} = 1;
-			${'ctDB'.$y} += ${'tambahDB'.$y};
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				${'s1tambahDB'.$y} = 1;
-				${'ct1DB'.$y} += ${'s1tambahDB'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				${'s2tambahDB'.$y} = 1;
-				${'ct2DB'.$y} += ${'s2tambahDB'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				${'s3tambahDB'.$y} = 1;
-				${'ct3DB'.$y} += ${'s3tambahDB'.$y};
-			}
+		$tambahSemuaRDB += ${'s1tambahDB'.$y} ;
+		$tambahSemuaTDB += ${'s2tambahDB'.$y};
+		$tambahSemuaSTDB += ${'s3tambahDB'.$y} ;
+		${'hasilEntropiDB'.$y}= - ${'s1tambahDB'.$y}  /${'ctDB'.$y}*(log(${'s1tambahDB'.$y} ,2) - log(${'ctDB'.$y}, 2)) - ${'s2tambahDB'.$y} /${'ctDB'.$y}*(log(${'s2tambahDB'.$y} ,2) - log(${'ctDB'.$y}, 2))- ${'s3tambahDB'.$y}/${'ctDB'.$y}*(log(${'s3tambahDB'.$y}  ,2) - log(${'ctDB'.$y}, 2));
+
+		$tempHasilEntropiTotalDB = ${'ctDB'.$y} /$banyakBaris*${'hasilEntropiDB'.$y};
+		if (is_nan($tempHasilEntropiTotalDB)) {
+			$tempHasilEntropiTotalDB =0;
 		}
+	
+		//Entropi Total
+		$hasilEntropiTotalDB += $tempHasilEntropiTotalDB;
+		echo "hasilEntropiTotalDB ".$hasilEntropiTotalDB;
 	}
+			//Semua
+		$hasilEntropiSemuaDB = - $tambahSemuaRDB /$banyakBaris*(log($tambahSemuaRDB ,2) - log($banyakBaris, 2)) - $tambahSemuaTA/$banyakBaris*(log($tambahSemuaTDB,2) - log($banyakBaris, 2))- $tambahSemuaSTDB/$banyakBaris*(log($tambahSemuaSTDB,2) - log($banyakBaris, 2));
+		echo "hasilEntropiSemuaDB ".$hasilEntropiSemuaDB;
+		//Information Gain
+		$hasilInformationGainDB = $hasilEntropiSemuaDB - $hasilEntropiTotalDB;
+		echo "hasilInformationGainDB ".$hasilInformationGainDB;
 	for ($x=106; $x <=108 ; $x++) { 
-		if($nilai[$l] [$x]=="ya"){
-			$tambahYaDC= 1;
-			${'ctYaDC'.$x} += $tambahYaDC;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahYaDC= 1;
-				${'ct1YaDC'.$x} += $s1tambahYaDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahYaDC= 1;
-				${'ct2YaDC'.$x} += $s2tambahYaDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahYaDC= 1;
-				${'ct3YaDC'.$x} += $s3tambahYaDC;
-			}
-		}elseif($nilai[$l] [$x]=="tidak"){
-			$tambahTidakDC = 1;
-			${'ctTidakDC'.$x} += $tambahTidakDC;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahTidakDC = 1;
-				${'ct1TidakDC'.$x} += $s1tambahTidakDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahTidakDC = 1;
-				${'ct2TidakDC'.$x} += $s2tambahTidakDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahTidakDC = 1;
-				${'ct3TidakDC'.$x} += $s3tambahTidakDC;
-			}
-		}elseif($nilai[$l] [$x]=="normal"){
-			$tambahNormalDC = 1;
-			${'ctNormalDC'.$x} += $tambahNormalDC;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahNormalDC = 1;
-				${'ct1NormalDC'.$x} += $s1tambahNormalDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahNormalDC = 1;
-				${'ct2NormalDC'.$x} += $s2tambahNormalDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahNormalDC = 1;
-				${'ct3NormalDC'.$x} += $s3tambahNormalDC;
-			}
-		}elseif($nilai[$l] [$x]=="bujur"){
-			$tambahBujurDC = 1;
-			${'ctBujurDC'.$x} += $tambahBujurDC;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahBujurDC = 1;
-				${'ct1BujurDC'.$x} += $s1tambahBujurDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahBujurDC = 1;
-				${'ct2BujurDC'.$x} += $s2tambahBujurDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahBujurDC = 1;
-				${'ct3BujurDC'.$x} += $s3tambahBujurDC;
-			}
-		}elseif($nilai[$l] [$x]=="kepala"){
-			$tambahKepalaDC = 1;
-			${'ctKepalaDC'.$x} += $tambahKepalaDC;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahKepalaDC = 1;
-				${'ct1KepalaDC'.$x} += $s1tambahKepalaDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahKepalaDC = 1;
-				${'ct2KepalaDC'.$x} += $s2tambahKepalaDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahKepalaDC = 1;
-				${'ct3KepalaDC'.$x} += $s3tambahKepalaDC;
-			}
-		}elseif($nilai[$l] [$x]=="lintang"){
-			$tambahLintangDC = 1;
-			${'ctLintang'.$x} += $tambahLintangDC;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahLintangDC = 1;
-				${'ct1Lintang'.$x} += $s1tambahLintangDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahLintangDC = 1;
-				${'ct2Lintang'.$x} += $s2tambahLintangDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahLintangDC = 1;
-				${'ct3Lintang'.$x} += $s3tambahLintangDC;
-			}
-		}elseif($nilai[$l] [$x]=="sungsang"){
-			$tambahSungsangDC = 1;
-			${'ctSungsangDC'.$x} += $tambahSungsangDC;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahSungsangDC = 1;
-				${'ct1SungsangDC'.$x} += $s1tambahSungsangDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahSungsangDC = 1;
-				${'ct2SungsangDC'.$x} += $s2tambahSungsangDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahSungsangDC = 1;
-				${'ct3SungsangDC'.$x} += $s3tambahSungsangDC;
-			}
-		}elseif($nilai[$l] [$x]=="kelainan"){
-			$tambahKelainanDC = 1;
-			${'ctKelainanDC'.$x} += $tambahKelainanDC;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahKelainanDC = 1;
-				${'ct1KelainanDC'.$x} += $s1tambahKelainanDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahKelainanDC = 1;
-				${'ct2KelainanDC'.$x} += $s2tambahKelainanDC;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahKelainanDC = 1;
-				${'ct3KelainanDC'.$x} += $s3tambahKelainanDC;
-			}
+		${'tambahSemuaRDC'.$x} = ${'ct1YaDC'.$x} + ${'ct1TidakDC'.$x} + ${'ct1NormalDC'.$x} + ${'ct1BujurDC'.$x}+${'ct1KepalaDC'.$x}+ ${'ct1LintangDC'.$x}+${'ct1SungsangDC'.$x}+ ${'ct1KelainanDC'.$x}+ ${'ct1AdaDC'.$x};
+		${'tambahSemuaTDC'.$x} = ${'ct2YaDC'.$x} + ${'ct2TidakDC'.$x} + ${'ct2NormalDC'.$x}+ ${'ct2BujurDC'.$x}+${'ct2KepalaDC'.$x}+ ${'ct2LintangDC'.$x}+${'ct2SungsangDC'.$x}+ ${'ct2KelainanDC'.$x}+ ${'ct2AdaDC'.$x} ;
+		${'tambahSemuaSTDC'.$x} = ${'ct3YaDC'.$x} + ${'ct3TidakDC'.$x} + ${'ct3NormalDC'.$x}+ ${'ct3BujurDC'.$x} +${'ct3KepalaDC'.$x}+ ${'ct3LintangDC'.$x}+${'ct3SungsangDC'.$x}+ ${'ct3KelainanDC'.$x}+ ${'ct3AdaDC'.$x};
+		//Semua
+		${'hasilEntropiSemuaDC'.$x}= - ${'tambahSemuaRDC'.$x} /$banyakBaris*(log(${'tambahSemuaRDC'.$x} ,2) - log($banyakBaris, 2)) - ${'tambahSemuaTDC'.$x}/$banyakBaris*(log(${'tambahSemuaTDC'.$x},2) - log($banyakBaris, 2))- ${'tambahSemuaSTDC'.$x}/$banyakBaris*(log(${'tambahSemuaSTDC'.$x},2) - log($banyakBaris, 2));
+		// echo "string ".${'hasilEntropiSemuaC'.$x};
+
+		${'hasilEntropiYaDC'.$x}= - ${'ct1YaDC'.$x}  /${'ctYaDC'.$x}*(log(${'ct1YaDC'.$x} ,2) - log(${'ctYaDC'.$x}, 2)) - ${'ct2YaDC'.$x}/${'ctYaDC'.$x}*(log(${'ct2YaDC'.$x},2) - log(${'ctYaDC'.$x}, 2))- ${'ct3YaDC'.$x}/${'ctYaDC'.$x}*(log(${'ct3YaDC'.$x} ,2) - log(${'ctYaDC'.$x}, 2));
+		//Normal	
+		${'hasilEntropiNormalDC'.$x}= - ${'ct1NormalDC'.$x}  /${'ctNormalDC'.$x}*(log(${'ct1NormalDC'.$x} ,2) - log(${'ctNormalDC'.$x}, 2)) - ${'ct2NormalDC'.$x}/${'ctNormalDC'.$x}*(log(${'ct2NormalDC'.$x},2) - log(${'ctNormalDC'.$x}, 2))- ${'ct3NormalDC'.$x}/${'ctNormalDC'.$x}*(log(${'ct3NormalDC'.$x} ,2) - log(${'ctNormalDC'.$x}, 2));
+		//Tidak		
+		${'hasilEntropiTidakDC'.$x}= - ${'ct1TidakDC'.$x}  /${'ctTidakDC'.$x}*(log(${'ct1TidakDC'.$x} ,2) - log(${'ctTidakDC'.$x}, 2)) - ${'ct2TidakDC'.$x}/${'ctTidakDC'.$x}*(log(${'ct2TidakDC'.$x},2) - log(${'ctTidakDC'.$x}, 2))- ${'ct3TidakDC'.$x}/${'ctTidakDC'.$x}*(log(${'ct3TidakDC'.$x} ,2) - log(${'ctTidakDC'.$x}, 2));
+		//Bujur
+		${'hasilEntropiBujurDC'.$x}= - ${'ct1BujurDC'.$x}  /${'ctBujurDC'.$x}*(log(${'ct1BujurDC'.$x} ,2) - log(${'ctBujurDC'.$x}, 2)) - ${'ct2BujurDC'.$x}/${'ctBujurDC'.$x}*(log(${'ct2BujurDC'.$x},2) - log(${'ctBujurDC'.$x}, 2))- ${'ct3BujurDC'.$x}/${'ctBujurDC'.$x}*(log(${'ct3BujurDC'.$x} ,2) - log(${'ctBujurDC'.$x}, 2));
+		//Kepala
+		${'hasilEntropiKepalaDC'.$x}= - ${'ct1KepalaDC'.$x}  /${'ctKepalaDC'.$x}*(log(${'ct1KepalaDC'.$x} ,2) - log(${'ctKepalaDC'.$x}, 2)) - ${'ct2KepalaDC'.$x}/${'ctKepalaDC'.$x}*(log(${'ct2KepalaDC'.$x},2) - log(${'ctKepalaDC'.$x}, 2))- ${'ct3KepalaDC'.$x}/${'ctKepalaDC'.$x}*(log(${'ct3KepalaDC'.$x} ,2) - log(${'ctKepalaDC'.$x}, 2));
+		//Lintang
+		${'hasilEntropiLintangDC'.$x}= - ${'ct1LintangDC'.$x}  /${'ctLintangDC'.$x}*(log(${'ct1LintangDC'.$x} ,2) - log(${'ctLintangDC'.$x}, 2)) - ${'ct2LintangDC'.$x}/${'ctLintangDC'.$x}*(log(${'ct2LintangDC'.$x},2) - log(${'ctLintangDC'.$x}, 2))- ${'ct3LintangDC'.$x}/${'ctLintangDC'.$x}*(log(${'ct3LintangDC'.$x} ,2) - log(${'ctLintangDC'.$x}, 2));
+		//Sungsang
+		${'hasilEntropiSungsangDC'.$x}= - ${'ct1SungsangDC'.$x}  /${'ctSungsangDC'.$x}*(log(${'ct1SungsangDC'.$x} ,2) - log(${'ctSungsangDC'.$x}, 2)) - ${'ct2SungsangDC'.$x}/${'ctSungsangDC'.$x}*(log(${'ct2SungsangDC'.$x},2) - log(${'ctSungsangDC'.$x}, 2))- ${'ct3SungsangDC'.$x}/${'ctSungsangDC'.$x}*(log(${'ct3SungsangDC'.$x} ,2) - log(${'ctSungsangDC'.$x}, 2));
+		//Kelainan
+		${'hasilEntropiKelainanDC'.$x}= - ${'ct1KelainanDC'.$x}  /${'ctKelainanDC'.$x}*(log(${'ct1KelainanDC'.$x} ,2) - log(${'ctKelainanDC'.$x}, 2)) - ${'ct2KelainanDC'.$x}/${'ctKelainanDC'.$x}*(log(${'ct2KelainanDC'.$x},2) - log(${'ctKelainanDC'.$x}, 2))- ${'ct3KelainanDC'.$x}/${'ctKelainanDC'.$x}*(log(${'ct3KelainanDC'.$x} ,2) - log(${'ctKelainanDC'.$x}, 2));
+
+		${'tempHasilEntropiYaDC'.$x} = (${'ctYaDC'.$x}/$banyakBaris)*${'hasilEntropiYaDC'.$x};
+		${'tempHasilEntropiTidakDC'.$x}  = (${'ctYaDC'.$x}/$banyakBaris)*${'hasilEntropiYaDC'.$x};
+		${'tempHasilEntropiNormalDC'.$x} = (${'ctYaDC'.$x}/$banyakBaris)*${'hasilEntropiYaDC'.$x};
+		${'tempHasilEntropiBujurDC'.$x}=(${'ctYaDC'.$x}/$banyakBaris)*${'hasilEntropiYaDC'.$x};
+		${'tempHasilEntropiKelainanDC'.$x}=(${'ctYaDC'.$x}/$banyakBaris)*${'hasilEntropiYaDC'.$x};
+		${'tempHasilEntropiSungsangDC'.$x}=(${'ctYaDC'.$x}/$banyakBaris)*${'hasilEntropiYaDC'.$x};
+		${'tempHasilEntropiLintangDC'.$x}=(${'ctYaDC'.$x}/$banyakBaris)*${'hasilEntropiYaDC'.$x};
+		${'tempHasilEntropiKepalaDC'.$x}=(${'ctYaDC'.$x}/$banyakBaris)*${'hasilEntropiYaDC'.$x};
+
+		if(is_nan(${'hasilEntropiYaDC'.$x})||is_nan(${'tempHasilEntropiYaDC'.$x})){
+			${'hasilEntropiYaDC'.$x}=0;
+			${'tempHasilEntropiYaDC'.$x}=0;
+		}if(is_nan(${'hasilEntropiTidakDC'.$x})||is_nan(${'tempHasilEntropiTidakDC'.$x})){
+			${'hasilEntropiTidakDC'.$x}=0;
+			${'tempHasilEntropiTidakDC'.$x} = 0;
+		}if(is_nan(${'hasilEntropiNormalDC'.$x})||is_nan(${'tempHasilEntropiNormalDC'.$x})){
+			${'hasilEntropiNormalDC'.$x}=0;
+			${'tempHasilEntropiNormalDC'.$x} = 0;
+		}if(is_nan(${'hasilEntropiBujurDC'.$x})||is_nan(${'tempHasilEntropiBujurDC'.$x})){
+			${'hasilEntropiBujurDC'.$x}=0;
+			${'tempHasilEntropiBujurDC'.$x}=0;
+		}if(is_nan(${'hasilEntropiKelainanDC'.$x})||is_nan(${'tempHasilEntropiKelainanDC'.$x})){
+			${'hasilEntropiKelainanDC'.$x}=0;
+			${'tempHasilEntropiKelaiananDC'.$x} = 0;
+		}if(is_nan(${'hasilEntropiSungsangDC'.$x})||is_nan(${'tempHasilEntropiSungsangDC'.$x})){
+			${'hasilEntropiSungsangDC'.$x}=0;
+			${'tempHasilEntropiSungsangDC'.$x} = 0;
+		}if(is_nan(${'hasilEntropiLintangDC'.$x})||is_nan(${'tempHasilEntropiLintangDC'.$x})){
+			${'hasilEntropiLintangDC'.$x}=0;
+			${'tempHasilEntropiLintangDC'.$x}=0;
+		}if(is_nan(${'hasilEntropiKepalaDC'.$x})||is_nan(${'tempHasilEntropiKepalaDC'.$x})){
+			${'hasilEntropiKepalaDC'.$x}=0;
+			${'tempHasilEntropiKepalaDC'.$x}=0;
 		}
+		//Entropi Total
+		${'hasilEntropiTotalDC'.$x}=${'tempHasilEntropiYaDC'.$x} + ${'tempHasilEntropiTidakDC'.$x} + ${'tempHasilEntropiNormalDC'.$x} + ${'tempHasilEntropiBujurDC'.$x}+ ${'tempHasilEntropiKelainanDC'.$x}+ ${'tempHasilEntropiSungsangDC'.$x}+ ${'tempHasilEntropiLintangDC'.$x}+ ${'tempHasilEntropiKepalaDC'.$x};
+		echo "tempHasilEntropiTotalDC ".${'tempHasilEntropiTotalDC'.$x};
+		//Information Gain
+		${'hasilInformationGainDC'.$x} = ${'hasilEntropiSemuaDC'.$x} - ${'hasilEntropiTotalDC'.$x};
+			echo "hasilInformationGainDC ".${'hasilInformationGainDC'.$x}." ke ".$x;
 	}
 	for ($y=0; $y <= 1 ; $y++) { 
-		if ($nilai[$l] [109] == $y) {
-			${'tambahDF'.$y} = 1;
-			${'ctDF'.$y} += ${'tambahDF'.$y};
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				${'s1tambahDF'.$y} = 1;
-				${'ct1DF'.$y} += ${'s1tambahDF'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				${'s2tambahDF'.$y} = 1;
-				${'ct2DF'.$y} += ${'s2tambahDF'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				${'s3tambahDF'.$y} = 1;
-				${'ct3DF'.$y} += ${'s3tambahDF'.$y};
-			}
+		$tambahSemuaRDF += ${'s1tambahDF'.$y} ;
+		$tambahSemuaTDF += ${'s2tambahDF'.$y};
+		$tambahSemuaSTDF += ${'s3tambahDF'.$y} ;
+		${'hasilEntropiDF'.$y}= - ${'s1tambahDF'.$y}  /${'ctDF'.$y}*(log(${'s1tambahDF'.$y} ,2) - log(${'ctDF'.$y}, 2)) - ${'s2tambahDF'.$y} /${'ctDF'.$y}*(log(${'s2tambahDF'.$y} ,2) - log(${'ctDF'.$y}, 2))- ${'s3tambahDF'.$y}/${'ctDF'.$y}*(log(${'s3tambahDF'.$y}  ,2) - log(${'ctDF'.$y}, 2));
+
+		$tempHasilEntropiTotalDF = ${'ctDF'.$y} /$banyakBaris*${'hasilEntropiDF'.$y};
+		if (is_nan($tempHasilEntropiTotalDF)) {
+			$tempHasilEntropiTotalDF =0;
 		}
+	
+		//Entropi Total
+		$hasilEntropiTotalDF += $tempHasilEntropiTotalDF;
+		echo "hasilEntropiTotalDF ".$hasilEntropiTotalDF;
 	}
+			//Semua
+		$hasilEntropiSemuaDF = - $tambahSemuaRDF /$banyakBaris*(log($tambahSemuaRDF ,2) - log($banyakBaris, 2)) - $tambahSemuaTA/$banyakBaris*(log($tambahSemuaTDF,2) - log($banyakBaris, 2))- $tambahSemuaSTDF/$banyakBaris*(log($tambahSemuaSTDF,2) - log($banyakBaris, 2));
+		echo "hasilEntropiSemuaDF ".$hasilEntropiSemuaDF;
+		//Information Gain
+		$hasilInformationGainDF = $hasilEntropiSemuaDF - $hasilEntropiTotalDF;
+		echo "hasilInformationGainDF ".$hasilInformationGainDF;
 	for ($y=126; $y <= 158 ; $y++) { 
-		if ($nilai[$l] [110] == $y) {
-			${'tambahDG'.$y} = 1;
-			${'ctDG'.$y} += ${'tambahDG'.$y};
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				${'s1tambahDG'.$y} = 1;
-				${'ct1DG'.$y} += ${'s1tambahDG'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				${'s2tambahDG'.$y} = 1;
-				${'ct2DG'.$y} += ${'s2tambahDG'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				${'s3tambahDG'.$y} = 1;
-				${'ct3DG'.$y} += ${'s13ambahDG'.$y};
-			}
+		$tambahSemuaRDG += ${'s1tambahDG'.$y} ;
+		$tambahSemuaTDG += ${'s2tambahDG'.$y};
+		$tambahSemuaSTDG += ${'s3tambahDG'.$y} ;
+		${'hasilEntropiDG'.$y}= - ${'s1tambahDG'.$y}  /${'ctDG'.$y}*(log(${'s1tambahDG'.$y} ,2) - log(${'ctDG'.$y}, 2)) - ${'s2tambahDG'.$y} /${'ctDG'.$y}*(log(${'s2tambahDG'.$y} ,2) - log(${'ctDG'.$y}, 2))- ${'s3tambahDG'.$y}/${'ctDG'.$y}*(log(${'s3tambahDG'.$y}  ,2) - log(${'ctDG'.$y}, 2));
+
+		$tempHasilEntropiTotalDG = ${'ctDG'.$y} /$banyakBaris*${'hasilEntropiDG'.$y};
+		if (is_nan($tempHasilEntropiTotalDG)) {
+			$tempHasilEntropiTotalDG =0;
 		}
+	
+		//Entropi Total
+		$hasilEntropiTotalDG += $tempHasilEntropiTotalDG;
+		echo "hasilEntropiTotalDG ".$hasilEntropiTotalDG;
 	}
+			//Semua
+		$hasilEntropiSemuaDG = - $tambahSemuaRDG /$banyakBaris*(log($tambahSemuaRDG ,2) - log($banyakBaris, 2)) - $tambahSemuaTA/$banyakBaris*(log($tambahSemuaTDG,2) - log($banyakBaris, 2))- $tambahSemuaSTDG/$banyakBaris*(log($tambahSemuaSTDG,2) - log($banyakBaris, 2));
+		echo "hasilEntropiSemuaDG ".$hasilEntropiSemuaDG;
+		//Information Gain
+		$hasilInformationGainDG = $hasilEntropiSemuaDG - $hasilEntropiTotalDG;
+		echo "hasilInformationGainDG ".$hasilInformationGainDG;
 	for ($x=111; $x <=111 ; $x++) { 
-		if($nilai[$l] [$x]=="ya"){
-			$tambahYaDH = 1;
-			${'ctYaDH'.$x} += $tambahYaDH;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahYaDH = 1;
-				${'ct1YaDH'.$x} += $s1tambahYaDH;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahYaDH = 1;
-				${'ct2YaDH'.$x} += $s2tambahYaDH;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahYaDH = 1;
-				${'ct3YaDH'.$x} += $s3tambahYaDH;
-			}
-		}elseif($nilai[$l] [$x]=="tidak"){
-			$tambahTidakDH = 1;
-			${'ctTidakDH'.$x} += $tambahTidakDH;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahTidakDH = 1;
-				${'ct1TidakDH'.$x} += $s1tambahTidakDH;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahTidakDH = 1;
-				${'ct2TidakDH'.$x} += $s2tambahTidakDH;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahTidakDH = 1;
-				${'ct3TidakDH'.$x} += $s3tambahTidakDH;
-			}
+		${'tambahSemuaRDH'.$x} = ${'ct1YaDH'.$x} + ${'ct1TidakDH'.$x} ;
+		${'tambahSemuaTDH'.$x} = ${'ct2YaDH'.$x} + ${'ct2TidakDH'.$x} ;
+		${'tambahSemuaSTDH'.$x} = ${'ct3YaDH'.$x} + ${'ct3TidakDH'.$x} ;
+		//Semua
+		${'hasilEntropiSemuaDH'.$x}= - ${'tambahSemuaRDH'.$x} /$banyakBaris*(log(${'tambahSemuaRDH'.$x} ,2) - log($banyakBaris, 2)) - ${'tambahSemuaTDH'.$x}/$banyakBaris*(log(${'tambahSemuaTDH'.$x},2) - log($banyakBaris, 2))- ${'tambahSemuaSTDH'.$x}/$banyakBaris*(log(${'tambahSemuaSTDH'.$x},2) - log($banyakBaris, 2));
+		// echo "string ".${'hasilEntropiSemuaC'.$x};
+
+		${'hasilEntropiYaDH'.$x}= - ${'ct1YaDH'.$x}  /${'ctYaDH'.$x}*(log(${'ct1YaDH'.$x} ,2) - log(${'ctYaDH'.$x}, 2)) - ${'ct2YaDH'.$x}/${'ctYaDH'.$x}*(log(${'ct2YaDH'.$x},2) - log(${'ctYaDH'.$x}, 2))- ${'ct3YaDH'.$x}/${'ctYaDH'.$x}*(log(${'ct3YaDH'.$x} ,2) - log(${'ctYaDH'.$x}, 2));
+		//Tidak		
+		${'hasilEntropiTidakDH'.$x}= - ${'ct1TidakDH'.$x}  /${'ctTidakDH'.$x}*(log(${'ct1TidakDH'.$x} ,2) - log(${'ctTidakDH'.$x}, 2)) - ${'ct2TidakDH'.$x}/${'ctTidakDH'.$x}*(log(${'ct2TidakDH'.$x},2) - log(${'ctTidakDH'.$x}, 2))- ${'ct3TidakDH'.$x}/${'ctTidakDH'.$x}*(log(${'ct3TidakDH'.$x} ,2) - log(${'ctTidakDH'.$x}, 2));
+		if(is_nan(${'hasilEntropiYaDH'.$x})){
+			${'hasilEntropiYaDH'.$x}=0;
+		}if(is_nan(${'hasilEntropiTidakDH'.$x})){
+			${'hasilEntropiTidakDH'.$x}=0;
 		}
+		//Entropi Total
+		${'hasilEntropiTotalDH'.$x}= ( ${'totalYaDH'.$x}/$banyakBaris)*${'hasilEntropiYaDH'.$x}  + (${'totalTidakDH'.$x}/$banyakBaris)*${'hasilEntropiTidakDH'.$x};
+		echo "hasilEntropiTotalDH ".${'hasilEntropiTotalDH'.$x};
+		//Information Gain
+		${'hasilInformationGainDH'.$x} = ${'hasilEntropiSemuaDH'.$x} - ${'hasilEntropiTotalDH'.$x};
+			echo "hasilInformationGainDH ".${'hasilInformationGainDH'.$x}." ke ".$x;
 	}
 	// for ($y=7; $y <= 15 ; $y++) { 
 	// 	for ($z=0; $z <100 ; $z++) { 
@@ -2472,118 +2447,120 @@ $hasilEntropiTotalA = 0.0;
 	${'max1DI'} = 0;
 	$idmax1DI = 0;
 	//${'idmax1DI'} = 0;
-	for ($y=7; $y <= 15 ; $y++) { 
-		for ($z=0; $z <100 ; $z++) { 
-			 $cekNilai = $y.".".$z;
-			 $floatval = floatval($cekNilai);
-			//echo "cekNilai ".$cekNilai."<br>";
-			if ($nilai[$l] [112] == $floatval) {
-				${'tambahDI'.$floatval} = 1;
-				${'ctDI'.$floatval} += ${'tambahDI'.$floatval};
-				if (${'max1DI'} < ${'ctDI'.$floatval}) {
-        		${'max1DI'} = ${'ctDI'.$floatval};
-       			$idmax1DI = $floatval;
-       			// echo "hhahahaha".$idmax1DI;
-       				if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-		        		${'s1max1DI'} = ${'ct1DI'.$floatval};
-		       			$s1idmax1DI = $floatval;
-					}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-		        		${'s2max1DI'} = ${'ct2DI'.$floatval};
-		       			$s2idmax1DI = $floatval;
-					}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-		        		${'s3max1DI'} = ${'ct3DI'.$floatval};
-		       			$s3idmax1DI = $floatval;
-					}
-   				}
+	for ($k=0; $k < $banyakBaris ; $k++) { 
+		for ($y=7; $y <= 15 ; $y++) { 
+			for ($z=0; $z <100 ; $z++) { 
+				 $cekNilai = $y.".".$z;
+				 $floatval = floatval($cekNilai);
+				//echo "cekNilai ".$cekNilai."<br>";
+				if ($nilai[$k] [112] == $floatval) {
+					${'tambahDI'.$floatval} = 1;
+					${'ctDI'.$floatval} += ${'tambahDI'.$floatval};
+					if (${'max1DI'} < ${'ctDI'.$floatval}) {
+	        		${'max1DI'} = ${'ctDI'.$floatval};
+	       			$idmax1DI = $floatval;
+	       			// echo "hhahahaha".$idmax1DI;
+	       				if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
+			        		${'s1max1DI'} = ${'ct1DI'.$floatval};
+			       			$s1idmax1DI = $floatval;
+						}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
+			        		${'s2max1DI'} = ${'ct2DI'.$floatval};
+			       			$s2idmax1DI = $floatval;
+						}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
+			        		${'s3max1DI'} = ${'ct3DI'.$floatval};
+			       			$s3idmax1DI = $floatval;
+						}
+	   				}
+				}
+
 			}
 		}
 	}
+	$hasilInformationGainDI=0;
+	
 	for ($y=0; $y <= 1 ; $y++) { 
-		if ($nilai[$l] [113] == $y) {
-			${'tambahDJ'.$y} = 1;
-			${'ctDJ'.$y} += ${'tambahDJ'.$y};
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				${'s1tambahDJ'.$y} = 1;
-				${'ct1DJ'.$y} += ${'s1tambahDJ'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				${'s2tambahDJ'.$y} = 1;
-				${'ct2DJ'.$y} += ${'s2tambahDJ'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				${'s3tambahDJ'.$y} = 1;
-				${'ct3DJ'.$y} += ${'s3tambahDJ'.$y};
-			}
+		$tambahSemuaRDJ += ${'s1tambahDJ'.$y} ;
+		$tambahSemuaTDJ += ${'s2tambahDJ'.$y};
+		$tambahSemuaSTDJ += ${'s3tambahDJ'.$y} ;
+		${'hasilEntropiDJ'.$y}= - ${'s1tambahDJ'.$y}  /${'ctDJ'.$y}*(log(${'s1tambahDJ'.$y} ,2) - log(${'ctDJ'.$y}, 2)) - ${'s2tambahDJ'.$y} /${'ctDJ'.$y}*(log(${'s2tambahDJ'.$y} ,2) - log(${'ctDJ'.$y}, 2))- ${'s3tambahDJ'.$y}/${'ctDJ'.$y}*(log(${'s3tambahDJ'.$y}  ,2) - log(${'ctDJ'.$y}, 2));
+
+		$tempHasilEntropiTotalDJ = ${'ctDJ'.$y} /$banyakBaris*${'hasilEntropiDJ'.$y};
+		if (is_nan($tempHasilEntropiTotalDJ)) {
+			$tempHasilEntropiTotalDJ =0;
 		}
+	
+		//Entropi Total
+		$hasilEntropiTotalDJ += $tempHasilEntropiTotalDJ;
+		echo "hasilEntropiTotalDJ ".$hasilEntropiTotalDJ;
 	}
+			//Semua
+		$hasilEntropiSemuaDJ = - $tambahSemuaRDJ /$banyakBaris*(log($tambahSemuaRDJ ,2) - log($banyakBaris, 2)) - $tambahSemuaTA/$banyakBaris*(log($tambahSemuaTDJ,2) - log($banyakBaris, 2))- $tambahSemuaSTDJ/$banyakBaris*(log($tambahSemuaSTDJ,2) - log($banyakBaris, 2));
+		echo "hasilEntropiSemuaDJ ".$hasilEntropiSemuaDJ;
+		//Information Gain
+		$hasilInformationGainDJ = $hasilEntropiSemuaDJ - $hasilEntropiTotalDJ;
+		echo "hasilInformationGainDJ ".$hasilInformationGainDJ;
 	for ($y=0; $y <= 1 ; $y++) { 
-		if ($nilai[$l] [114] == $y) {
-			${'tambahDK'.$y} = 1;
-			${'ctDK'.$y} += ${'tambahDK'.$y};
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				${'s1tambahDK'.$y} = 1;
-				${'ct1DK'.$y} += ${'s1tambahDK'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				${'s2tambahDK'.$y} = 1;
-				${'ct2DK'.$y} += ${'s2tambahDK'.$y};
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				${'s3tambahDK'.$y} = 1;
-				${'ct3DK'.$y} += ${'s3tambahDK'.$y};
-			}
+		$tambahSemuaRDK += ${'s1tambahDK'.$y} ;
+		$tambahSemuaTDK += ${'s2tambahDK'.$y};
+		$tambahSemuaSTDK += ${'s3tambahDK'.$y} ;
+		${'hasilEntropiDK'.$y}= - ${'s1tambahDK'.$y}  /${'ctDK'.$y}*(log(${'s1tambahDK'.$y} ,2) - log(${'ctDK'.$y}, 2)) - ${'s2tambahDK'.$y} /${'ctDK'.$y}*(log(${'s2tambahDK'.$y} ,2) - log(${'ctDK'.$y}, 2))- ${'s3tambahDK'.$y}/${'ctDK'.$y}*(log(${'s3tambahDK'.$y}  ,2) - log(${'ctDK'.$y}, 2));
+
+		$tempHasilEntropiTotalDK = ${'ctDK'.$y} /$banyakBaris*${'hasilEntropiDK'.$y};
+		if (is_nan($tempHasilEntropiTotalDK)) {
+			$tempHasilEntropiTotalDK =0;
 		}
+	
+		//Entropi Total
+		$hasilEntropiTotalDK += $tempHasilEntropiTotalDK;
+		echo "hasilEntropiTotalDK ".$hasilEntropiTotalDK;
 	}
+			//Semua
+		$hasilEntropiSemuaDK = - $tambahSemuaRDK /$banyakBaris*(log($tambahSemuaRDK ,2) - log($banyakBaris, 2)) - $tambahSemuaTA/$banyakBaris*(log($tambahSemuaTDK,2) - log($banyakBaris, 2))- $tambahSemuaSTDK/$banyakBaris*(log($tambahSemuaSTDK,2) - log($banyakBaris, 2));
+		echo "hasilEntropiSemuaDK ".$hasilEntropiSemuaDK;
+		//Information Gain
+		$hasilInformationGainDK = $hasilEntropiSemuaDK - $hasilEntropiTotalDK;
+		echo "hasilInformationGainDK ".$hasilInformationGainDK;
 	for ($x=115; $x <=115 ; $x++) { 
-		if($nilai[$l] [$x]=="A"){
-			$tambahADL = 1;
-			${'ctADL'.$x} += $tambahADL;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahADL = 1;
-				${'ct1ADL'.$x} += $s1tambahADL;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahADL = 1;
-				${'ct2ADL'.$x} += $s2tambahADL;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahADL = 1;
-				${'ct3ADL'.$x} += $s3tambahADL;
-			}
-		}elseif($nilai[$l] [$x]=="B"){
-			$tambahBDL = 1;
-			${'ctBDL'.$x} += $tambahBDL;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahBDL = 1;
-				${'ct1BDL'.$x} += $s1tambahBDL;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahBDL = 1;
-				${'ct2BDL'.$x} += $s2tambahBDL;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahBDL = 1;
-				${'ct3BDL'.$x} += $s3tambahBDL;
-			}
-		}elseif($nilai[$l] [$x]=="O"){
-			$tambahODL = 1;
-			${'ctODL'.$x} += $tambahODL;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahODL = 1;
-				${'ct1ODL'.$x} += $s1tambahODL;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahODL = 1;
-				${'ct2ODL'.$x} += $s2tambahODL;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahODL = 1;
-				${'ct3ODL'.$x} += $s3tambahODL;
-			}
-		}elseif($nilai[$l] [$x]=="AB"){
-			$tambahABDL = 1;
-			${'ctABDL'.$x} += $tambahABDL;
-			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahABDL = 1;
-				${'ct1ABDL'.$x} += $s1tambahABDL;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahABDL = 1;
-				${'ct2ABDL'.$x} += $s2tambahABDL;
-			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahABDL = 1;
-				${'ct3ABDL'.$x} += $s3tambahABDL;
-			}
+		${'tambahSemuaRDL'.$x} = ${'ct1ADL'.$x} + ${'ct1BDL'.$x} + ${'ct1ODL'.$x} + ${'ct1ABDL'.$x};
+		${'tambahSemuaTDL'.$x} = ${'ct2ADL'.$x} + ${'ct2BDL'.$x} + ${'ct2ODL'.$x}+ ${'ct2ABDL'.$x} ;
+		${'tambahSemuaSTDL'.$x} = ${'ct3ADL'.$x} + ${'ct3BDL'.$x} + ${'ct3ODL'.$x}+ ${'ct3ABDL'.$x};
+		//Semua
+		${'hasilEntropiSemuaDL'.$x}= - ${'tambahSemuaRDL'.$x} /$banyakBaris*(log(${'tambahSemuaRDL'.$x} ,2) - log($banyakBaris, 2)) - ${'tambahSemuaTDL'.$x}/$banyakBaris*(log(${'tambahSemuaTDL'.$x},2) - log($banyakBaris, 2))- ${'tambahSemuaSTDL'.$x}/$banyakBaris*(log(${'tambahSemuaSTDL'.$x},2) - log($banyakBaris, 2));
+		// echo "string ".${'hasilEntropiSemuaC'.$x};
+		//A
+		${'hasilEntropiADL'.$x}= - ${'ct1ADL'.$x}  /${'ctADL'.$x}*(log(${'ct1ADL'.$x} ,2) - log(${'ctADL'.$x}, 2)) - ${'ct2ADL'.$x}/${'ctADL'.$x}*(log(${'ct2ADL'.$x},2) - log(${'ctADL'.$x}, 2))- ${'ct3ADL'.$x}/${'ctADL'.$x}*(log(${'ct3ADL'.$x} ,2) - log(${'ctADL'.$x}, 2));
+		//O
+		${'hasilEntropiODL'.$x}= - ${'ct1ODL'.$x}  /${'ctODL'.$x}*(log(${'ct1ODL'.$x} ,2) - log(${'ctODL'.$x}, 2)) - ${'ct2ODL'.$x}/${'ctODL'.$x}*(log(${'ct2ODL'.$x},2) - log(${'ctODL'.$x}, 2))- ${'ct3ODL'.$x}/${'ctODL'.$x}*(log(${'ct3ODL'.$x} ,2) - log(${'ctODL'.$x}, 2));
+		//B	
+		${'hasilEntropiBDL'.$x}= - ${'ct1BDL'.$x}  /${'ctBDL'.$x}*(log(${'ct1BDL'.$x} ,2) - log(${'ctBDL'.$x}, 2)) - ${'ct2BDL'.$x}/${'ctBDL'.$x}*(log(${'ct2BDL'.$x},2) - log(${'ctBDL'.$x}, 2))- ${'ct3BDL'.$x}/${'ctBDL'.$x}*(log(${'ct3BDL'.$x} ,2) - log(${'ctBDL'.$x}, 2));
+		//AB
+		${'hasilEntropiABDL'.$x}= - ${'ct1ABDL'.$x}  /${'ctABDL'.$x}*(log(${'ct1ABDL'.$x} ,2) - log(${'ctABDL'.$x}, 2)) - ${'ct2ABDL'.$x}/${'ctABDL'.$x}*(log(${'ct2ABDL'.$x},2) - log(${'ctABDL'.$x}, 2))- ${'ct3ABDL'.$x}/${'ctABDL'.$x}*(log(${'ct3ABDL'.$x} ,2) - log(${'ctABDL'.$x}, 2));
+		
+		${'tempHasilEntropiADL'.$x}= (${'ctADL'.$x}/$banyakBaris)*${'hasilEntropiADL'.$x};
+		${'tempHasilEntropiODL'.$x}= (${'ctADL'.$x}/$banyakBaris)*${'hasilEntropiADL'.$x};
+		${'tempHasilEntropiBDL'.$x}=(${'ctBDL'.$x}/$banyakBaris)*${'hasilEntropiBDL'.$x};
+		${'tempHasilEntropiABDL'.$x}= (${'ctABDL'.$x}/$banyakBaris)*${'hasilEntropiABDL'.$x};
+		
+
+		if(is_nan(${'hasilEntropiADL'.$x})||is_nan(${'tempHasilEntropiADL'.$x})){
+			${'hasilEntropiADL'.$x}=0;
+			${'tempHasilEntropiADL'.$x}=0;
+		}if(is_nan(${'hasilEntropiBDL'.$x})||${'tempHasilEntropiBDL'.$x}){
+			${'hasilEntropiBDL'.$x}=0;
+			${'tempHasilEntropiBDL'.$x}=0;
+		}if(is_nan(${'hasilEntropiODL'.$x})||is_nan(${'tempHasilEntropiODL'.$x})){
+			${'hasilEntropiODL'.$x}=0;
+			${'tempHasilEntropiODL'.$x}=0;
+		}if(is_nan(${'hasilEntropiABDL'.$x})||is_nan(${'tempHasilEntropiABDL'.$x})){
+			${'hasilEntropiABDL'.$x}=0;
+			${'tempHasilEntropiABDL'.$x}=0;
 		}
+		//Entropi Total
+		${'hasilEntropiTotalDL'.$x}=${'tempHasilEntropiADL'.$x}+${'tempHasilEntropiODL'.$x}+${'tempHasilEntropiBDL'.$x}+${'tempHasilEntropiABDL'.$x} ;
+		echo "hasilEntropiTotalDL ".${'hasilEntropiTotalDL'.$x};
+		//Information Gain
+		${'hasilInformationGainDL'.$x} = ${'hasilEntropiSemuaDL'.$x} - ${'hasilEntropiTotalDL'.$x};
+			echo "hasilInformationGainDL ".${'hasilInformationGainDL'.$x}." ke ".$x;
 	}
 	// for ($x=116; $x <=116 ; $x++) { 
 	// 	if($nilai[$l] [$x]=="Kehamilan-Resiko-SangatTinggi"){
@@ -2598,5 +2575,13 @@ $hasilEntropiTotalA = 0.0;
 	// 		${'ctResikoRDM'.$x} += $tambahResikoRDM;
 	// 	}
 	// }
-	
+
+	$InformationGain = array($hasilInformationGainA, $hasilInformationGainB, $hasilInformationGainC2,$hasilInformationGainC3,$hasilInformationGainC3,$hasilInformationGainC5,$hasilInformationGainC6,$hasilInformationGainC7,$hasilInformationGainC8,$hasilInformationGainC9,$hasilInformationGainC10,$hasilInformationGainC11,$hasilInformationGainC12,$hasilInformationGainC13,$hasilInformationGainC14,$hasilInformationGainC15,$hasilInformationGainC16,$hasilInformationGainC17,$hasilInformationGainC18,$hasilInformationGainC19,$hasilInformationGainC20, $hasilInformationGainV,$InformationGainW, $hasilInformationGainX23, $hasilInformationGainX24, $hasilInformationGainX25, $hasilInformationGainAA, $hasilInformationGainAB,$hasilInformationGainAC,$hasilInformationGainAD, $hasilInformationGainAE30,$hasilInformationGainAE31,$hasilInformationGainAE32,$hasilInformationGainAE33,$hasilInformationGainAE34,$hasilInformationGainAE35,$hasilInformationGainAE36,$hasilInformationGainAE37,$hasilInformationGainAE38,$hasilInformationGainAE39,$hasilInformationGainAE40,$hasilInformationGainAE41,$hasilInformationGainAE42,$hasilInformationGainAE43,$hasilInformationGainAE44,$hasilInformationGainAE45,$hasilInformationGainAE46,$hasilInformationGainAE47,$hasilInformationGainAE48,$hasilInformationGainAE49,$hasilInformationGainAE50,$hasilInformationGainAE51,$hasilInformationGainAE52,$hasilInformationGainAE53,$hasilInformationGainAE54,$hasilInformationGainAE55,$hasilInformationGainAE56,$hasilInformationGainAE57,$hasilInformationGainAE58,$hasilInformationGainAE59,$hasilInformationGainAE60,$hasilInformationGainAE61,$hasilInformationGainAE62,$hasilInformationGainAE63,$hasilInformationGainAE64,$hasilInformationGainAE65,$hasilInformationGainAE66,$hasilInformationGainAE67,$hasilInformationGainAE68,$hasilInformationGainAE69,$hasilInformationGainAE70,$hasilInformationGainAE71,$hasilInformationGainAE72,$hasilInformationGainAE73,$hasilInformationGainAE74,$hasilInformationGainBX,$hasilInformationGainBY,$hasilInformationGainBZ77,$hasilInformationGainBZ78,$hasilInformationGainCB, $hasilInformationGainCC, $hasilInformationGainCD, $hasilInformationGainCE, $hasilInformationGainCF83,$hasilInformationGainCF84,$hasilInformationGainCF85, $hasilInformationGainCF86,$hasilInformationGainCJ, $hasilInformationGainCK, $hasilInformationGainCL, $hasilInformationGainCM, $hasilInformationGainCN,$hasilInformationGainCO92,$hasilInformationGainCO93,$hasilInformationGainCO94,$hasilInformationGainCO95,$hasilInformationGainCO96,$hasilInformationGainCO97,$hasilInformationGainCO98,$hasilInformationGainCO99,$hasilInformationGainCO100,$hasilInformationGainCO101,$hasilInformationGainCO102,$hasilInformationGainCO103,$hasilInformationGainDA,$hasilInformationGainDB,$hasilInformationGainDC106,$hasilInformationGainDC107,$hasilInformationGainDC108,$hasilInformationGainDF,$hasilInformationGainDG,$hasilInformationGainDH,$hasilInformationGainDI,$hasilInformationGainDJ,$hasilInformationGainDK, $hasilInformationGainDL);
+	rsort($InformationGain); //reverse sort
+	//print_r($InformationGain);
+	$jumlah=count($InformationGain);  
+	for($x=0;$x<$jumlah;$x++) {
+	         echo $InformationGain[$x];  
+	         echo " ".$x;  
+	}
 ?>
