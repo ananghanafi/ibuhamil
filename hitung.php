@@ -25,125 +25,149 @@ if(isset($_POST['contoh'])){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <link rel="stylesheet" type="text/css" href="css/custom.css">
      <link href="style.css" rel="stylesheet">
+    <script src="jquery-2.1.4.min.js"></script>
+    <script src="Chart.js"></script>
+
 
   </head>
+
   <body id="bodyhitung">
-
     <div class="wrapper">
-          <div class="container" id="container-hitung">
-              <br/><br/>
+      <div class="container" id="container-hitung">
+        <br><br>
 
-              <ul class="breadcrumb">
-                <li><a style="font-family: 'Montserrat';" href="index.php">Home</a></li>
-                <li><a style="font-family: 'Montserrat';" href="hitung.php">Hitung</a></li>
-              </ul>
+        <ul class="breadcrumb">
+          <li><a style="font-family: 'Montserrat';" href="index.php">Home</a></li>
+          <li><a style="font-family: 'Montserrat';" href="hitung.php">Hitung</a></li>
+        </ul>
 
-<div class="outer">
-    <div class="inner">
-      <table class="table table-bordered table-condensed table-hover ">
-      <?php
-      $row = 1;
-      ini_set('auto_detect_line_endings',TRUE);
-      if (($handle = fopen("DatasetIbuHamil.csv", "r")) !== FALSE) {
-          while (($data = fgetcsv($handle, 1050, ",")) !== FALSE) {
+        <form action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+        <input type="file" name="file" style="margin-left:2%; font-family: 'Montserrat';" >
+        <br>
+        <input type="submit" name="insert" value="Baca File" style="margin-left:2%; font-family: 'Montserrat';" class="btn btn-success" >
+        </form>
+        <br>
+        <div class="outer">
+          <div class="inner">
+            <table class="table table-bordered table-condensed table-hover ">
+            <?php
 
-              $num = count($data);
+            if (isset($_REQUEST['insert'])) {
+              $row = 1;
+              ini_set('auto_detect_line_endings',TRUE);
+              if (($handle = fopen($_FILES['file']['tmp_name'], 'r+')) !== FALSE) {
+                  while (($data = fgetcsv($handle, 10000, ",")) !== FALSE) {
 
-              echo "<tr>";
-              for ($c=0; $c < $num; $c++) {
+                      $num = count($data);
 
-                  if ($row == 1) {
-                      echo "<th>" . $data[$c] . "</th>\n";
-                  } else {
-                      echo "<td>" . $data[$c] . "</td>\n";
+                      echo "<tr>";
+                      for ($c=0; $c < $num; $c++) {
+
+                          if ($row == 1) {
+                              echo "<th>" . $data[$c] . "</th>\n";
+                          } else {
+                              echo "<td>" . $data[$c] . "</td>\n";
+                          }
+                      }
+
+                      echo "</tr>\n";
+                      $row++;
                   }
+                  ini_set('auto_detect_line_endings',FALSE);
+                  fclose($handle);
               }
-
-              echo "</tr>\n";
-              $row++;
-          }
-          ini_set('auto_detect_line_endings',FALSE);
-          fclose($handle);
-      }
-      ?>
-      </table>
-   </div>
-</div>
-            <div class="tab-content no-padding">
-<!--               Morris chart - Sales -->
-              <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
-              <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
+            }
+            
+            ?>
+            </table>
+          </div>
+        </div>
+            <br><br>
+<!--             <button style="margin-left:50%; font-family: 'Montserrat';" class="btn btn-success"><a  type="button" href="\ibuhamil\pages\charts\chartjs.php">Hitung</a></button> -->
+<!-- DONUT CHART -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Chart</h3>
             </div>
 
-              <!-- <h2>Algoritma K-Medoids</h2>
-              <p style="font-size:12pt;">Untuk melakukan perhitungan dengan menggunakan algoritma k-medoids. Input beberapa data untuk digunakan dalam memperoleh hasil.
-                Jika ingin melihat contoh hasil silahkan pilih tombol contoh.
-                Jika ingin menginputkan data silahkan klik tomboh input data</p><br/><br/>
-<!--                 <div class="inti"> -->
-<!--                 <div class="col-md-3">
-                    <button style="font-family: 'Montserrat';" type="button" class="btn btn-success " data-toggle="modal" data-target="#myModal">Input Data</button>
-                    <div id="myModal" class="modal fade" role="dialog"> -->
- <!--                  <div class="modal-dialog"> -->
-
-                    <!-- Modal content-->
-<!--                     <div class="modal-content"> -->
-                      <!-- <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 clas3="modal-title">INPUT DATA</h3>
-                      </div> -->
-<!-- 
-                      <div class="modal-body"> -->
-                       <!--  <body>
-                       
-                        <form action="" method="post" enctype="multipart/form-data" name="ContohUploadCSV" id="ContohUploadCSV">
-                          <p>Pilih file csv
-                            <input type="file" name="filecsv" id="filecsv" />
-                        </p>
-                          <p>
-                            <a href="example.php" class="btn btn-default" name="button" id="button">Kirim</a> -->
-                            <!-- <input type="submit" name="button" id="button" value="Kirim" /> -->
-<!--                         </p>
-                        </form>
-                        </body>
- -->
-<!--                           <button style="margin-left:2%; font-family: 'Montserrat';" class="btn btn-success" type="button" onclick="tambahInput()">Tambah Input</button><br/><br/> -->
-<!--                           <form method="post" onsubmit="return validate()" action="session.php">
-                            <input type="hidden" name="manual" value="1">
-                            <table>
-                              <thead>
-                                <tr>
-                                  <td id="inputnya"><input class="form-control" type="text" name="field1" placeholder="Masukan Nama Field" required></td>
-                                  <td id="inputnya"><input class="form-control" type="text" name="field2" placeholder="Masukan Nama Field" required></td>
-                                  <td id="tombolx"></td>
-                                </tr>
-                              </thead>
-                              <tbody id="nilai-input">
-                              </tbody>
-                            </table>
-                            <br/><br/>
-                            <button style="margin-left:2%; font-family: 'Montserrat';" class="btn btn-primary" type="submit">Hitung !</button>
-                          </form>  -->
-<!--                       </div>
-
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      </div>
-
-                    </div>
-
-                  </div> -->
-<!--                 </div> -->
-<!--                 </div> -->
-<!--                 <div class="col-md-4">
-                      <form method="post">
-                        <button style="font-family: 'Montserrat';" class="btn btn-warning" type="submit" name="contoh">Contoh</button>
-                      </form>
-                </div> -->
-            <!--   </div> -->
-
+                <canvas id="mycanvas" style="margin-left:35%;" width="256" height="256">
+                <!-- <canvas id="pieChart" style="height:250px"></canvas> -->
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
           </div>
 
     </div>
+<!-- 
+<button style="margin-left:50%; font-family: 'Montserrat';" class="btn btn-success" type="button" onclick="tambahInput()">Tambah Input</button> -->
 
+<script>
+      $(document).ready(function(){
+        var ctx = $("#mycanvas").get(0).getContext("2d");
+
+        //pie chart data
+        //sum of values = 360
+        var data = [
+          {
+            value: 270,
+            color: "cornflowerblue",
+            highlight: "lightskyblue",
+            label: "Corn Flower Blue"
+          },
+          {
+            value: 50,
+            color: "lightgreen",
+            highlight: "yellowgreen",
+            label: "Lightgreen"
+          },
+          {
+            value: 40,
+            color: "orange",
+            highlight: "darkorange",
+            label: "Orange"
+          },      {
+        value    : 700,
+        color    : '#f56954',
+        highlight: '#f56954',
+        label    : 'Chrome'
+      },
+      {
+        value    : 500,
+        color    : '#00a65a',
+        highlight: '#00a65a',
+        label    : 'IE'
+      },
+      {
+        value    : 400,
+        color    : '#f39c12',
+        highlight: '#f39c12',
+        label    : 'FireFox'
+      },
+      {
+        value    : 600,
+        color    : '#00c0ef',
+        highlight: '#00c0ef',
+        label    : 'Safari'
+      },
+      {
+        value    : 300,
+        color    : '#3c8dbc',
+        highlight: '#3c8dbc',
+        label    : 'Opera'
+      },
+      {
+        value    : 100,
+        color    : '#d2d6de',
+        highlight: '#d2d6de',
+        label    : 'Navigator'
+      }
+
+        ];
+
+        //draw
+        var piechart = new Chart(ctx).Doughnut(data);
+
+      });
+    </script>
   </body>
 </html>

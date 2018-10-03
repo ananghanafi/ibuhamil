@@ -63,7 +63,7 @@
         		 					<h1 class="main-heading-title"><span class="main-element themecolor" data-elements="WELCOME, MENGGUNAKAN K-MEDOIDS"></span></h1>
         							<p class="main-heading-text" style="font-size:18px;">Pada kesempatan kali ini kita akan menjelaskan penerapan Algoritma K-Medoids<br/>Tentunya masih ingat kan Algoritma K-Medoids itu apa. Jika sudah silahkan pilih hitung jika belum pilih penjelasan.</p>
         							<div class="btn-bar">
-							          <a href="hitung.php" class="btn btn-custom theme_background_color" id="btn-1">Hitung</a>
+							          <a href="hitung.php" class="btn btn-custom theme_background_color" id="btn-1">Mulai Menghitung</a>
 							          <a href="#one" class="btn btn-custom-outline page-scroll" id="btn-2">Penjelasan</a>
         							</div>
       						</div>
