@@ -1,3 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Algoritma K-Medoids</title>
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="library/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="library/bootstrap/css/bootstrap.css">
+    <link href="library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="css/custom.css">
+     <link href="style.css" rel="stylesheet">
+    <script src="jquery-2.1.4.min.js"></script>
+    <script src="Chart.js"></script>
+
+
+  </head>
+
+  <body id="bodyhitung">
+    <div class="wrapper">
+      <div class="container" id="container-hitung">
+        <br><br>
+
+        <ul class="breadcrumb">
+          <li><a style="font-family: 'Montserrat';" href="index.php">Home</a></li>
+          <li><a style="font-family: 'Montserrat';" href="hitung.php">Hitung</a></li>
+          <li><a style="font-family: 'Montserrat';" href="hitung.php">C5</a></li>
+        </ul>
 <?php
 
 
@@ -412,12 +443,552 @@ $nilai=array(
 //	array(),
 
 ); 
-ini_set('max_execution_time', 90); 
+// ini_set('max_execution_time', 90); 
 $banyakBaris= 400;
 // $hasildfd = -(20/28)*(log(20, 2)- log(28,2)) - (8/28)*(log(8, 2)- log(28,2));
 // echo "Hasil fkfj ".$hasildfd;
 $hasildfd = -(1/28)*(log(20, 2)- log(1,2)) - (8/28)*(log(8, 2)- log(28,2));
 echo "Hasil fkfj ".$hasildfd;
+	for ($p=1; $p <=3  ; $p++) { 
+		${'ctKeJS'.$p}= 0;
+		$tambahSemuaRA = 0 ;
+		$tambahSemuaTA = 0;
+		$tambahSemuaSTA = 0 ;
+		$hasilEntropiTotalA = 0;
+		$tambahSemuaRB = 0 ;
+		$tambahSemuaTB = 0;
+		$tambahSemuaSTB = 0 ;
+		$hasilEntropiTotalB = 0;
+		$tambahSemuaRDV = 0 ;
+		$tambahSemuaTDV= 0;
+		$tambahSemuaSTDV = 0 ;
+		$hasilEntropiTotalV = 0;
+		$tambahSemuaRW = 0 ;
+		$tambahSemuaTW= 0;
+		$tambahSemuaSTW = 0 ;
+		$hasilEntropiTotalW = 0;
+		$tambahSemuaRX = 0 ;
+		$tambahSemuaTX= 0;
+		$tambahSemuaSTX = 0 ;
+		$hasilEntropiTotalX= 0;
+		$tambahSemuaRAA = 0 ;
+		$tambahSemuaTAA= 0;
+		$tambahSemuaSTAA = 0 ;
+		$hasilEntropiTotalAA = 0;
+		$tambahSemuaRAB = 0 ;
+		$tambahSemuaTAB= 0;
+		$tambahSemuaSTAB = 0 ;
+		$hasilEntropiTotalAB = 0;
+		$tambahSemuaRAC = 0 ;
+		$tambahSemuaTAC= 0;
+		$tambahSemuaSTAC = 0 ;
+		$hasilEntropiTotalAC = 0;
+		$tambahSemuaRAD = 0 ;
+		$tambahSemuaRAE = 0 ;
+		$tambahSemuaTAE= 0;
+		$tambahSemuaSTAE = 0 ;
+		$hasilEntropiTotalAE = 0;
+				$tambahSemuaRBX = 0 ;
+		$tambahSemuaTBX= 0;
+		$tambahSemuaSTBX = 0 ;
+		$hasilEntropiTotalBX = 0;
+						$tambahSemuaRBY = 0 ;
+		$tambahSemuaTBY= 0;
+		$tambahSemuaSTBY = 0 ;
+		$hasilEntropiTotalBY = 0;
+						$tambahSemuaRBZ = 0 ;
+		$tambahSemuaTBZ= 0;
+		$tambahSemuaSTBZ = 0 ;
+		$hasilEntropiTotalBZ = 0;
+						$tambahSemuaRCB = 0 ;
+		$tambahSemuaTCB= 0;
+		$tambahSemuaSTCB = 0 ;
+		$hasilEntropiTotalCB = 0;
+		$tambahSemuaRCC = 0 ;
+		$tambahSemuaTCC= 0;
+		$tambahSemuaSTCC = 0 ;
+		$hasilEntropiTotalCC = 0;
+		$tambahSemuaRCD = 0 ;
+		$tambahSemuaTCD= 0;
+		$tambahSemuaSTCD = 0 ;
+		$hasilEntropiTotalCD = 0;
+		$tambahSemuaRCE = 0 ;
+		$tambahSemuaTCE= 0;
+		$tambahSemuaSTCE = 0 ;
+		$hasilEntropiTotalCE = 0;
+		$tambahSemuaRCB = 0 ;
+		$tambahSemuaTCF= 0;
+		$tambahSemuaSTCF = 0 ;
+		$hasilEntropiTotalCF = 0;
+		$tambahSemuaRCJ = 0 ;
+		$tambahSemuaTCJ= 0;
+		$tambahSemuaSTCJ = 0 ;
+		$hasilEntropiTotalCJ = 0;
+		$tambahSemuaRCK = 0 ;
+		$tambahSemuaTCK= 0;
+		$tambahSemuaSTCK = 0 ;
+		$hasilEntropiTotalCK = 0;
+		$tambahSemuaRCL = 0 ;
+		$tambahSemuaTCL= 0;
+		$tambahSemuaSTCL = 0 ;
+		$hasilEntropiTotalCL = 0;
+		$tambahSemuaRCM = 0 ;
+		$tambahSemuaTCM= 0;
+		$tambahSemuaSTCM = 0 ;
+		$hasilEntropiTotalCM = 0;
+		$tambahSemuaRCN = 0 ;
+		$tambahSemuaTCN= 0;
+		$tambahSemuaSTCN = 0 ;
+		$hasilEntropiTotalCN = 0;
+		$tambahSemuaRCO = 0 ;
+		$tambahSemuaTCO= 0;
+		$tambahSemuaSTCO = 0 ;
+		$hasilEntropiTotalCO = 0;
+		$tambahSemuaTAD= 0;
+		$tambahSemuaSTAD = 0 ;
+		$hasilEntropiTotalAD = 0;
+		$tambahSemuaRDA = 0 ;
+		$tambahSemuaTDA= 0;
+		$tambahSemuaSTDA = 0 ;
+		$hasilEntropiTotalDA = 0;
+		$tambahSemuaRDB = 0;
+		$tambahSemuaTDB = 0;
+		$tambahSemuaSTDB = 0;
+		$hasilEntropiTotalDB = 0;
+				$tambahSemuaRDC = 0;
+		$tambahSemuaTDC = 0;
+		$tambahSemuaSTDC = 0;
+		$hasilEntropiTotalDC = 0;
+				$tambahSemuaRDF = 0;
+		$tambahSemuaTDF = 0;
+		$tambahSemuaSTDF = 0;
+		$hasilEntropiTotalDF = 0;
+				$tambahSemuaRDG = 0;
+		$tambahSemuaTDG = 0;
+		$tambahSemuaSTDG = 0;
+		$hasilEntropiTotalDG = 0;
+				$tambahSemuaRDH = 0;
+		$tambahSemuaTDH = 0;
+		$tambahSemuaSTDH = 0;
+		$hasilEntropiTotalDH = 0;
+				$tambahSemuaRDI = 0;
+		$tambahSemuaTDI = 0;
+		$tambahSemuaSTDI = 0;
+		$hasilEntropiTotalDI = 0;
+				$tambahSemuaRDJ = 0;
+		$tambahSemuaTDJ = 0;
+		$tambahSemuaSTDJ = 0;
+		$hasilEntropiTotalDJ = 0;
+				$tambahSemuaRDK = 0;
+		$tambahSemuaTDK = 0;
+		$tambahSemuaSTDK = 0;
+		$hasilEntropiTotalDK = 0;
+				$tambahSemuaRDL = 0;
+		$tambahSemuaTDL = 0;
+		$tambahSemuaSTDL = 0;
+		$hasilEntropiTotalDL = 0;
+
+		for ($y=1; $y <= 6 ; $y++) { 
+				${'ct'.$p.'Hamil'.$y} =0;
+		}
+		for ($y=15; $y <= 42 ; $y++) { 
+			${'ct'.$p.'Ui'.$y} = 0;
+		}
+		for ($x=2; $x <=20 ; $x++) { 
+			${'ct'.$p.'Ya'.$x} = 0;
+			${'ct'.$p.'Tidak'.$x} = 0;
+		${'tambahSemuaRC'.$x} = 0 ;
+		${'tambahSemuaTC'.$x} = 0;
+		${'tambahSemuaSTC'.$x} = 0 ;
+		${'hasilEntropiTotalC'.$x} = 0;
+				${'totalYaC'.$y}=0; 
+				${'totalTidakC'.$y}=0; 
+		}
+		for ($x=21; $x <=21 ; $x++) { 
+				${'ct'.$p.'L'.$x} = 0;
+				${'ct'.$p.'P'.$x} = 0;
+				${'ct'.$p.'LP'.$x} = 0;
+				$hasilInformationGainV=0;
+		}
+		for ($y=0; $y <= 4300 ; $y++) { 
+				${'ct'.$p.'W'.$y} = 0;
+				${'s'.$p.'tambahw'.$y}=0; 
+				$hasilInformationGainW=0;
+		}
+		for ($x=23; $x <=25 ; $x++) { 
+				${'ct'.$p.'YaX'.$x} = 0;
+				${'ct'.$p.'TidakX'.$x} = 0;
+				${'tambahSemuaRDX'.$x} = 0;
+				${'tambahSemuaTDX'.$x}= 0;
+				${'tambahSemuaSTDX'.$x} = 0 ;
+				${'hasilEntropiTotalX'.$x} = 0;
+		}
+		for ($y=0; $y <= 13 ; $y++) { 
+				${'ct'.$p.'HamilAA'.$y} = 0;
+				${'s'.$p.'tambahAA'.$y}=0; 
+		}
+		for ($x=27; $x <=27 ; $x++) { 
+				${'ct'.$p.'YaAB'.$x} = 0;
+				${'ct'.$p.'TidakAB'.$x} = 0;
+				$hasilInformationGainAB=0;
+		}
+		for ($y=15; $y <= 40 ; $y++) { 
+				${'ct'.$p.'HamilAC'.$y} = 0;
+				${'s'.$p.'tambahAC'.$y}=0; 
+		}
+		for ($y=3; $y <= 10 ; $y++) { 
+				${'ct'.$p.'HamilAD'.$y} = 0;
+				${'s'.$p.'tambahAD'.$y}=0; 
+		}			
+		for ($x=30; $x <=74 ; $x++) { 
+				${'ct'.$p.'YaAE'.$x} = 0;
+				${'ct'.$p.'TidakAE'.$x} = 0;
+				${'ct'.$p.'KadangAE'.$x} = 0;
+				${'ct'.$p.'TerusAE'.$x} = 0;
+				${'ct'.$p.'AdaAE'.$x} = 0;
+				${'ct'.$p.'MenurunAE'.$x} = 0;
+				${'ct'.$p.'BaikAE'.$x} = 0;
+				${'ct'.$p.'JarangAE'.$x} = 0;
+				${'ct'.$p.'AktifAE'.$x} = 0;
+				${'ct'.$p.'PernahAE'.$x} = 0;
+				${'ct'.$p.'PutihBAE'.$x} = 0;
+				${'ct'.$p.'PutihSAE'.$x} = 0;
+				${'ct'.$p.'PutihAE'.$x} = 0;
+				${'ct'.$p.'PutihKAE'.$x} = 0;
+				// 				${'ct'.$p.'YaAE'.$x} = 1;
+				// ${'ct'.$p.'TidakAE'.$x} = 1;
+				// ${'ct'.$p.'KadangAE'.$x} = 1;
+				// ${'ct'.$p.'TerusAE'.$x} = 1;
+				// ${'ct'.$p.'AdaAE'.$x} = 1;
+				// ${'ct'.$p.'MenurunAE'.$x} = 1;
+				// ${'ct'.$p.'BaikAE'.$x} = 1;
+				// ${'ct'.$p.'JarangAE'.$x} = 1;
+				// ${'ct'.$p.'AktifAE'.$x} = 1;
+				// ${'ct'.$p.'PernahAE'.$x} = 1;
+				// ${'ct'.$p.'PutihBAE'.$x} = 1;
+				// ${'ct'.$p.'PutihSAE'.$x} = 1;
+				// ${'ct'.$p.'PutihAE'.$x} = 1;
+				// ${'ct'.$p.'PutihKAE'.$x} = 1;							
+		}
+		for ($y=1; $y <= 4 ; $y++) { 
+				${'ct'.$p.'HamilBX'.$y} = 0;
+				${'s'.$p.'tambahBX'.$y}=0; 
+		}
+		for ($y=1; $y <= 1 ; $y++) { 
+				${'ct'.$p.'HamilBY'.$y} = 0;
+				${'s'.$p.'tambahBY'.$y}=0; 
+		}
+		for ($x=77; $x <=78 ; $x++) {
+				${'ct'.$p.'YaBZ'.$x} = 0;
+				${'ct'.$p.'TidakBZ'.$x} = 0;
+		}
+
+		for ($y=34; $y <= 97 ; $y++) { 
+				${'ct'.$p.'CB'.$y}=  0;
+				${'s'.$p.'tambahCB'.$y}=0; 
+		}
+		for ($y=24; $y <= 168 ; $y++) { 
+				${'ct'.$p.'CC'.$y} = 0;
+				${'s'.$p.'tambahCC'.$y}=0; 
+		}
+		for ($y=34; $y <= 168 ; $y++) { 
+				${'ct'.$p.'CD'.$y} = 0;
+				${'s'.$p.'tambahCD'.$y}=0; 
+		}
+		for ($y=12; $y <= 42 ; $y++) { 
+				${'ct'.$p.'CE'.$y} = 0;
+				${'s'.$p.'tambahCE'.$y}=0; 
+		}
+		for ($x=83; $x <=86 ; $x++) { 
+				${'ct'.$p.'YaCF'.$x} = 0;
+				${'ct'.$p.'TidakCF'.$x} = 0;
+				${'ct'.$p.'NormalCF'.$x} = 0;
+				${'ct'.$p.'BaikCF'.$x} = 0;
+				${'hasilEntropiTotalCF'.$x} = 0;
+		}
+		for ($y=80; $y <= 180 ; $y++) { 
+				${'ct'.$p.'CJ'.$y} = 0;
+				${'s'.$p.'tambahCJ'.$y}=0; 
+		}
+		for ($y=50; $y <= 90 ; $y++) { 
+				${'ct'.$p.'CK'.$y} = 0;
+				${'s'.$p.'tambahCK'.$y}=0; 
+		}
+		for ($y=26; $y <= 37 ; $y++) { 
+				${'ct'.$p.'CL'.$y} = 0;
+				${'s'.$p.'tambahCL'.$y}=0; 
+		}
+		for ($y=60; $y <= 88 ; $y++) { 
+				${'ct'.$p.'CM'.$y} = 0;
+				${'s'.$p.'tambahCM'.$y}=0; 
+		}
+		for ($y=16; $y <= 25 ; $y++) { 
+				${'ct'.$p.'CN'.$y} = 0;
+				${'s'.$p.'tambahCN'.$y}=0; 
+		}
+		for ($x=92; $x <=103 ; $x++) { 
+				${'ct'.$p.'YaCO'.$x} = 0;
+				${'ct'.$p.'TidakCO'.$x} = 0;
+				${'ct'.$p.'NormalCO'.$x} = 0;
+				${'ct'.$p.'KariesCO'.$x} = 0;
+				${'ct'.$p.'BaikCO'.$x} = 0;
+				${'ct'.$p.'CyanosisCO'.$x} = 0;
+				${'ct'.$p.'TerabaCO'.$x} = 0;
+				${'ct'.$p.'OedermaCO'.$x} = 0;
+				${'ct'.$p.'AdaCO'.$x} = 0;
+				${'hasilEntropiTotalCO'.$x} = 0;
+				${'hasilEntropiOedermaCO'.$x} = 0;
+
+				
+		}
+		for ($y=0; $y <= 38 ; $y++) { 
+				${'ct'.$p.'DA'.$y} = 0;
+				${'s'.$p.'tambahDA'.$y}=0; 
+		}
+		for ($y=2; $y <= 56 ; $y++) { 
+				${'ct'.$p.'DB'.$y} = 0;
+				${'s'.$p.'tambahDB'.$y}=0; 
+		}
+		for ($x=106; $x <=108 ; $x++) { 
+				${'ct'.$p.'YaDC'.$x} = 0;
+				${'ct'.$p.'TidakDC'.$x} = 0;
+				${'ct'.$p.'AdaDC'.$x} = 0;
+				${'ct'.$p.'NormalDC'.$x} = 0;
+				${'ct'.$p.'BujurDC'.$x} = 0;
+				${'ct'.$p.'KepalaDC'.$x} = 0;
+				${'ct'.$p.'LintangDC'.$x} = 0;
+				${'ct'.$p.'SungsangDC'.$x} = 0;
+				${'ct'.$p.'KelainanDC'.$x} = 0;
+		}
+		for ($y=0; $y <= 1 ; $y++) { 
+				${'ct'.$p.'DF'.$y} =0;
+				${'s'.$p.'tambahDF'.$y}=0; 
+		}
+		for ($y=126; $y <= 158 ; $y++) { 
+				${'ct'.$p.'DG'.$y} = 0;
+				${'s'.$p.'tambahDG'.$y}=0; 
+		}
+		for ($x=111; $x <=111 ; $x++) { 
+				${'ct'.$p.'YaDH'.$x} = 0;
+				${'ct'.$p.'TidakDH'.$x} = 0;
+				$hasilInformationGainDH=0;
+
+		}
+		${'max1DI'} = 0;
+		$idmax1DI = 0;
+		//${'idmax1DI'} = 0;
+		for ($y=7; $y <= 15 ; $y++) { 
+			for ($z=0; $z <100 ; $z++) { 
+				 $cekNilai = $y.".".$z;
+				 $floatval = floatval($cekNilai);
+				//echo "cekNilai ".$cekNilai."<br>";
+					${'ct'.$p.'DI'.$floatval} =0;{
+	        		${'max1DI'} = 0;
+	       			${'s'.$p.'tambahDI'.$floatval} = 1;
+				}
+			}
+		}
+			for ($y=0; $y <= 1 ; $y++) { 
+				${'ct'.$p.'DJ'.$y} = 0;
+				${'s'.$p.'tambahDJ'.$y} = 0;
+		}
+		for ($y=0; $y <= 1 ; $y++) { 
+				${'ct'.$p.'DK'.$y} = 0;
+				${'s'.$p.'tambahDK'.$y}=0; 
+		}
+		for ($x=115; $x <=115 ; $x++) { 
+				${'ct'.$p.'ADL'.$x} = 0;
+				${'ct'.$p.'BDL'.$x} = 0;
+				${'ct'.$p.'ODL'.$x} = 0;
+				${'ct'.$p.'ABDL'.$x} =0;
+				$hasilInformationGainDL=0;
+		}
+		// for ($x=116; $x <=116 ; $x++) { 
+		// 		${'ct'.$p.'ResikoSTDM'.$x} = 0;
+		// 		${'ct'.$p.'ResikoTDM'.$x} = 0;
+		// 		${'ct'.$p.'ResikoRDM'.$x} = 0;
+		// }
+	}
+					for ($y=1; $y <= 6 ; $y++) { 
+							${'ctHamil'.$y} =0;
+					}
+					for ($y=15; $y <= 42 ; $y++) { 
+						${'ctUi'.$y} = 0;
+					}
+					for ($x=2; $x <=20 ; $x++) { 
+						${'ctYa'.$x} = 0;
+						${'ctTidak'.$x} = 0;
+					}
+					for ($x=21; $x <=21 ; $x++) { 
+							${'ctL'.$x} = 0;
+							${'ctP'.$x} = 0;
+							${'ctLP'.$x} = 0;
+							${'ctTidakLP'.$x} = 0;
+					}
+					for ($y=0; $y <= 4300 ; $y++) { 
+							${'ctW'.$y} = 1;
+
+					}
+					for ($x=23; $x <=25 ; $x++) { 
+							${'ctYaX'.$x} = 1;
+							${'ctTidakX'.$x} = 0;
+					}
+					for ($y=0; $y <= 13 ; $y++) { 
+							${'ctHamilAA'.$y} = 0;
+					}
+					for ($x=27; $x <=27 ; $x++) { 
+							${'ctYaAB'.$x} = 0;
+							${'ctTidakAB'.$x} = 0;
+					}
+					for ($y=15; $y <= 40 ; $y++) { 
+							${'ctHamilAC'.$y} = 1;
+					}
+					for ($y=3; $y <= 10 ; $y++) { 
+							${'ctHamilAD'.$y} = 1;
+					}			
+					for ($x=30; $x <=74 ; $x++) { 
+							// ${'ctYaAE'.$x} = 0;
+							// ${'ctTidakAE'.$x} = 0;
+							// ${'ctKadangAE'.$x} = 0;
+							// ${'ctTerusAE'.$x} = 0;
+							// ${'ctAdaAE'.$x} = 0;
+							// ${'ctMenurunAE'.$x} = 0;
+							// ${'ctBaikAE'.$x} = 0;
+							// ${'ctJarangAE'.$x} = 0;
+							// ${'ctAktifAE'.$x} = 0;
+							// ${'ctPernahAE'.$x} = 0;
+							// ${'ctPutihBAE'.$x} = 0;
+							// ${'ctPutihSAE'.$x} = 0;
+							// ${'ctPutihAE'.$x} = 0;
+							// ${'ctPutihKAE'.$x} = 0;		
+														${'ctYaAE'.$x} = 1;
+							${'ctTidakAE'.$x} = 1;
+							${'ctKadangAE'.$x} = 1;
+							${'ctTerusAE'.$x} = 1;
+							${'ctAdaAE'.$x} = 1;
+							${'ctMenurunAE'.$x} = 1;
+							${'ctBaikAE'.$x} = 1;
+							${'ctJarangAE'.$x} =1;
+							${'ctAktifAE'.$x} = 1;
+							${'ctPernahAE'.$x} = 1;
+							${'ctPutihBAE'.$x} = 1;
+							${'ctPutihSAE'.$x} = 1;
+							${'ctPutihAE'.$x} = 1;
+							${'ctPutihKAE'.$x} = 1;						
+					}
+					for ($y=1; $y <= 4 ; $y++) { 
+							${'ctHamilBX'.$y} = 1;
+					}
+					for ($y=1; $y <= 1 ; $y++) { 
+							${'ctHamilBY'.$y} = 1;
+					}
+					for ($x=77; $x <=78 ; $x++) {
+							${'ctYaBZ'.$x} = 1;
+							${'ctTidakBZ'.$x} = 1;
+					}
+
+					for ($y=34; $y <= 97 ; $y++) { 
+							${'ctCB'.$y}= 1;
+					}
+					for ($y=24; $y <= 168 ; $y++) { 
+							${'ctCC'.$y} = 1;
+					}
+					for ($y=34; $y <= 168 ; $y++) { 
+							${'ctCD'.$y} = 1;
+					}
+					for ($y=12; $y <= 42 ; $y++) { 
+							${'ctCE'.$y} = 1;
+					}
+					for ($x=83; $x <=86 ; $x++) { 
+							${'ctYaCF'.$x} = 1;
+							${'ctTidakCF'.$x} = 1;
+							${'ctNormalCF'.$x} = 1;
+							${'ctBaikCF'.$x} = 1;
+					}
+					for ($y=80; $y <= 180 ; $y++) { 
+							${'ctCJ'.$y} = 1;
+					}
+					for ($y=50; $y <= 90 ; $y++) { 
+							${'ctCK'.$y} = 1;
+					}
+					for ($y=26; $y <= 37 ; $y++) { 
+							${'ctCL'.$y} = 1;
+					}
+					for ($y=60; $y <= 88 ; $y++) { 
+							${'ctCM'.$y} = 1;
+					}
+					for ($y=16; $y <= 25 ; $y++) { 
+							${'ctCN'.$y} = 1;
+					}
+					for ($x=92; $x <=103 ; $x++) { 
+							${'ctYaCO'.$x} = 1;
+							${'ctTidakCO'.$x} = 1;
+							${'ctNormalCO'.$x} = 1;
+							${'ctKariesCO'.$x} = 1;
+							${'ctBaikCO'.$x} = 1;
+							${'ctCyanosisCO'.$x} = 1;
+							${'ctTerabaCO'.$x} = 1;
+							${'ctOedermaCO'.$x} = 1;
+							${'ctAdaCO'.$x} = 1;
+					}
+					for ($y=0; $y <= 38 ; $y++) { 
+							${'ctDA'.$y} = 1;
+					}
+					for ($y=2; $y <= 56 ; $y++) { 
+							${'ctDB'.$y} = 1;
+					}
+					for ($x=106; $x <=108 ; $x++) { 
+							${'ctYaDC'.$x} = 1;
+							${'ctTidakDC'.$x} = 1;
+							${'ctNormalDC'.$x} = 1;
+							${'ctBujurDC'.$x} = 1;
+							${'ctKepalaDC'.$x} = 1;
+							${'ctLintangDC'.$x} = 1;
+							${'ctSungsangDC'.$x} = 1;
+							${'ctKelainanDC'.$x} = 1;
+					}
+					for ($y=0; $y <= 1 ; $y++) { 
+							${'ctDF'.$y} =0;
+					}
+					for ($y=126; $y <= 158 ; $y++) { 
+							${'ctDG'.$y} = 1;
+					}
+					for ($x=111; $x <=111 ; $x++) { 
+							${'ctYaDH'.$x} = 1;
+							${'ctTidakDH'.$x} = 1;
+					}
+					${'max1DI'} = 1;
+					$idmax1DI = 1;
+					//${'idmax1DI'} = 1;
+					for ($y=7; $y <= 15 ; $y++) { 
+						for ($z=0; $z <100 ; $z++) { 
+							 $cekNilai = $y.".".$z;
+							 $floatval = floatval($cekNilai);
+							//echo "cekNilai ".$cekNilai."<br>";
+								${'ctDI'.$floatval} = 1;{
+				        		${'max1DI'} = 1;
+				       			$idmax1DI = 1;
+							}
+						}
+					}
+					for ($y=0; $y <= 1 ; $y++) { 
+							${'ctDJ'.$y} = 1;
+					}
+					for ($y=0; $y <= 1 ; $y++) { 
+							${'ctDK'.$y} = 1;
+					}
+					for ($x=115; $x <=115 ; $x++) { 
+							${'ctADL'.$x} = 1;
+							${'ctBDL'.$x} = 1;
+							${'ctODL'.$x} = 1;
+							${'ctABDL'.$x} = 1;
+					}
+					// for ($x=116; $x <=116 ; $x++) { 
+					// 		${'ct'.$p.'ResikoSTDM'.$x} = 0;
+					// 		${'ct'.$p.'ResikoTDM'.$x} = 0;
+					// 		${'ct'.$p.'ResikoRDM'.$x} = 0;
+					// }
+
 for ($l=0; $l < $banyakBaris ; $l++) { 
 	for ($y=1; $y <= 6 ; $y++) { 
 		if ($nilai[$l] [0] == $y) {
@@ -602,13 +1173,13 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 			${'ctTidakAB'.$x} += $tambahTidakAB;
 			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
 				$s1tambahTidakAB = 1;
-				${'ct1TidakAB'.$x} += $tambah1TidakAB;
+				${'ct1TidakAB'.$x} += $s1tambahTidakAB;
 			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
 				$s2tambahTidakAB = 1;
-				${'ct2TidakAB'.$x} += $tambah2TidakAB;
+				${'ct2TidakAB'.$x} += $s2tambahTidakAB;
 			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
 				$s3tambahTidakAB = 1;
-				${'ct3TidakAB'.$x} += $tambah3TidakAB;
+				${'ct3TidakAB'.$x} += $s3tambahTidakAB;
 			}
 		}
 	}
@@ -776,16 +1347,16 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 				${'ct3PernahAE'.$x} += $s3tambahPernahAE;
 			}
 		}elseif($nilai[$l] [$x]=="putih bening"){
-			$tambahPutihBfAE = 1;
+			$tambahPutihBAE = 1;
 			${'ctPutihBAE'.$x} += $tambahPutihBAE;
 			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
-				$s1tambahPutihBfAE = 1;
+				$s1tambahPutihBAE = 1;
 				${'ct1PutihBAE'.$x} += $s1tambahPutihBAE;
 			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
-				$s2tambahPutihBfAE = 1;
+				$s2tambahPutihBAE = 1;
 				${'ct2PutihBAE'.$x} += $s2tambahPutihBAE;
 			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
-				$s3tambahPutihBfAE = 1;
+				$s3tambahPutihBAE = 1;
 				${'ct3PutihBAE'.$x} += $s3tambahPutihBAE;
 			}
 		}elseif($nilai[$l] [$x]=="putih susu"){
@@ -1300,13 +1871,13 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 			${'ctLintangDC'.$x} += $tambahLintangDC;
 			if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
 				$s1tambahLintangDC = 1;
-				${'ct1Lintang'.$x} += $s1tambahLintangDC;
+				${'ct1LintangDC'.$x} += $s1tambahLintangDC;
 			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
 				$s2tambahLintangDC = 1;
-				${'ct2Lintang'.$x} += $s2tambahLintangDC;
+				${'ct2LintangDC'.$x} += $s2tambahLintangDC;
 			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
 				$s3tambahLintangDC = 1;
-				${'ct3Lintang'.$x} += $s3tambahLintangDC;
+				${'ct3LintangDC'.$x} += $s3tambahLintangDC;
 			}
 		}elseif($nilai[$l] [$x]=="sungsang"){
 			$tambahSungsangDC = 1;
@@ -1364,7 +1935,7 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 				${'ct2DG'.$y} += ${'s2tambahDG'.$y};
 			}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
 				${'s3tambahDG'.$y} = 1;
-				${'ct3DG'.$y} += ${'s13ambahDG'.$y};
+				${'ct3DG'.$y} += ${'s3tambahDG'.$y};
 			}
 		}
 	}
@@ -1410,13 +1981,13 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 				${'ctDI'.$floatval} += ${'tambahDI'.$floatval};
 			    if ($nilai[$l] [116]=="Kehamilan-Resiko-Rendah") {
 			    	${'s1tambahDI'.$floatval} = 1;
-					${'ct1DI'.$y} += ${'s1tambahDJ'.$floatval};
+					${'ct1DI'.$y} += ${'s1tambahDI'.$floatval};
 				}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-Tinggi") {
 			    	${'s2tambahDI'.$floatval} = 1;
-					${'ct2DI'.$y} += ${'s2tambahDJ'.$floatval};
+					${'ct2DI'.$y} += ${'s2tambahDI'.$floatval};
 				}elseif ($nilai[$l] [116]=="Kehamilan-Resiko-SangatTinggi") {
 			    	${'s3tambahDI'.$floatval} = 1;
-					${'ct3DI'.$y} += ${'s3tambahDJ'.$floatval};
+					${'ct3DI'.$y} += ${'s3tambahDI'.$floatval};
 				}
 			}
 		}
@@ -1567,8 +2138,8 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 		${'tambahSemuaRC'.$x} = ${'ct1Ya'.$x} + ${'ct1Tidak'.$x} ;
 		${'tambahSemuaTC'.$x} = ${'ct2Ya'.$x} + ${'ct2Tidak'.$x} ;
 		${'tambahSemuaSTC'.$x} = ${'ct3Ya'.$x} + ${'ct3Tidak'.$x} ;
-		${'totalYaC'.$x} = ${'ct1Ya'.$x} +${'ct2Ya'.$x} +${'ct2Ya'.$x} ;
-		${'totalTidakC'.$x} =  ${'ct1Tidak'.$x}+ ${'ct2Tidak'.$x}+ ${'ct3Tidak'.$x};
+		${'totalYaC'.$x} = ${'ct1Ya'.$x} +${'ct2Ya'.$x} +${'ct2Ya'.$x} +1;
+		${'totalTidakC'.$x} =  ${'ct1Tidak'.$x}+ ${'ct2Tidak'.$x}+ ${'ct3Tidak'.$x}+1;
 		//echo "R ".${'tambahSemuaRC'.$x}." T ".${'tambahSemuaTC'.$x}." ST ".${'tambahSemuaSTC'.$x};
 	//	$hasildfd = -(20/28)*(log(20, 2)- log(28,2)) - (8/28)*(log(8, 2)- log(28,2));
 		//Semua
@@ -1636,7 +2207,7 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 		$tambahSemuaRW += ${'s1tambahw'.$y} ;
 		$tambahSemuaTW += ${'s2tambahw'.$y};
 		$tambahSemuaSTW += ${'s3tambahw'.$y} ;
-		${'hasilEntropiW'.$y}= - ${'s1tambahw'.$y}  /${'ctW'.$y}*(log(${'s1tambahw'.$y} ,2) - log(${'ctW'.$y}, 2)) - ${'s2tambahw'.$y} /${'ctW'.$y}*(log(${'s2tambahw'.$y} ,2) - log(${'ctW'.$y}, 2))- ${'s3tambahw'.$y}/${'ctW'.$y}*(log(${'s3tambahw'.$y}  ,2) - log(${'ctW'.$y}, 2));
+			${'hasilEntropiW'.$y}= - ${'s1tambahw'.$y}  /${'ctW'.$y}*(log(${'s1tambahw'.$y} ,2) - log(${'ctW'.$y}, 2)) - ${'s2tambahw'.$y} /${'ctW'.$y}*(log(${'s2tambahw'.$y} ,2) - log(${'ctW'.$y}, 2))- ${'s3tambahw'.$y}/${'ctW'.$y}*(log(${'s3tambahw'.$y}  ,2) - log(${'ctW'.$y}, 2));
 
 		$tempHasilEntropiTotalW = ${'ctW'.$y} /$banyakBaris*${'hasilEntropiW'.$y};
 		if (is_nan($tempHasilEntropiTotalW)) {
@@ -1665,8 +2236,8 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 		${'hasilEntropiYaX'.$x}= - ${'ct1YaX'.$x}  /${'ctYaX'.$x}*(log(${'ct1YaX'.$x} ,2) - log(${'ctYaX'.$x}, 2)) - ${'ct2YaX'.$x}/${'ctYaX'.$x}*(log(${'ct2YaX'.$x},2) - log(${'ctYaX'.$x}, 2))- ${'ct3YaX'.$x}/${'ctYaX'.$x}*(log(${'ct3YaX'.$x} ,2) - log(${'ctYaX'.$x}, 2));
 		//Tidak		
 		${'hasilEntropiTidakX'.$x}= - ${'ct1TidakX'.$x}  /${'ctTidakX'.$x}*(log(${'ct1TidakX'.$x} ,2) - log(${'ctTidakX'.$x}, 2)) - ${'ct2TidakX'.$x}/${'ctTidakX'.$x}*(log(${'ct2TidakX'.$x},2) - log(${'ctTidakX'.$x}, 2))- ${'ct3TidakX'.$x}/${'ctTidakX'.$x}*(log(${'ct3TidakX'.$x} ,2) - log(${'ctTidakX'.$x}, 2));
-		${'tempHasilEntropiTotalYaX'.$x}= ( ${'totalYaX'.$x}/$banyakBaris)*${'hasilEntropiYaX'.$x};
-		${'tempHasilEntropiTotalTidakX'.$x}=  (${'totalTidakX'.$x}/$banyakBaris)*${'hasilEntropiTidakX'.$x};
+		${'tempHasilEntropiTotalYaX'.$x}= ( ${'ctYaX'.$x}/$banyakBaris)*${'hasilEntropiYaX'.$x};
+		${'tempHasilEntropiTotalTidakX'.$x}=  (${'ctTidakX'.$x}/$banyakBaris)*${'hasilEntropiTidakX'.$x};
 		if(is_nan(${'hasilEntropiYaX'.$x}) || is_nan(${'tempHasilEntropiTotalYaX'.$x})){
 			${'hasilEntropiYaX'.$x}=0;
 			${'tempHasilEntropiTotalYaX'.$x} = 0;
@@ -1718,7 +2289,7 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 			${'hasilEntropiTidakAB'.$x}=0;
 		}
 		//Entropi Total
-		${'hasilEntropiTotalAB'.$x}= ( ${'totalYaAB'.$x}/$banyakBaris)*${'hasilEntropiYaAB'.$x}  + (${'totalTidakAB'.$x}/$banyakBaris)*${'hasilEntropiTidakAB'.$x};
+		${'hasilEntropiTotalAB'.$x}= ( ${'ctYaAB'.$x}/$banyakBaris)*${'hasilEntropiYaAB'.$x}  + (${'ctTidakAB'.$x}/$banyakBaris)*${'hasilEntropiTidakAB'.$x};
 		echo "hasilEntropiTotalAB ".${'hasilEntropiTotalAB'.$x};
 		//Information Gain
 		${'hasilInformationGainAB'.$x} = ${'hasilEntropiSemuaAB'.$x} - ${'hasilEntropiTotalAB'.$x};
@@ -1928,8 +2499,8 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 		//Tidak		
 		${'hasilEntropiTidakBZ'.$x}= - ${'ct1TidakBZ'.$x}  /${'ctTidakBZ'.$x}*(log(${'ct1TidakBZ'.$x} ,2) - log(${'ctTidakBZ'.$x}, 2)) - ${'ct2TidakBZ'.$x}/${'ctTidakBZ'.$x}*(log(${'ct2TidakBZ'.$x},2) - log(${'ctTidakBZ'.$x}, 2))- ${'ct3TidakBZ'.$x}/${'ctTidakBZ'.$x}*(log(${'ct3TidakBZ'.$x} ,2) - log(${'ctTidakBZ'.$x}, 2));
 
-		${'hasilEntropiYaBZ'.$x} = ( ${'totalYaBZ'.$x}/$banyakBaris)*${'hasilEntropiYaBZ'.$x} ;
-		${'hasilEntropiTidakBZ'.$x} = (${'totalTidakBZ'.$x}/$banyakBaris)*${'hasilEntropiTidakBZ'.$x};
+		${'hasilEntropiYaBZ'.$x} = ( ${'ctYaBZ'.$x}/$banyakBaris)*${'hasilEntropiYaBZ'.$x} ;
+		${'hasilEntropiTidakBZ'.$x} = (${'ctTidakBZ'.$x}/$banyakBaris)*${'hasilEntropiTidakBZ'.$x};
 		if(is_nan(${'hasilEntropiYaBZ'.$x})||${'hasilEntropiYaBZ'.$x}){
 			${'hasilEntropiYaBZ'.$x}=0;
 			${'hasilEntropiYaBZ'.$x}=0;
@@ -1951,7 +2522,7 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 		$tambahSemuaSTCB += ${'s3tambahCB'.$y} ;
 		${'hasilEntropiCB'.$y}= - ${'s1tambahCB'.$y}  /$banyakBaris*(log(${'s1tambahCB'.$y} ,2) - log($banyakBaris, 2)) - ${'s2tambahCB'.$y} /$banyakBaris*(log(${'s2tambahCB'.$y} ,2) - log($banyakBaris, 2))- ${'s3tambahCB'.$y}/$banyakBaris*(log(${'s3tambahCB'.$y}  ,2) - log($banyakBaris, 2));
 
-		$tempHasilEntropiTotalCB = ${'ctHamilCB'.$y} /$banyakBaris*${'hasilEntropiCB'.$y};
+		$tempHasilEntropiTotalCB = ${'ctCB'.$y} /$banyakBaris*${'hasilEntropiCB'.$y};
 		if (is_nan($tempHasilEntropiTotalCB)) {
 			$tempHasilEntropiTotalCB =0;
 		}
@@ -2047,7 +2618,7 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 
 		${'tempHasilEntropiYaCF'.$x} = (${'ctYaCF'.$x}/$banyakBaris)*${'hasilEntropiYaCF'.$x};
 		${'tempHasilEntropiTidakCF'.$x} = (${'ctTidakCF'.$x}/$banyakBaris)*${'hasilEntropiTidakCF'.$x};
-		${'tempHasilEntropiNormalCF'.$x} = (${'ctNormalF'.$x}/$banyakBaris)*${'hasilEntropiNormalCF'.$x};
+		${'tempHasilEntropiNormalCF'.$x} = (${'ctNormalCF'.$x}/$banyakBaris)*${'hasilEntropiNormalCF'.$x};
 		${'tempHasilEntropiBaikCF'.$x}= (${'ctBaikCF'.$x}/$banyakBaris)*${'hasilEntropiBaikCF'.$x};
 
 		if(is_nan(${'hasilEntropiYaCF'.$x})||${'tempHasilEntropiYaCF'.$x}){
@@ -2176,9 +2747,9 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 		$hasilInformationGainCN = $hasilEntropiSemuaCN - $hasilEntropiTotalCN;
 		echo "hasilInformationGainCN ".$hasilInformationGainCN;
 	for ($x=92; $x <=103 ; $x++) { 
-		${'tambahSemuaRCO'.$x} = ${'ct1YaCO'.$x} + ${'ct1TidakCO'.$x} + ${'ct1NormalCO'.$x} + ${'ct1BaikCO'.$x}+${'ct1KariesCO'.$x}+ ${'ct1CyonosisCO'.$x}+${'ct1TerabaCO'.$x}+ ${'ct1OedermaCO'.$x}+ ${'ct1AdaCO'.$x};
-		${'tambahSemuaTCO'.$x} = ${'ct2YaCO'.$x} + ${'ct2TidakCO'.$x} + ${'ct2NormalCO'.$x}+ ${'ct2BaikCO'.$x}+${'ct2KariesCO'.$x}+ ${'ct2CyonosisCO'.$x}+${'ct2TerabaCO'.$x}+ ${'ct2OedermaCO'.$x}+ ${'ct2AdaCO'.$x} ;
-		${'tambahSemuaSTCO'.$x} = ${'ct3YaCO'.$x} + ${'ct3TidakCO'.$x} + ${'ct3NormalCO'.$x}+ ${'ct3BaikCO'.$x} +${'ct3KariesCO'.$x}+ ${'ct3CyonosisCO'.$x}+${'ct3TerabaCO'.$x}+ ${'ct3OedermaCO'.$x}+ ${'ct3AdaCO'.$x};
+		${'tambahSemuaRCO'.$x} = ${'ct1YaCO'.$x} + ${'ct1TidakCO'.$x} + ${'ct1NormalCO'.$x} + ${'ct1BaikCO'.$x}+${'ct1KariesCO'.$x}+ ${'ct1CyanosisCO'.$x}+${'ct1TerabaCO'.$x}+ ${'ct1OedermaCO'.$x}+ ${'ct1AdaCO'.$x};
+		${'tambahSemuaTCO'.$x} = ${'ct2YaCO'.$x} + ${'ct2TidakCO'.$x} + ${'ct2NormalCO'.$x}+ ${'ct2BaikCO'.$x}+${'ct2KariesCO'.$x}+ ${'ct2CyanosisCO'.$x}+${'ct2TerabaCO'.$x}+ ${'ct2OedermaCO'.$x}+ ${'ct2AdaCO'.$x} ;
+		${'tambahSemuaSTCO'.$x} = ${'ct3YaCO'.$x} + ${'ct3TidakCO'.$x} + ${'ct3NormalCO'.$x}+ ${'ct3BaikCO'.$x} +${'ct3KariesCO'.$x}+ ${'ct3CyanosisCO'.$x}+${'ct3TerabaCO'.$x}+ ${'ct3OedermaCO'.$x}+ ${'ct3AdaCO'.$x};
 		//Semua
 		${'hasilEntropiSemuaCO'.$x}= - ${'tambahSemuaRCO'.$x} /$banyakBaris*(log(${'tambahSemuaRCO'.$x} ,2) - log($banyakBaris, 2)) - ${'tambahSemuaTCO'.$x}/$banyakBaris*(log(${'tambahSemuaTCO'.$x},2) - log($banyakBaris, 2))- ${'tambahSemuaSTCO'.$x}/$banyakBaris*(log(${'tambahSemuaSTCO'.$x},2) - log($banyakBaris, 2));
 		// echo "string ".${'hasilEntropiSemuaC'.$x};
@@ -2206,7 +2777,7 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 		${'tempHasilEntropiNormalCO'.$x} = (${'ctNormalCO'.$x}/$banyakBaris)*${'hasilEntropiNormalCO'.$x};
 		${'tempHasilEntropiBaikCO'.$x}=(${'ctBaikCO'.$x}/$banyakBaris)*${'hasilEntropiBaikCO'.$x};
 		${'tempHasilEntropiAdaCO'.$x}=(${'ctAdaCO'.$x}/$banyakBaris)*${'hasilEntropiAdaCO'.$x};
-		${'tempHasilEntropiOedermaCO'.$x}=(${'ctOedermaCO'.$x}/$banyakBaris)*${'hasilEntropiOedarmaCO'.$x};
+		${'tempHasilEntropiOedermaCO'.$x}=(${'ctOedermaCO'.$x}/$banyakBaris)*${'hasilEntropiOedermaCO'.$x};
 		${'tempHasilEntropiTerabaCO'.$x}=(${'ctTerabaCO'.$x}/$banyakBaris)*${'hasilEntropiTerabaCO'.$x};
 		${'tempHasilEntropiCyanosisCO'.$x}= (${'ctCyanosisCO'.$x}/$banyakBaris)*${'hasilEntropiCyanosisCO'.$x};
 		${'tempHasilEntropiKariesCO'.$x}= (${'ctKariesCO'.$x}/$banyakBaris)*${'hasilEntropiKariesCO'.$x};
@@ -2420,7 +2991,7 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 			${'hasilEntropiTidakDH'.$x}=0;
 		}
 		//Entropi Total
-		${'hasilEntropiTotalDH'.$x}= ( ${'totalYaDH'.$x}/$banyakBaris)*${'hasilEntropiYaDH'.$x}  + (${'totalTidakDH'.$x}/$banyakBaris)*${'hasilEntropiTidakDH'.$x};
+		${'hasilEntropiTotalDH'.$x}= ( ${'ctYaDH'.$x}/$banyakBaris)*${'hasilEntropiYaDH'.$x}  + (${'ctTidakDH'.$x}/$banyakBaris)*${'hasilEntropiTidakDH'.$x};
 		echo "hasilEntropiTotalDH ".${'hasilEntropiTotalDH'.$x};
 		//Information Gain
 		${'hasilInformationGainDH'.$x} = ${'hasilEntropiSemuaDH'.$x} - ${'hasilEntropiTotalDH'.$x};
@@ -2550,7 +3121,7 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 	// 	}
 	// }
 
-	$InformationGain = array($hasilInformationGainA, $hasilInformationGainB, $hasilInformationGainC2,$hasilInformationGainC3,$hasilInformationGainC3,$hasilInformationGainC5,$hasilInformationGainC6,$hasilInformationGainC7,$hasilInformationGainC8,$hasilInformationGainC9,$hasilInformationGainC10,$hasilInformationGainC11,$hasilInformationGainC12,$hasilInformationGainC13,$hasilInformationGainC14,$hasilInformationGainC15,$hasilInformationGainC16,$hasilInformationGainC17,$hasilInformationGainC18,$hasilInformationGainC19,$hasilInformationGainC20, $hasilInformationGainV,$InformationGainW, $hasilInformationGainX23, $hasilInformationGainX24, $hasilInformationGainX25, $hasilInformationGainAA, $hasilInformationGainAB,$hasilInformationGainAC,$hasilInformationGainAD, $hasilInformationGainAE30,$hasilInformationGainAE31,$hasilInformationGainAE32,$hasilInformationGainAE33,$hasilInformationGainAE34,$hasilInformationGainAE35,$hasilInformationGainAE36,$hasilInformationGainAE37,$hasilInformationGainAE38,$hasilInformationGainAE39,$hasilInformationGainAE40,$hasilInformationGainAE41,$hasilInformationGainAE42,$hasilInformationGainAE43,$hasilInformationGainAE44,$hasilInformationGainAE45,$hasilInformationGainAE46,$hasilInformationGainAE47,$hasilInformationGainAE48,$hasilInformationGainAE49,$hasilInformationGainAE50,$hasilInformationGainAE51,$hasilInformationGainAE52,$hasilInformationGainAE53,$hasilInformationGainAE54,$hasilInformationGainAE55,$hasilInformationGainAE56,$hasilInformationGainAE57,$hasilInformationGainAE58,$hasilInformationGainAE59,$hasilInformationGainAE60,$hasilInformationGainAE61,$hasilInformationGainAE62,$hasilInformationGainAE63,$hasilInformationGainAE64,$hasilInformationGainAE65,$hasilInformationGainAE66,$hasilInformationGainAE67,$hasilInformationGainAE68,$hasilInformationGainAE69,$hasilInformationGainAE70,$hasilInformationGainAE71,$hasilInformationGainAE72,$hasilInformationGainAE73,$hasilInformationGainAE74,$hasilInformationGainBX,$hasilInformationGainBY,$hasilInformationGainBZ77,$hasilInformationGainBZ78,$hasilInformationGainCB, $hasilInformationGainCC, $hasilInformationGainCD, $hasilInformationGainCE, $hasilInformationGainCF83,$hasilInformationGainCF84,$hasilInformationGainCF85, $hasilInformationGainCF86,$hasilInformationGainCJ, $hasilInformationGainCK, $hasilInformationGainCL, $hasilInformationGainCM, $hasilInformationGainCN,$hasilInformationGainCO92,$hasilInformationGainCO93,$hasilInformationGainCO94,$hasilInformationGainCO95,$hasilInformationGainCO96,$hasilInformationGainCO97,$hasilInformationGainCO98,$hasilInformationGainCO99,$hasilInformationGainCO100,$hasilInformationGainCO101,$hasilInformationGainCO102,$hasilInformationGainCO103,$hasilInformationGainDA,$hasilInformationGainDB,$hasilInformationGainDC106,$hasilInformationGainDC107,$hasilInformationGainDC108,$hasilInformationGainDF,$hasilInformationGainDG,$hasilInformationGainDH,$hasilInformationGainDI,$hasilInformationGainDJ,$hasilInformationGainDK, $hasilInformationGainDL);
+	$InformationGain = array($hasilInformationGainA, $hasilInformationGainB, $hasilInformationGainC2,$hasilInformationGainC3,$hasilInformationGainC3,$hasilInformationGainC5,$hasilInformationGainC6,$hasilInformationGainC7,$hasilInformationGainC8,$hasilInformationGainC9,$hasilInformationGainC10,$hasilInformationGainC11,$hasilInformationGainC12,$hasilInformationGainC13,$hasilInformationGainC14,$hasilInformationGainC15,$hasilInformationGainC16,$hasilInformationGainC17,$hasilInformationGainC18,$hasilInformationGainC19,$hasilInformationGainC20, $hasilInformationGainV,$hasilInformationGainW, $hasilInformationGainX23, $hasilInformationGainX24, $hasilInformationGainX25, $hasilInformationGainAA, $hasilInformationGainAB,$hasilInformationGainAC,$hasilInformationGainAD, $hasilInformationGainAE30,$hasilInformationGainAE31,$hasilInformationGainAE32,$hasilInformationGainAE33,$hasilInformationGainAE34,$hasilInformationGainAE35,$hasilInformationGainAE36,$hasilInformationGainAE37,$hasilInformationGainAE38,$hasilInformationGainAE39,$hasilInformationGainAE40,$hasilInformationGainAE41,$hasilInformationGainAE42,$hasilInformationGainAE43,$hasilInformationGainAE44,$hasilInformationGainAE45,$hasilInformationGainAE46,$hasilInformationGainAE47,$hasilInformationGainAE48,$hasilInformationGainAE49,$hasilInformationGainAE50,$hasilInformationGainAE51,$hasilInformationGainAE52,$hasilInformationGainAE53,$hasilInformationGainAE54,$hasilInformationGainAE55,$hasilInformationGainAE56,$hasilInformationGainAE57,$hasilInformationGainAE58,$hasilInformationGainAE59,$hasilInformationGainAE60,$hasilInformationGainAE61,$hasilInformationGainAE62,$hasilInformationGainAE63,$hasilInformationGainAE64,$hasilInformationGainAE65,$hasilInformationGainAE66,$hasilInformationGainAE67,$hasilInformationGainAE68,$hasilInformationGainAE69,$hasilInformationGainAE70,$hasilInformationGainAE71,$hasilInformationGainAE72,$hasilInformationGainAE73,$hasilInformationGainAE74,$hasilInformationGainBX,$hasilInformationGainBY,$hasilInformationGainBZ77,$hasilInformationGainBZ78,$hasilInformationGainCB, $hasilInformationGainCC, $hasilInformationGainCD, $hasilInformationGainCE, $hasilInformationGainCF83,$hasilInformationGainCF84,$hasilInformationGainCF85, $hasilInformationGainCF86,$hasilInformationGainCJ, $hasilInformationGainCK, $hasilInformationGainCL, $hasilInformationGainCM, $hasilInformationGainCN,$hasilInformationGainCO92,$hasilInformationGainCO93,$hasilInformationGainCO94,$hasilInformationGainCO95,$hasilInformationGainCO96,$hasilInformationGainCO97,$hasilInformationGainCO98,$hasilInformationGainCO99,$hasilInformationGainCO100,$hasilInformationGainCO101,$hasilInformationGainCO102,$hasilInformationGainCO103,$hasilInformationGainDA,$hasilInformationGainDB,$hasilInformationGainDC106,$hasilInformationGainDC107,$hasilInformationGainDC108,$hasilInformationGainDF,$hasilInformationGainDG,$hasilInformationGainDH,$hasilInformationGainDI,$hasilInformationGainDJ,$hasilInformationGainDK, $hasilInformationGainDL);
 	rsort($InformationGain); //reverse sort
 	//print_r($InformationGain);
 	$jumlah=count($InformationGain);  
@@ -2558,4 +3129,93 @@ for ($l=0; $l < $banyakBaris ; $l++) {
 	         echo $InformationGain[$x];  
 	         echo " ".$x."<br>";  
 	}
+	//Pembentukan Rule
+	for ($j=0; $j <401 ; $j++) { 
+		if ($nilai[$j][113] == 1) {
+				$ctKeJS1++;
+		}elseif ($nilai[$j][113] == 3) {
+			$ctKeJS2++;
+		}elseif ($nilai[$j][113] == 0) {
+			if ($nilai[$j][114] == 2) {
+				$ctKeJS1++;
+			}elseif ($nilai[$j][114] == 0) {
+				if ($nilai[$j][89] == 26) {
+					$ctKeJS3++;
+				}elseif ($nilai[$j][89] == 32) {
+					$ctKeJS1++;
+				}elseif ($nilai[$j][89] == 36) {
+					if ($nilai[$j][2] == "tidak") {
+						if ($nilai[$j][88] == 50) {
+							$ctKeJS1++;
+						}elseif ($nilai[$j][88] == 60) {
+							$ctKeJS3++;
+						}elseif ($nilai[$j][88] == 70) {
+							$ctKeJS2++;
+						}elseif ($nilai[$j][88] == 80) {
+							$ctKeJS1++;
+						}
+					}elseif ($nilai[$j][2] == "ya") {
+						$ctKeJS3++;
+					}
+					
+				}else{
+					$ctKeJS1++;
+				}
+			}
+		}
+
+	}
 ?>
+
+<!-- DONUT CHART -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Hasil Cluster/Klasifikasi C5</h3>
+            </div>
+
+                <canvas id="mycanvas" style="margin-left:35%;" width="256" height="256">
+                <!-- <canvas id="pieChart" style="height:250px"></canvas> -->
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+          </div>
+
+    </div>
+<!-- 
+<button style="margin-left:50%; font-family: 'Montserrat';" class="btn btn-success" type="button" onclick="tambahInput()">Tambah Input</button> -->
+
+<script>
+      $(document).ready(function(){
+        var ctx = $("#mycanvas").get(0).getContext("2d");
+
+        //pie chart data
+        //sum of values = 360
+        var data = [
+          {
+            value: <?php echo json_encode($ctKeJS1, JSON_NUMERIC_CHECK); ?>,
+            color: "cornflowerblue",
+            highlight: "lightskyblue",
+            label: "(Kehamilan Rendah) Sebanyak "
+          },
+          {
+            value: <?php echo json_encode($ctKeJS2, JSON_NUMERIC_CHECK); ?>,
+            color: "lightgreen",
+            highlight: "yellowgreen",
+            label: "(Kehamilan Tinggi) Sebanyak "
+          },
+          {
+            value: <?php echo json_encode($ctKeJS3, JSON_NUMERIC_CHECK); ?>,
+            color: "orange",
+            highlight: "darkorange",
+            label: "(Kehamilan Sangat Tinggi) Sebanyak "
+          }
+
+        ];
+
+        //draw
+        var piechart = new Chart(ctx).Doughnut(data);
+
+      });
+    </script>
+  </body>
+</html>
