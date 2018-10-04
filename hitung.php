@@ -83,25 +83,25 @@ if(isset($_POST['contoh'])){
           </div>
         </div>
             <br><br>
-<!--             <button style="margin-left:50%; font-family: 'Montserrat';" class="btn btn-success"><a  type="button" href="\ibuhamil\pages\charts\chartjs.php">Hitung</a></button> -->
+            <button style="margin-left:50%; font-family: 'Montserrat';" class="btn btn-success"><a  type="button" href="\ibuhamil\k-medoidMan.php">Hitung</a></button>
 <!-- DONUT CHART -->
-          <div class="box box-danger">
+<!--           <div class="box box-danger">
             <div class="box-header with-border">
               <h3 class="box-title">Chart</h3>
             </div>
 
-                <canvas id="mycanvas" style="margin-left:35%;" width="256" height="256">
+                <canvas id="mycanvas" style="margin-left:35%;" width="256" height="256"> -->
                 <!-- <canvas id="pieChart" style="height:250px"></canvas> -->
             <!-- /.box-body -->
-          </div>
+          <!-- </div> -->
           <!-- /.box -->
-          </div>
+<!--           </div>
 
-    </div>
+    </div> -->
 <!-- 
 <button style="margin-left:50%; font-family: 'Montserrat';" class="btn btn-success" type="button" onclick="tambahInput()">Tambah Input</button> -->
 
-<script>
+<!-- <script>
       $(document).ready(function(){
         var ctx = $("#mycanvas").get(0).getContext("2d");
 
@@ -168,6 +168,6 @@ if(isset($_POST['contoh'])){
         var piechart = new Chart(ctx).Doughnut(data);
 
       });
-    </script>
+    </script> -->
   </body>
 </html>

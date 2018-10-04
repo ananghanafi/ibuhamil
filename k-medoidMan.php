@@ -1,3 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Algoritma K-Medoids</title>
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="library/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="library/bootstrap/css/bootstrap.css">
+    <link href="library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="css/custom.css">
+     <link href="style.css" rel="stylesheet">
+    <script src="jquery-2.1.4.min.js"></script>
+    <script src="Chart.js"></script>
+
+
+  </head>
+
+  <body id="bodyhitung">
+    <div class="wrapper">
+      <div class="container" id="container-hitung">
+        <br><br>
+
+        <ul class="breadcrumb">
+          <li><a style="font-family: 'Montserrat';" href="index.php">Home</a></li>
+          <li><a style="font-family: 'Montserrat';" href="hitung.php">Hitung</a></li>
+          <li><a style="font-family: 'Montserrat';" href="hitung.php">Medoids</a></li>
+        </ul>
 <?php
 
 
@@ -413,13 +444,189 @@ $nilai=array(
 
 ); 
 
-echo"<strong>Nilai Centroid (Random) </strong><br>";
+//echo"<strong>Nilai Centroid (Random) </strong><br>";
 // for ($j=0; $j <401 ; $j++) { 
 // 		for ($i=0; $i < 117 ; $i++) { 
 // //	echo $nilai[$j] [$i].", ";
 // 	} 
 // 	echo "<br>"."Sebanyak $j"."<br>";
 // }
+//Insialisasi
+				for ($p=1; $p <=3  ; $p++) { 
+					for ($y=1; $y <= 6 ; $y++) { 
+							${'modus'.$p.'Hamil'.$y} =0;
+					}
+					for ($y=15; $y <= 42 ; $y++) { 
+						${'modus'.$p.'Ui'.$y} = 0;
+					}
+					for ($x=2; $x <=20 ; $x++) { 
+						${'modus'.$p.'Ya'.$x} = 0;
+						${'modus'.$p.'Tidak'.$x} = 0;
+					}
+					for ($x=21; $x <=21 ; $x++) { 
+							${'modus'.$p.'L'.$x} = 0;
+							${'modus'.$p.'P'.$x} = 0;
+							${'modus'.$p.'TidakLP'.$x} = 0;
+					}
+					for ($y=0; $y <= 4300 ; $y++) { 
+							${'modus'.$p.'W'.$y} = 0;
+
+					}
+					for ($x=23; $x <=25 ; $x++) { 
+							${'modus'.$p.'YaX'.$x} = 0;
+							${'modus'.$p.'TidakX'.$x} = 0;
+					}
+					for ($y=0; $y <= 13 ; $y++) { 
+							${'modus'.$p.'HamilAA'.$y} = 0;
+					}
+					for ($x=27; $x <=27 ; $x++) { 
+							${'modus'.$p.'YaAB'.$x} = 0;
+							${'modus'.$p.'TidakAB'.$x} = 0;
+					}
+					for ($y=15; $y <= 40 ; $y++) { 
+							${'modus'.$p.'HamilAC'.$y} = 0;
+					}
+					for ($y=3; $y <= 10 ; $y++) { 
+							${'modus'.$p.'HamilAD'.$y} = 0;
+					}			
+					for ($x=30; $x <=74 ; $x++) { 
+							${'modus'.$p.'YaAE'.$x} = 0;
+							${'modus'.$p.'TidakAE'.$x} = 0;
+							${'modus'.$p.'KadangAE'.$x} = 0;
+							${'modus'.$p.'TerusAE'.$x} = 0;
+							${'modus'.$p.'AdaAE'.$x} = 0;
+							${'modus'.$p.'MenurunAE'.$x} = 0;
+							${'modus'.$p.'BaikAE'.$x} = 0;
+							${'modus'.$p.'JarangAE'.$x} = 0;
+							${'modus'.$p.'AktifAE'.$x} = 0;
+							${'modus'.$p.'PernahAE'.$x} = 0;
+							${'modus'.$p.'PutihBAE'.$x} = 0;
+							${'modus'.$p.'PutihSAE'.$x} = 0;
+							${'modus'.$p.'PutihAE'.$x} = 0;
+							${'modus'.$p.'PutihKAE'.$x} = 0;						
+					}
+					for ($y=1; $y <= 4 ; $y++) { 
+							${'modus'.$p.'HamilBX'.$y} = 0;
+					}
+					for ($y=1; $y <= 1 ; $y++) { 
+							${'modus'.$p.'HamilBY'.$y} = 0;
+					}
+					for ($x=77; $x <=78 ; $x++) {
+							${'modus'.$p.'YaBZ'.$x} = 0;
+							${'modus'.$p.'TidakBZ'.$x} = 0;
+					}
+
+					for ($y=34; $y <= 97 ; $y++) { 
+							${'modus'.$p.'CB'.$y}=  0;
+					}
+					for ($y=24; $y <= 168 ; $y++) { 
+							${'modus'.$p.'CC'.$y} = 0;
+					}
+					for ($y=34; $y <= 168 ; $y++) { 
+							${'modus'.$p.'CD'.$y} = 0;
+					}
+					for ($y=12; $y <= 42 ; $y++) { 
+							${'modus'.$p.'CE'.$y} = 0;
+					}
+					for ($x=83; $x <=86 ; $x++) { 
+							${'modus'.$p.'YaCF'.$x} = 0;
+							${'modus'.$p.'TidakCF'.$x} = 0;
+							${'modus'.$p.'NormalCF'.$x} = 0;
+							${'modus'.$p.'BaikCF'.$x} = 0;
+					}
+					for ($y=80; $y <= 180 ; $y++) { 
+							${'modus'.$p.'CJ'.$y} = 0;
+					}
+					for ($y=50; $y <= 90 ; $y++) { 
+							${'modus'.$p.'CK'.$y} = 0;
+					}
+					for ($y=26; $y <= 37 ; $y++) { 
+							${'modus'.$p.'CL'.$y} = 0;
+					}
+					for ($y=60; $y <= 88 ; $y++) { 
+							${'modus'.$p.'CM'.$y} = 0;
+					}
+					for ($y=16; $y <= 25 ; $y++) { 
+							${'modus'.$p.'CN'.$y} = 0;
+					}
+					for ($x=92; $x <=103 ; $x++) { 
+							${'modus'.$p.'YaCO'.$x} = 0;
+							${'modus'.$p.'TidakCO'.$x} = 0;
+							${'modus'.$p.'NormalCO'.$x} = 0;
+							${'modus'.$p.'KariesCO'.$x} = 0;
+							${'modus'.$p.'BaikCO'.$x} = 0;
+							${'modus'.$p.'CyanosisCO'.$x} = 0;
+							${'modus'.$p.'TerabaCO'.$x} = 0;
+							${'modus'.$p.'OedermaCO'.$x} = 0;
+							${'modus'.$p.'AdaCO'.$x} = 0;
+					}
+					for ($y=0; $y <= 38 ; $y++) { 
+							${'modus'.$p.'DA'.$y} = 0;
+					}
+					for ($y=2; $y <= 56 ; $y++) { 
+							${'modus'.$p.'DB'.$y} = 0;
+					}
+					for ($x=106; $x <=108 ; $x++) { 
+							${'modus'.$p.'YaDC'.$x} = 0;
+							${'modus'.$p.'TidakDC'.$x} = 0;
+							${'modus'.$p.'NormalDC'.$x} = 0;
+							${'modus'.$p.'BujurDC'.$x} = 0;
+							${'modus'.$p.'KepalaDC'.$x} = 0;
+							${'modus'.$p.'LintangDC'.$x} = 0;
+							${'modus'.$p.'SungsangDC'.$x} = 0;
+							${'modus'.$p.'KelainanDC'.$x} = 0;
+					}
+					for ($y=0; $y <= 1 ; $y++) { 
+							${'modus'.$p.'DF'.$y} =0;
+					}
+					for ($y=126; $y <= 158 ; $y++) { 
+							${'modus'.$p.'DG'.$y} = 0;
+					}
+					for ($x=111; $x <=111 ; $x++) { 
+							${'modus'.$p.'YaDH'.$x} = 0;
+							${'modus'.$p.'TidakDH'.$x} = 0;
+					}
+					${'max1DI'} = 0;
+					$idmax1DI = 0;
+					//${'idmax1DI'} = 0;
+					for ($y=7; $y <= 15 ; $y++) { 
+						for ($z=0; $z <100 ; $z++) { 
+							 $cekNilai = $y.".".$z;
+							 $floatval = floatval($cekNilai);
+							//echo "cekNilai ".$cekNilai."<br>";
+								${'modus'.$p.'DI'.$floatval} =0;{
+				        		${'max1DI'} = 0;
+				       			$idmax1DI = 0;
+							}
+						}
+					}
+					for ($y=0; $y <= 1 ; $y++) { 
+							${'modus'.$p.'DJ'.$y} = 0;
+					}
+					for ($y=0; $y <= 1 ; $y++) { 
+							${'modus'.$p.'DK'.$y} = 0;
+					}
+					for ($x=115; $x <=115 ; $x++) { 
+							${'modus'.$p.'ADL'.$x} = 0;
+							${'modus'.$p.'BDL'.$x} = 0;
+							${'modus'.$p.'ODL'.$x} = 0;
+							${'modus'.$p.'ABDL'.$x} =0;
+					}
+					for ($x=116; $x <=116 ; $x++) { 
+							${'modus'.$p.'ResikoSTDM'.$x} = 0;
+							${'modus'.$p.'ResikoTDM'.$x} = 0;
+							${'modus'.$p.'ResikoRDM'.$x} = 0;
+					}
+					${'cekBanyakCluster'.$p}=0;
+					${'nilaiKeJs'.$p} = 0;
+					for ($k=0; $k <401 ; $k++) { 
+
+						// ${'barisCluster'.$p} [$k]=array(); 
+						${'barisCluster1'.$k} =0;
+						${'barisCluster2'.$k} =0;
+						//${'barisCluster'.$p} [$k]=0; 
+					}
+				}
 
 //Mau menampilkan nilai centroid Random
 
@@ -428,6 +635,7 @@ $k=0;
 $cekCentroid1 = " ";
 $cekCentroid2 = " ";
 $cekCentroid3 = " ";
+
 while ( $k < 100 ) {
 	$acak = rand(0,401);
 	//echo "acak ".$acak;
@@ -457,25 +665,26 @@ while ( $k < 100 ) {
 
 }
 //Penampilan Centroid 1,2,3
-echo "ambilCentroid 1 "."<br>";
-for ($k=0; $k < 117  ; $k++) { 
-echo "".$ambilCentroidBaru1 [$k].", " ;
-}
-echo"<hr>";
-echo "ambilCentroid 2 "."<br>";
-for ($k=0; $k < 117  ; $k++) { 
-echo "".$ambilCentroidBaru2 [$k].", " ;
+// echo "ambilCentroid 1 "."<br>";
+// for ($k=0; $k < 117  ; $k++) { 
+// echo "".$ambilCentroidBaru1 [$k].", " ;
+// }
+// echo"<hr>";
+// echo "ambilCentroid 2 "."<br>";
+// for ($k=0; $k < 117  ; $k++) { 
+// echo "".$ambilCentroidBaru2 [$k].", " ;
 	
-}
-echo"<hr>";
-echo "ambilCentroid 3 "."<br>";
-for ($k=0; $k < 117  ; $k++) { 
-echo "".$ambilCentroidBaru3 [$k].", " ;
+// }
+// echo"<hr>";
+// echo "ambilCentroid 3 "."<br>";
+// for ($k=0; $k < 117  ; $k++) { 
+// echo "".$ambilCentroidBaru3 [$k].", " ;
 	
-}
-echo "<br>";
-echo "<hr>";
+// }
+// echo "<br>";
+//echo "<hr>";
 		//Menghitung clustering di kelas Kehamilan-Resiko-Rendah
+$SLamaCentroid1 = 0;
 		$nilaiCentroid1=0;
 		$tempNum=0;
 		for ($j=0; $j <401 ; $j++) { 
@@ -512,8 +721,9 @@ echo "<hr>";
 			$SLamaCentroid1 +=$nilaiHasilCentroid1; 
 			//echo "Nilai centroid1 "."Baris ke ".$j." hasil ".$nilaiTotalCentroid1[$j]."<br>";
 		}
-		echo "<hr>";
+		//echo "<hr>";
 		//Menghitung clustering di kelas Kehamilan-Resiko-Tinggi
+		$SLamaCentroid2 =0;
 		$nilaiCentroid2=0;
 		$tempNum2=0;
 		for ($j=0; $j <401 ; $j++) { 
@@ -549,8 +759,9 @@ echo "<hr>";
 			$nilaiTotalCentroid2[$j]=$nilaiHasilCentroid2;
 			$SLamaCentroid2 +=$nilaiHasilCentroid2; 
 		}
-		echo "<hr>";
+		//echo "<hr>";
 		//Menghitung clustering di kelas Kehamilan-Resiko-SangatTinggi
+		$SLamaCentroid3 = 0;
 		$nilaiCentroid3=0;
 		$tempNum3=0;
 		for ($j=0; $j <401 ; $j++) { 
@@ -594,7 +805,7 @@ echo "<hr>";
 		$Slama=$SLamaCentroid1+ $SLamaCentroid2+ $SLamaCentroid3;
 //echo"<strong>Nilai Simple Matching (Kategorik) </strong><br>";
 for ($iterasi=1; $iterasi < 10; $iterasi++) { 
-	echo "Iterasi ke ".$iterasi." Ambil ".$ambilCentroidBaru1 [0]." Ambil ".$ambilCentroidBaru2 [0]." Ambil ".$ambilCentroidBaru3 [0];
+//	echo "Iterasi ke ".$iterasi." Ambil ".$ambilCentroidBaru1 [0]." Ambil ".$ambilCentroidBaru2 [0]." Ambil ".$ambilCentroidBaru3 [0];
 			$Sbaru = 0;
 			$S = 0;
 			$SBaruCentroidBaru1 = 0;
@@ -605,10 +816,10 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 // ini_set('max_execution_time', 300);
 	//	 				$Slama = 0;
 	//$Sbaru = 0;
-		 echo "SLama ". $Slama;
+		// echo "SLama ". $Slama;
 
 		 // $Slama = $SLamaCentroid1+ $SLamaCentroid2+ $SLamaCentroid3;
-		echo "<hr>";
+		//echo "<hr>";
 		// $cekBanyakCluster1 = 0;
 		// $cekBanyakCluster2 = 0;
 		// $cekBanyakCluster3 = 0;
@@ -624,9 +835,11 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 			if($nilaiTerkecil[$l]==$nilaiTotalCentroid1[$l]){
 			//	echo "Baris ke ".$l." Ikut Cluster 1 "."<br>";
 				$ikutCluster1[$l] = $nilaiTerkecil[$l]; 
-				 $barisCluster1[$l] = $l;
+				// $barisCluster1[$l] = $l;
+				${'barisCluster1'.$l}=$l;
+			//	${'barisCluster1'.$l} = $l;
 
-				echo "Cluster1 "."<br>";
+				// echo "Cluster1 "."<br>";
 				// for ($i=0; $i <117 ; $i++) { 
 				// 	echo "".$nilai[$l] [$i].", ";
 				// }
@@ -739,7 +952,7 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 							$tambahPernahAE = 1;
 							${'modus1PernahAE'.$x} += $tambahPernahAE;
 						}elseif($nilai[$l] [$x]=="putih bening"){
-							$tambahPutihBfAE = 1;
+							$tambahPutihBAE = 1;
 							${'modus1PutihBAE'.$x} += $tambahPutihBAE;
 						}elseif($nilai[$l] [$x]=="putih susu"){
 							$tambahPutihSAE = 1;
@@ -900,7 +1113,7 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 							${'modus1KepalaDC'.$x} += $tambahKepalaDC;
 						}elseif($nilai[$l] [$x]=="lintang"){
 							$tambahLintangDC = 1;
-							${'modus1Lintang'.$x} += $tambahLintangDC;
+							${'modus1LintangDC'.$x} += $tambahLintangDC;
 						}elseif($nilai[$l] [$x]=="sungsang"){
 							$tambahSungsangDC = 1;
 							${'modus1SungsangDC'.$x} += $tambahSungsangDC;
@@ -1011,8 +1224,10 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 				// for ($i=0; $i <117 ; $i++) { 
 				// 	$cluster2 [$l][$i] = $nilai[$l] [$i];
 				// }
-				 $barisCluster2[$l] = $l;
-				echo "Cluster2 "."<br>";
+								//$barisCluster2=$l;
+				${'barisCluster2'.$l}=$l;
+				// $barisCluster2[$l] = $l;
+				// echo "Cluster2 "."<br>";
 				// for ($i=0; $i <117 ; $i++) { 
 				// 	echo "".$nilai[$l] [$i].", ";
 				// }
@@ -1032,7 +1247,7 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 					for ($x=2; $x <=20 ; $x++) { 
 						if($nilai[$l] [$x]=="ya"){
 							$tambahYaT = 1;
-							${'modusYa'.$x} += $tambahYaT;
+							${'modus2Ya'.$x} += $tambahYaT;
 						}elseif($nilai[$l] [$x]=="tidak"){
 							$tambahTidakT = 1;
 							${'modus2Tidak'.$x} += $tambahTidakT;
@@ -1074,7 +1289,7 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 					for ($x=27; $x <=27 ; $x++) { 
 						if($nilai[$l] [$x]=="ya"){
 							$tambahYaABT = 1;
-							${'modus2YaABT'.$x} += $tambahYaABT;
+							${'modus2YaAB'.$x} += $tambahYaABT;
 						}elseif($nilai[$l] [$x]=="tidak"){
 							$tambahTidakABT = 1;
 							${'modus2TidakAB'.$x} += $tambahTidakABT;
@@ -1113,7 +1328,7 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 							${'modus2MenurunAE'.$x} += $tambahMenurunAET;
 						}elseif($nilai[$l] [$x]=="baik"){
 							$tambahBaikAET = 1;
-							${'modus2BaikAET'.$x} += $tambahBaikAET;
+							${'modus2BaikAE'.$x} += $tambahBaikAET;
 						}elseif($nilai[$l] [$x]=="jarang"){
 							$tambahJarangAET = 1;
 							${'modus2JarangAE'.$x} += $tambahJarangAET;
@@ -1124,7 +1339,7 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 							$tambahPernahAET = 1;
 							${'modus2PernahAE'.$x} += $tambahPernahAET;
 						}elseif($nilai[$l] [$x]=="putih bening"){
-							$tambahPutihBfAET = 1;
+							$tambahPutihBAET = 1;
 							${'modus2PutihBAE'.$x} += $tambahPutihBAET;
 						}elseif($nilai[$l] [$x]=="putih susu"){
 							$tambahPutihSAET = 1;
@@ -1192,10 +1407,10 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 							${'modus2TidakCF'.$x} += $tambahTidakCFT;
 						}elseif($nilai[$l] [$x]=="normal"){
 							$tambahTidakCFT = 1;
-							${'modusNormalCF'.$x} += $tambahTidakCFT;
+							${'modus2NormalCF'.$x} += $tambahTidakCFT;
 						}elseif($nilai[$l] [$x]=="baik"){
 							$tambahTidakCF = 1;
-							${'modus1BaikCF'.$x} += $tambahTidakCF;
+							${'modus2BaikCF'.$x} += $tambahTidakCF;
 						}
 					}
 					for ($y=80; $y <= 180 ; $y++) { 
@@ -1285,7 +1500,7 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 							${'modus2KepalaDC'.$x} += $tambahKepalaDCT;
 						}elseif($nilai[$l] [$x]=="lintang"){
 							$tambahLintangDCT = 1;
-							${'modus2Lintang'.$x} += $tambahLintangDCT;
+							${'modus2LintangDC'.$x} += $tambahLintangDCT;
 						}elseif($nilai[$l] [$x]=="sungsang"){
 							$tambahSungsangDCT = 1;
 							${'modus2SungsangDC'.$x} += $tambahSungsangDCT;
@@ -1365,7 +1580,7 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 							${'modus2BDL'.$x} += $tambahBDLT;
 						}elseif($nilai[$l] [$x]=="O"){
 							$tambahODLT = 1;
-							${'modusODL'.$x} += $tambahODLT;
+							${'modus2ODL'.$x} += $tambahODLT;
 						}elseif($nilai[$l] [$x]=="AB"){
 							$tambahABDLT = 1;
 							${'modus2ABDL'.$x} += $tambahABDLT;
@@ -1386,8 +1601,10 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 			}else{
 				//echo "Baris ke ".$l." Ikut Cluster 3 "."<br>";
 				$cekBanyakCluster3 ++;
-				echo "Cluster3 "."<br>";
-				 $barisCluster3[$l] = $l;
+				// echo "Cluster3 "."<br>";
+				//$barisCluster3=$l;
+				${'barisCluster3'.$l}=$l;
+				 //$barisCluster3[$l] = $l;
 				//$ikutCluster3[$l] = $nilaiTerkecil[$l]; 
 				// for ($i=0; $i <117 ; $i++) { 
 				// 	$cluster3 [$l][$i] = $nilai[$l] [$i];
@@ -1402,6 +1619,7 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 				// for ($i=0; $i < 117 ; $i++) { 
 				// echo $nilai[$l] [$i].", ";
 				// } 
+
 				 $barisCluster3 = $l;
 				//Penentuan nilai modus setiap kolom di cluster sangat tinggi
 					for ($y=1; $y <= 6 ; $y++) { 
@@ -1506,12 +1724,12 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 							${'modus3JarangAE'.$x} += $tambahJarangAEST;
 						}elseif($nilai[$l] [$x]=="aktif"){
 							$tambahAktifAEST = 1;
-							${'modus3AktifAEST'.$x} += $tambahAktifAEST;
+							${'modus3AktifAE'.$x} += $tambahAktifAEST;
 						}elseif($nilai[$l] [$x]=="pernah"){
 							$tambahPernahAE = 1;
 							${'modus1PernahAE'.$x} += $tambahPernahAE;
 						}elseif($nilai[$l] [$x]=="putih bening"){
-							$tambahPutihBfAEST = 1;
+							$tambahPutihBAEST = 1;
 							${'modus3PutihBAE'.$x} += $tambahPutihBAEST;
 						}elseif($nilai[$l] [$x]=="putih susu"){
 							$tambahPutihSAEST = 1;
@@ -1536,10 +1754,11 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 							${'modus3HamilBY'.$y} += ${'tambahBYST'.$y};
 						}
 					}
+					$tambahYaBZST = 0;
 					for ($x=77; $x <=78 ; $x++) { 
 						if($nilai[$l] [$x]=="ya"){
 							$tambahYaBZST = 1;
-							${'modus3YaBZST'.$x} += $tambahYaBZT;
+							${'modus3YaBZ'.$x} += $tambahYaBZST;
 						}elseif($nilai[$l] [$x]=="tidak"){
 							$tambahTidakBZST = 1;
 							${'modus3TidakBZ'.$x} += $tambahTidakBZST;
@@ -1638,7 +1857,7 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 							$tambahOedermaCOST = 1;
 							${'modus3OedermaCO'.$x} += $tambahOedermaCOST;
 						}elseif($nilai[$l] [$x]=="ada"){
-							$tambahAdaCOT = 1;
+							$tambahAdaCOST = 1;
 							${'modus3AdaCO'.$x} += $tambahAdaCOST;
 						}
 					}
@@ -1672,7 +1891,7 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 							${'modus3KepalaDC'.$x} += $tambahKepalaDCST;
 						}elseif($nilai[$l] [$x]=="lintang"){
 							$tambahLintangDCST = 1;
-							${'modus3Lintang'.$x} += $tambahLintangDCST;
+							${'modus3LintangDC'.$x} += $tambahLintangDCST;
 						}elseif($nilai[$l] [$x]=="sungsang"){
 							$tambahSungsangDCST = 1;
 							${'modus3SungsangDC'.$x} += $tambahSungsangDCST;
@@ -2127,7 +2346,7 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 				}
 				for ($x=92; $x <=103 ; $x++) { 
 				${'nilaiMax'.$x} = max(${'modus'.$t.'YaCO'.$x},${'modus'.$t.'TidakCO'.$x},
-									${'modus'.$t.'NormalCO'.$x},${'modus'.$t.'BaikCO'.$x},${'modus'.$t.'KariesCO'.$x},${'modus'.$t.'CyanosisCO'.$x},${'modus'.$t.'TerabaCO'.$x},${'modus'.$t.'OedermaCO'.$x},${'modus'.$t.'AdaCO'.$x});
+									${'modus'.$t.'NormalCO'.$x},${'modus'.$t.'KariesCO'.$x},${'modus'.$t.'CyanosisCO'.$x},${'modus'.$t.'TerabaCO'.$x},${'modus'.$t.'OedermaCO'.$x},${'modus'.$t.'AdaCO'.$x});
 					if (${'nilaiMax'.$x} == ${'modus'.$t.'YaCO'.$x}) {
 						${'max'.$t.'CO'} [$x] = "ya";
 					}elseif (${'nilaiMax'.$x} == ${'modus'.$t.'TidakCO'.$x}) {
@@ -2280,29 +2499,29 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 		//	}
 			}
 
-		echo "ambilCentroidBaru 1 "."<br>";
+		//echo "ambilCentroidBaru 1 "."<br>";
 
 		for ($k=1; $k <= 3  ; $k++) { 
 		// 		echo "Cek coba W ".${'idmax'.$k.'DI'}." Dan L ".$nilaiMax." Dan Tidak ".${'max1DI'}." Dan Tidak ".${'modus'.$t.'PutihSAE74'};
 		${'ambilCentroidBaru'.$k} = array(${'idmax'.$k.'A'},${'idmax'.$k.'B'},"".${'max'.$k.'C'} [2],"".${'max'.$k.'C'} [3],"".${'max'.$k.'C'} [4],"".${'max'.$k.'C'} [5],"".${'max'.$k.'C'} [6],"".${'max'.$k.'C'} [7],"".${'max'.$k.'C'} [8],"".${'max'.$k.'C'} [9],"".${'max'.$k.'C'} [10],"".${'max'.$k.'C'} [11],"".${'max'.$k.'C'} [12],"".${'max'.$k.'C'} [13],"".${'max'.$k.'C'} [14],"".${'max'.$k.'C'} [15],"".${'max'.$k.'C'} [16],"".${'max'.$k.'C'} [17],"".${'max'.$k.'C'} [18],"".${'max'.$k.'C'} [19],"".${'max'.$k.'C'} [20],"".${'max'.$k.'V'} [21],${'idmax'.$k.'W'},"".${'max'.$k.'X'} [23],"".${'max'.$k.'X'} [24],"".${'max'.$k.'X'} [25],"".${'idmax'.$k.'AA'},"".${'max'.$k.'AB'}[27],${'idmax'.$k.'AC'},${'idmax'.$k.'AD'},"".${'max'.$k.'AE'} [30],"".${'max'.$k.'AE'} [31],"".${'max'.$k.'AE'} [32],"".${'max'.$k.'AE'} [33],"".${'max'.$k.'AE'} [34],"".${'max'.$k.'AE'} [35],"".${'max'.$k.'AE'} [36],"".${'max'.$k.'AE'} [37],"".${'max'.$k.'AE'} [38],"".${'max'.$k.'AE'} [39],"".${'max'.$k.'AE'} [40],"".${'max'.$k.'AE'} [41],"".${'max'.$k.'AE'} [42],"".${'max'.$k.'AE'} [43],"".${'max'.$k.'AE'} [44],"".${'max'.$k.'AE'} [45],"".${'max'.$k.'AE'} [46],"".${'max'.$k.'AE'} [47],"".${'max'.$k.'AE'} [48],"".${'max'.$k.'AE'} [49],"".${'max'.$k.'AE'} [50],"".${'max'.$k.'AE'} [51],"".${'max'.$k.'AE'} [52],"".${'max'.$k.'AE'} [53],"".${'max'.$k.'AE'} [54],"".${'max'.$k.'AE'} [55],"".${'max'.$k.'AE'} [56],"".${'max'.$k.'AE'} [57],"".${'max'.$k.'AE'} [58],"".${'max'.$k.'AE'} [59],"".${'max'.$k.'AE'} [60],"".${'max'.$k.'AE'} [61],"".${'max'.$k.'AE'} [62],"".${'max'.$k.'AE'} [63],"".${'max'.$k.'AE'} [64],"".${'max'.$k.'AE'} [65],"".${'max'.$k.'AE'} [66],"".${'max'.$k.'AE'} [67],"".${'max'.$k.'AE'} [68],"".${'max'.$k.'AE'} [69],"".${'max'.$k.'AE'} [70],"".${'max'.$k.'AE'} [71],"".${'max'.$k.'AE'} [72],"".${'max'.$k.'AE'} [73],"".${'max'.$k.'AE'} [74],${'idmax'.$k.'BX'},${'idmax'.$k.'BY'},"".${'max'.$k.'BZ'} [77],"".${'max'.$k.'BZ'} [78],${'idmax'.$k.'CB'},${'idmax'.$k.'CC'},${'idmax'.$k.'CD'},${'idmax'.$k.'CE'},"".${'max'.$k.'CF'} [83],"".${'max'.$k.'CF'} [84],"".${'max'.$k.'CF'} [85],"".${'max'.$k.'CF'} [86],${'idmax'.$k.'CJ'},${'idmax'.$k.'CK'},${'idmax'.$k.'CL'},${'idmax'.$k.'CM'},${'idmax'.$k.'CN'},"".${'max'.$k.'CO'} [92],"".${'max'.$k.'CO'} [93],"".${'max'.$k.'CO'} [94],"".${'max'.$k.'CO'} [95],"".${'max'.$k.'CO'} [96],"".${'max'.$k.'CO'} [97],"".${'max'.$k.'CO'} [98],"".${'max'.$k.'CO'} [99],"".${'max'.$k.'CO'} [100],"".${'max'.$k.'CO'} [101],"".${'max'.$k.'CO'} [102],"".${'max'.$k.'CO'} [103],${'idmax'.$k.'DA'},${'idmax'.$k.'DB'},"".${'max'.$k.'DC'} [106],"".${'max'.$k.'DC'} [107],"".${'max'.$k.'DC'} [108],${'idmax'.$k.'DF'},${'idmax'.$k.'DG'},"".${'max'.$k.'DH'}[111],${'idmax'.$k.'DI'},${'idmax'.$k.'DJ'},${'idmax'.$k.'DK'},"".${'max'.$k.'DL'} [115],"".${'max'.$k.'DM'} [116]) ;
 		}
-		echo "<hr>";
-		echo "ambilCentroidBaru 1 "."<hr>";
-		for ($i=0; $i <117 ; $i++) { 
-			echo "".$ambilCentroidBaru1 [$i].",";
-		}
-		echo "ambilCentroidBaru 2 "."<hr>";
-		for ($i=0; $i <117 ; $i++) { 
-			echo "".$ambilCentroidBaru2 [$i].",";
-		}
-		echo "ambilCentroidBaru 3 "."<hr>";
-		for ($i=0; $i <117 ; $i++) { 
-			echo "".$ambilCentroidBaru3 [$i].",";
-		}
+	//	echo "<hr>";
+		//echo "ambilCentroidBaru 1 "."<hr>";
+		// for ($i=0; $i <117 ; $i++) { 
+		// 	echo "".$ambilCentroidBaru1 [$i].",";
+		// }
+		//echo "ambilCentroidBaru 2 "."<hr>";
+		// for ($i=0; $i <117 ; $i++) { 
+		// 	echo "".$ambilCentroidBaru2 [$i].",";
+		// }
+		//echo "ambilCentroidBaru 3 "."<hr>";
+		// for ($i=0; $i <117 ; $i++) { 
+		// 	echo "".$ambilCentroidBaru3 [$i].",";
+		// }
 //			$CeknilaiTerkecil= array($nilaiTotalCentroid1[$l],$nilaiTotalCentroid2[$l],$nilaiTotalCentroid3[$l]);
 		for ($j=0; $j < 401 ; $j++) { 
-			if ($barisCluster1[$j] == $j) {
-				echo "baris ke ".$j." Cluster 1";
+			if (${'barisCluster1'.$j} == $j) {
+				//echo "baris ke ".$j." Cluster 1";
 				// for ($j=0; $j < 117 ; $j++) { 
 				// 	echo "".$nilai[$i][$j].", ";
 				// }
@@ -2337,8 +2556,8 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 				$nilaiTotalCentroid1[$j]=0;
 				$nilaiTotalCentroid1[$j]=$nilaiHasilCentroidBaru1;
 				$SBaruCentroidBaru1 +=$nilaiHasilCentroidBaru1; 
-			}elseif ($barisCluster2[$j] == $j) {
-				echo "baris ke ".$j." Cluster 2";
+			}elseif (${'barisCluster2'.$j}== $j) {
+				//echo "baris ke ".$j." Cluster 2";
 				// for ($j=0; $j < 117 ; $j++) { 
 				// 	echo "".$nilai[$i][$j].", ";
 				// }
@@ -2377,7 +2596,7 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 			// 					echo " jjjj ".$SBaruCentroidBaru2;
 			// echo "jjR ".$nilaiHasilCentroidBaru2;
 			}else {
-				echo "baris ke ".$j." Cluster 3";
+				//echo "baris ke ".$j." Cluster 3";
 				// for ($j=0; $j < 117 ; $j++) { 
 				// 	echo "".$nilai[$i][$j].", ";
 				// }
@@ -2417,33 +2636,43 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 		$Sbaru = $SBaruCentroidBaru1 + $SBaruCentroidBaru2 + $SBaruCentroidBaru3; 
 	//	$S = 0;
 		//$Sbaru = $nilaiHasilCentroidBaru1 + $nilaiHasilCentroidBaru2+$nilaiHasilCentroidBaru3
-		echo "SBaru ".$Sbaru;
+		//echo "SBaru ".$Sbaru;
 		//Menghitung simpangan S, S = total cost baru – total cost lama.  S < 0 maka tukar non medoids dengan medoids
 		$S= $Sbaru - $Slama;
-		echo "STok ".$S." SBaru ".$Sbaru." SLama ".$Slama;
+		//echo "STok ".$S." SBaru ".$Sbaru." SLama ".$Slama;
 		if ($S<0) {
 			$Slama = $Sbaru;
 
-			echo "rasi ke ".$iterasi." Ambil ".$ambilCentroidBaru1 [0]." Ambil ".$ambilCentroidBaru2 [0]." Ambil ".$ambilCentroidBaru3 [0];
+		//	echo "rasi ke ".$iterasi." Ambil ".$ambilCentroidBaru1 [0]." Ambil ".$ambilCentroidBaru2 [0]." Ambil ".$ambilCentroidBaru3 [0];
 
 		}else{
-			echo "Hasil Akhir Cluster";
+			//echo "<hr>";
+			// echo "<br>";
+			// echo "Hasil Akhir Cluster";
+			// echo "<br>";
 			for ($j=0; $j < 401 ; $j++) { 
-				if ($barisCluster1[$j] == $j) {
-					echo "baris ke ".$j." Cluster 1";
+				if (${'barisCluster1'.$j} == $j) {
+					//echo "baris ke ".$j." Cluster 1";
 					$nilaiHasilCentroidBaru1 = 0;
+					$nilaiKeJs1++;
+					//echo "<br>";
+
 					// for ($m=0; $m < 117; $m++) { 
 					// 	echo " ".$nilai[$j][$m].",";
 					// }
-				}elseif ($barisCluster2[$j] == $j) {
-					echo "baris ke ".$j." Cluster 2";
+				}elseif (${'barisCluster2'.$j} == $j) {
+					//echo "baris ke ".$j." Cluster 2";
 					$nilaiHasilCentroidBaru2 = 0;
+					$nilaiKeJs2++;
+					//echo "<br>";
 					// for ($m=0; $m < 117; $m++) { 
 					// 	echo " ".$nilai[$j][$m].",";
 					// }
 				}else {
-					echo "baris ke ".$j." Cluster 3";
+					//echo "baris ke ".$j." Cluster 3";
 					$nilaiHasilCentroidBaru3 = 0;
+					$nilaiKeJs3++;
+					//echo "<br>";
 					// for ($m=0; $m < 117; $m++) { 
 					// 	echo " ".$nilai[$j][$m].",";
 					// }
@@ -2456,3 +2685,58 @@ for ($iterasi=1; $iterasi < 10; $iterasi++) {
 }
 
 ?>
+
+
+<!-- DONUT CHART -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Hasil Cluster</h3>
+            </div>
+
+                <canvas id="mycanvas" style="margin-left:35%;" width="256" height="256">
+                <!-- <canvas id="pieChart" style="height:250px"></canvas> -->
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+          </div>
+
+    </div>
+<!-- 
+<button style="margin-left:50%; font-family: 'Montserrat';" class="btn btn-success" type="button" onclick="tambahInput()">Tambah Input</button> -->
+
+<script>
+      $(document).ready(function(){
+        var ctx = $("#mycanvas").get(0).getContext("2d");
+
+        //pie chart data
+        //sum of values = 360
+        var data = [
+          {
+            value: <?php echo json_encode($nilaiKeJs1, JSON_NUMERIC_CHECK); ?>,
+            color: "cornflowerblue",
+            highlight: "lightskyblue",
+            label: "(Kehamilan Rendah) Sebanyak "
+          },
+          {
+            value: <?php echo json_encode($nilaiKeJs2, JSON_NUMERIC_CHECK); ?>,
+            color: "lightgreen",
+            highlight: "yellowgreen",
+            label: "(Kehamilan Tinggi) Sebanyak "
+          },
+          {
+            value: <?php echo json_encode($nilaiKeJs3, JSON_NUMERIC_CHECK); ?>,
+            color: "orange",
+            highlight: "darkorange",
+            label: "(Kehamilan Sangat Tinggi) Sebanyak "
+          }
+
+        ];
+
+        //draw
+        var piechart = new Chart(ctx).Doughnut(data);
+
+      });
+    </script>
+  </body>
+</html>
+
